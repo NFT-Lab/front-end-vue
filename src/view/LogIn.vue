@@ -1,28 +1,84 @@
 <template>
-  <v-container class="mx-1">
-    <v-btn router :to="links[0].home">Home</v-btn>
-    <v-row>
-      <v-col cols="12" lg="6" sm="6" md="8">
-        <v-card>
-          <v-form>
-            <v-text-field class="mx-5" label="Email"></v-text-field>
-            <v-text-field class="mx-5" label="Password"></v-text-field>
+  <v-container fluid style="height: 100vh;" >
+  <v-layout fill-height>
+  <v-btn class="my-2" router :to="links[0].home">Home</v-btn>
+    <v-row dense >
+      <v-col
+        cols="6"
+        class="fill-height d-flex flex-column justify-center align-center"
+      >
+        <v-card flat tile class="pa-md-1 mx-lg-auto" width="100%">
+          <v-form ref="form">
+            <v-text-field
+              label="Email"
+              v-model="email"
+              v-bind:rules="[rules.required, rules.email]"
+            ></v-text-field>
+            <v-text-field
+              label="Password"
+              v-model="password"
+              v-bind:rules="[rules.required, rules.length]"
+              :type="show ? 'text' : 'password'"
+              :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+              @click:append="show = !show"
+            ></v-text-field>
           </v-form>
-          <v-btn>Login</v-btn>
+          <p>
+            Non hai un account? Clicca qui per registrarti
+          </p>
+          <v-btn block @click="sendDataLogin">Login</v-btn>
         </v-card>
       </v-col>
+      <v-col id="login-container"></v-col>
     </v-row>
+  </v-layout>
   </v-container>
 </template>
 
 <script>
+import User from "@/service/http-request.js";
+
 export default {
   name: "Login",
   data() {
     return {
-      dob: '2007-01-01',
+      dob: "2007-01-01",
       links: [{ home: "/" }],
+      email: "",
+      password: "",
+      show: false,
+      rules: {
+        required: (val) => !!val || "Questo è un campo obbligatorio",
+        length: (val) => {
+          const patternPwd = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,}$/;
+          return (
+            patternPwd.test(val) ||
+            "La password deve essere lunga minimo otto caratteri con una lettera maiuscola, una minuscola, un numero ed un carattere speciale"
+          );
+        },
+        email: (val) => {
+          const patternEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return patternEmail.test(val) || "Invalid e-mail.";
+        },
+      },
     };
+  },
+  methods: {
+    sendDataLogin() {
+      User.login(this.email, this.password).then((response) => {
+        if (response.status === 200) {
+          localStorage.setItem("User", JSON.stringify(response.data));
+        }
+      });
+    },
   },
 };
 </script>
+
+<style scoped>
+#login-container {
+  margin: 0px;
+  background: url('../assets/circuits.jpg');
+  background-size: cover;
+}
+</style>
