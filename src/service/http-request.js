@@ -6,7 +6,7 @@ class User {
         email: email,
         password: password,
     };
-        return http.post("http://localhost:3100/login",user);
+       return http.post("http://localhost:3100/login",user);
     }
 }
 
