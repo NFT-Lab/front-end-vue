@@ -8,11 +8,11 @@
       <v-spacer></v-spacer>
       <v-btn router :to="links[0].login">
         <span>Log in</span>
-        <v-icon right>login</v-icon>
+        <v-icon right>mdi-login</v-icon>
       </v-btn>
       <v-btn router :to="links[0].signup">
         <span>Sign up</span>
-        <v-icon right>login</v-icon>
+        <v-icon right>mdi-login</v-icon>
       </v-btn>
     </v-app-bar>
   </nav>
@@ -23,18 +23,18 @@ export default {
   data() {
     return {
       links: [
-        { 
+        {
           login: "/login",
-          signup: "/signup",
-          }
-        ],
-      userData: localStorage.getItem("User"),
+          signup: "/signup"
+        }
+      ],
+      userData: localStorage.getItem("User")
     };
   },
   methods: {
     logOut() {
       localStorage.clear("User");
-    },
-  },
+    }
+  }
 };
 </script>
