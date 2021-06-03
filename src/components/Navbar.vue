@@ -7,22 +7,27 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn router :to="links[0].login">
-        <span>{{ btnWorld }}</span>
-        <v-icon right>{{ icon }}</v-icon>
+        <span>Log in</span>
+        <v-icon right>login</v-icon>
+      </v-btn>
+      <v-btn router :to="links[0].signup">
+        <span>Sign up</span>
+        <v-icon right>login</v-icon>
       </v-btn>
     </v-app-bar>
   </nav>
 </template>
 
 <script>
-
 export default {
   data() {
     return {
-      icon: "login",
-      btnWorld: "Log in",
-      name: "",
-      links: [{ login: "/login" }],
+      links: [
+        { 
+          login: "/login",
+          signup: "/signup",
+          }
+        ],
       userData: localStorage.getItem("User"),
     };
   },

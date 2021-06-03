@@ -1,58 +1,72 @@
 <template>
   <v-container fluid style="height: 100vh;">
+    <Particle/>
     <v-layout fill-height>
-      <v-btn class="my-2" router :to="links[0].home">Home</v-btn>
-      <v-row class="pa-1" dense>
+      <v-row class="pa-1" dense id="login-container">
+        <v-btn class="my-2" router :to="links[0].home">Home</v-btn>
         <v-col
-          cols="6"
           class="fill-height d-flex flex-column justify-center align-center"
         >
-          <v-card flat tile class="pa-md-1 mx-lg-auto" width="100%">
-            <v-form ref="form">
-              <v-text-field
-                label="Email"
-                v-model="email"
-                v-bind:rules="[rules.required, rules.email]"
-              ></v-text-field>
-              <v-text-field
-                label="Password"
-                v-model="password"
-                v-bind:rules="[rules.required, rules.length]"
-                :type="show ? 'text' : 'password'"
-                :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-                @click:append="show = !show"
-              ></v-text-field>
-            </v-form>
-            <p>
-              Non hai un account? Clicca
-              <router-link to="/signup">qui</router-link> per registrarti
-            </p>
-            <p class="red--text">{{ errorMessage }}</p>
-            <v-btn block @click="sendDataLogin">Login</v-btn>
+          <v-card class="pa-md-1 mx-lg-auto" width="60%">
+            <v-card-actions block>
+              <v-flex>
+                <v-form ref="form">
+                  <v-text-field
+                    label="Email"
+                    v-model="user.email"
+                    v-bind:rules="[rules.required, rules.email]"
+                    prepend-icon="email"
+                  ></v-text-field>
+                  <v-text-field
+                    label="Password"
+                    v-model="user.password"
+                    v-bind:rules="[rules.required, rules.length]"
+                    :type="show ? 'text' : 'password'"
+                    :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                    @click:append="show = !show"
+                    prepend-icon="lock"
+                  ></v-text-field>
+                </v-form>
+              </v-flex>
+            </v-card-actions>
+              <p class="red--text">{{ errorMessage }}</p>
+            <v-card-text>
+              <p>
+                Non hai un account? Clicca
+                <router-link to="/signup">qui</router-link> per registrarti
+              </p>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn block @click="sendDataLogin">Login</v-btn>
+            </v-card-actions>
           </v-card>
         </v-col>
-        <v-col id="login-container"></v-col>
       </v-row>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-import User from "@/service/http-request.js";
-import router from "../router/router.js";
+//import User from "@/service/http-request.js";
+//import router from "../router/router.js";
+import Particle from "@/view/Particle.vue";
 
 export default {
   name: "Login",
+  components: {
+    Particle,
+  },
   data() {
     return {
-      dob: "2007-01-01",
+      user: {
+        email: "",
+        password: ""
+      },
       links: [
         {
           home: "/",
         },
       ],
-      email: "",
-      password: "",
       errorMessage: "",
       show: false,
       rules: {
@@ -74,7 +88,8 @@ export default {
   methods: {
     sendDataLogin() {
       if (this.$refs.form.validate()) {
-        User.login(this.email, this.password)
+        this.$store.dispatch('CurrentUser/loginUser',this.user);
+        /*User.login(this.user)
           .then((response) => {
             if (response.status === 200) {
               localStorage.setItem("User", response.data);
@@ -89,19 +104,14 @@ export default {
               this.errorMessage =
                 "Utente non presente nel sistema, prova a reinserire i dati";
             }
-          });
+          });*/
       } else {
-        this.errorMessage = "Non hai inserito correttamente i dati, prova a correggere i dati inseriti";
+        this.errorMessage =
+          "Non hai inserito correttamente i dati, prova a correggere i dati inseriti";
       }
     },
   },
 };
 </script>
 
-<style scoped>
-#login-container {
-  margin: 0px;
-  background: url("../assets/circuits.jpg");
-  background-size: cover;
-}
-</style>
+<style scoped></style>
