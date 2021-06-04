@@ -17,7 +17,7 @@
                     v-model="user.email"
                     label="Email"
                     :rules="[rules.required, rules.email]"
-                    prepend-icon="mdi-email"
+                    prepend-icon="email"
                   />
                   <v-text-field
                     v-model="user.password"
@@ -25,7 +25,7 @@
                     :rules="[rules.required, rules.length]"
                     :type="show ? 'text' : 'password'"
                     :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-                    prepend-icon="mdi-lock"
+                    prepend-icon="lock"
                     @click:append="show = !show"
                   />
                 </v-form>
@@ -98,22 +98,8 @@ export default {
     sendDataLogin() {
       if (this.$refs.form.validate()) {
         this.$store.dispatch("CurrentUser/loginUser", this.user);
-        /*User.login(this.user)
-          .then((response) => {
-            if (response.status === 200) {
-              localStorage.setItem("User", response.data);
-              router.push("/");
-            }
-          })
-          .catch((error) => {
-            if (error.response.status === 400) {
-              this.errorMessage =
-                "Dati inseriti scorrettamente, prova a reinserire i dati";
-            } else if (error.response.status === 204) {
-              this.errorMessage =
-                "Utente non presente nel sistema, prova a reinserire i dati";
-            }
-          });*/
+        var error = this.$store.getters.errorMessage;
+        if (error) this.errorMessage = error;
       } else {
         this.errorMessage =
           "Non hai inserito correttamente i dati, prova a correggere i dati inseriti";

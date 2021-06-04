@@ -1,5 +1,9 @@
 <template>
-<v-container fill-height fluid id="particles-js"></v-container>
+  <v-container
+    id="particles-js"
+    fill-height
+    fluid
+  />
 </template>
 
 <script>
