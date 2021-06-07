@@ -3,17 +3,9 @@ import router from '@/router/router.js';
 
 const state = {
   user: {},
-  errorMessage: null
-};
-const getters = {
-  isAuthenticated(state) {
-    console.log(state.user);
-    if (state.user === null) return false;
-    else return true;
-  },
-  errorMessage(state) {
-    return state.errorMessage;
-  }
+  loggedIn: false,
+  errorMessage: '',
+  operas: []
 };
 const actions = {
   loginUser({ commit }, user) {
@@ -23,31 +15,58 @@ const actions = {
         password: user.password
       })
       .then(response => {
-        if (response.data) {
-          commit('setUser', response.data);
-          localStorage.setItem('user', response.data);
-          router.push('/');
-        }
+        commit('setUser', response.data);
+        commit('setLoggedIn');
+        localStorage.setItem('user', JSON.stringify(response.data));
+        router.push('/');
       })
       .catch(error => {
         commit('setErrorMessage', error.response.status);
       });
+  },
+  logOut({ commit }) {
+    commit('setLoggedOut');
+  },
+  userOperas({ commit }) {
+    axios.get('http://localhost:3100/nft/user').then(response => {
+      commit('setOperas', response.data);
+    });
   }
 };
 const mutations = {
-  setErrorMessage(data) {
-    if (data === 400) {
-      errorMessage = 'Dati inseriti scorrettamente, prova a reinserire i dati';
-    } else if (data === 204) {
-      errorMessage =
+  setErrorMessage(state, error) {
+    if (error === 400) {
+      state.errorMessage =
+        'Dati inseriti scorrettamente, prova a reinserire i dati';
+    } else if (error === 204) {
+      state.errorMessage =
         'Utente non presente nel sistema, prova a reinserire i dati';
     }
+  },
+  setOperas(state, data) {
+    state.operas = data;
   },
   setUser(state, data) {
     state.user = data;
   },
-  logOut(state) {
+  setLoggedIn(state) {
+    state.loggedIn = true;
+  },
+  setLoggedOut(state) {
+    state.loggedIn = false;
     state.user = null;
+    localStorage.clear('user');
+  }
+};
+const getters = {
+  isAuthenticated: state => {
+    return state.loggedIn;
+  },
+  errorMessage: state => {
+    return state.errorMessage;
+  },
+  operas: state => {
+    return state.operas;
   }
 };
 

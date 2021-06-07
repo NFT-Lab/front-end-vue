@@ -1,3 +1,4 @@
+/* eslint-disable vue/max-attributes-per-line */
 <template>
   <v-container fluid style="height: 100vh;">
     <Particle />
@@ -9,6 +10,16 @@
         <v-col
           class="fill-height d-flex flex-column justify-center align-center"
         >
+          <v-alert
+            v-model="alert"
+            color="red"
+            dense
+            dismissible
+            elevation="5"
+            icon="mdi-alert-circle"
+          >
+            {{ errorMessage }}
+          </v-alert>
           <v-card class="pa-md-1 mx-lg-auto" width="60%">
             <v-card-actions block>
               <v-flex>
@@ -24,16 +35,13 @@
                     label="Password"
                     :rules="[rules.required, rules.length]"
                     :type="show ? 'text' : 'password'"
-                    :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                    :append-icon="show ? 'mdi-eye-outline' : 'mdi-eye-off'"
                     prepend-icon="lock"
                     @click:append="show = !show"
                   />
                 </v-form>
               </v-flex>
             </v-card-actions>
-            <p class="red--text">
-              {{ errorMessage }}
-            </p>
             <v-card-text>
               <p>
                 Non hai un account? Clicca
@@ -56,8 +64,6 @@
 </template>
 
 <script>
-//import User from "@/service/http-request.js";
-//import router from "../router/router.js";
 import Particle from "@/view/Particle.vue";
 
 export default {
@@ -67,6 +73,7 @@ export default {
   },
   data() {
     return {
+      alert: false,
       user: {
         email: "",
         password: ""
@@ -76,7 +83,6 @@ export default {
           home: "/"
         }
       ],
-      errorMessage: "",
       show: false,
       rules: {
         required: val => !!val || "Questo è un campo obbligatorio",
@@ -94,16 +100,23 @@ export default {
       }
     };
   },
+  computed: {
+    errorMessage: {
+      get() {
+        return this.$store.getters["CurrentUser/errorMessage"];
+      }
+    }
+  },
   methods: {
     sendDataLogin() {
-      if (this.$refs.form.validate()) {
-        this.$store.dispatch("CurrentUser/loginUser", this.user);
-        var error = this.$store.getters.errorMessage;
-        if (error) this.errorMessage = error;
-      } else {
-        this.errorMessage =
-          "Non hai inserito correttamente i dati, prova a correggere i dati inseriti";
-      }
+      //if (this.$refs.form.validate()) {
+      this.$store.dispatch("CurrentUser/loginUser", this.user);
+      if (this.$store.getters["CurrentUser/errorMessage"] !== null)
+        this.alert = true;
+      //} else {
+      //this.errorMessage =
+      //"Non hai inserito correttamente i dati, prova a correggere i dati inseriti";
+      //}
     }
   }
 };

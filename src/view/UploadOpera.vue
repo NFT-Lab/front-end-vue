@@ -21,27 +21,54 @@
                     :rules="[rules.required]"
                     prepend-icon="description"
                   />
-                  <v-file-input
-                    v-model="opera.file"
-                    label="File"
-                    counter
-                    truncate-length="15"
+                  <div>
+                    <v-file-input
+                      v-model="opera.file"
+                      label="File"
+                      type="file"
+                      counter
+                      :rules="[rules.required]"
+                      prepend-icon="file_upload"
+                      @change="previewImage"
+                    />
+                    <v-img :src="url" max-height="200px" max-width="200px" />
+                  </div>
+                  <v-combobox
+                    v-model="opera.tipo"
+                    :items="tipologia"
+                    clearable
+                    chips
+                    label="Tipo"
+                    :rules="[rules.required]"
                     prepend-icon="file_upload"
+                  />
+                  <v-combobox
+                    v-model="opera.categoria"
+                    :items="tipologia"
+                    multiple
+                    chips
+                    clearable
+                    label="Categoria"
+                    :rules="[rules.required]"
+                    prepend-icon="category"
                   />
                   <v-text-field
                     v-model="opera.prezzo"
                     label="Prezzo"
+                    :rules="[rules.required]"
+                    prepend-icon="attach_money"
                     hide-details
                   />
-                  <v-radio-group v-model="row" row>
-                    <v-radio label="In vendita" value="radio-1"></v-radio>
-                    <v-radio label="Non in vendita" value="radio-2"></v-radio>
-                  </v-radio-group>
+                  <v-switch
+                    v-model="opera.vendita"
+                    label="In vendita"
+                    value="In vendita"
+                  />
                 </v-form>
               </v-flex>
             </v-card-actions>
             <p class="red--text">
-              {{ errorMessage }}
+              {{ errorMessageOpera }}
             </p>
             <v-card-actions>
               <v-btn block>
@@ -63,12 +90,23 @@ export default {
         titolo: "",
         descrizione: "",
         file: "",
-        prezzo: ""
+        prezzo: "",
+        tipo: "",
+        categoria: "",
+        vendita: true
       },
+      tipologia: ["video", "audio", "img", "doc"],
+      url: "",
+      errorMessageOpera: "",
       rules: {
         required: val => !!val || "Questo è un campo obbligatorio"
       }
     };
+  },
+  methods: {
+    previewImage() {
+      this.url = URL.createObjectURL(this.opera.file);
+    }
   }
 };
 </script>

@@ -2,23 +2,24 @@
   <nav class="grey darken-4">
     <v-app-bar class="grey darken-4">
       <v-toolbar-title>
-        <router-link to="/"
-          ><v-img src="@/assets/logo.jpg" alt="logo" height="40" width="100"
-        /></router-link>
+        <router-link to="/">
+          <v-img src="@/assets/logo.jpg" alt="logo" height="40" width="100" />
+        </router-link>
       </v-toolbar-title>
       <v-spacer />
-      <p>
-        <router-link to="/uploadOpera">
-          Carica nuova opera
-        </router-link>
-      </p>
+      <p v-if="isLogged" class="white--text">Ciao, {{ userData.name }}!</p>
       <v-spacer />
-      <v-btn v-if="isLogged" @click="logOut">
-        <span>Log out</span>
-        <v-icon right>
-          logout
-        </v-icon>
-      </v-btn>
+      <div v-if="isLogged">
+        <v-btn router :to="links[0].userPage">
+          Pagina personale
+        </v-btn>
+        <v-btn @click="logOut">
+          <span>Log out</span>
+          <v-icon right>
+            logout
+          </v-icon>
+        </v-btn>
+      </div>
       <div v-else>
         <v-btn router :to="links[0].login">
           <span>Log in</span>
@@ -45,21 +46,21 @@ export default {
       links: [
         {
           login: "/login",
-          signup: "/signup"
+          signup: "/signup",
+          userPage: "/userPage"
         }
       ],
-      userData: localStorage.getItem("User")
+      userData: JSON.parse(localStorage.getItem("user"))
     };
   },
   computed: {
     isLogged() {
-      console.log(this.$store.getters.isAuthenticated);
-      return this.$store.getters.isAuthenticated;
+      return this.$store.getters["CurrentUser/isAuthenticated"];
     }
   },
   methods: {
     logOut() {
-      this.$store.dispacth("logOut");
+      this.$store.dispatch("CurrentUser/logOut");
       router.push("/");
     }
   }
