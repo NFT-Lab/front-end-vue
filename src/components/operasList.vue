@@ -1,9 +1,19 @@
 <template>
-  <ul>
+  <v-list width="70%">
+    <v-list-item class="white--text" v-for="opera in operas" :key="opera.name">
+      <v-list-item-title> {{ opera.name }}</v-list-item-title>
+      <v-list-item-icon>
+        <v-icon>
+          edit
+        </v-icon>
+      </v-list-item-icon>
+    </v-list-item>
+  </v-list>
+  <!--<ul>
     <li class="white--text" v-for="opera in operas" :key="opera.name">
       {{ opera.name }}
     </li>
-  </ul>
+  </ul>-->
 </template>
 
 <script>
@@ -25,7 +35,6 @@ export default {
   computed: {
     operas: {
       get() {
-        console.log(this.$store.getters["CurrentUser/operas"]);
         return this.$store.getters["CurrentUser/operas"];
       }
     }

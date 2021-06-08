@@ -1,29 +1,15 @@
 <template>
-  <v-container
-    fluid
-    style="height: 100vh;"
-  >
+  <v-container fluid style="height: 100vh;">
     <Particle />
     <v-layout fill-height>
-      <v-row
-        id="login-container"
-        class="pa-1"
-        dense
-      >
-        <v-btn
-          class="my-2"
-          router
-          :to="links[0].home"
-        >
+      <v-row id="login-container" class="pa-1" dense>
+        <v-btn class="my-2" router :to="links[0].home">
           Home
         </v-btn>
         <v-col
           class="fill-height d-flex flex-column justify-center align-center"
         >
-          <v-card
-            class="pa-md-1 mx-lg-auto"
-            width="60%"
-          >
+          <v-card class="pa-md-1 mx-lg-auto" width="60%">
             <v-card-actions block>
               <v-flex>
                 <v-form ref="form">
@@ -70,10 +56,7 @@
               {{ errorMessage }}
             </p>
             <v-card-actions>
-              <v-btn
-                block
-                @click="sendDataLogin"
-              >
+              <v-btn block @click="sendDataLogin">
                 Sign up
               </v-btn>
             </v-card-actions>
@@ -85,8 +68,6 @@
 </template>
 
 <script>
-import User from "@/service/http-request.js";
-import router from "../router/router.js";
 import Particle from "@/view/Particle.vue";
 
 export default {
@@ -132,27 +113,7 @@ export default {
   },
   methods: {
     sendDataLogin() {
-      if (this.$refs.form.validate()) {
-        User.login(this.email, this.password)
-          .then(response => {
-            if (response.status === 200) {
-              localStorage.setItem("User", response.data);
-              router.push("/");
-            }
-          })
-          .catch(error => {
-            if (error.response.status === 400) {
-              this.errorMessage =
-                "Dati inseriti scorrettamente, prova a reinserire i dati";
-            } else if (error.response.status === 204) {
-              this.errorMessage =
-                "Utente non presente nel sistema, prova a reinserire i dati";
-            }
-          });
-      } else {
-        this.errorMessage =
-          "Non hai inserito correttamente i dati, prova a correggere i dati inseriti";
-      }
+      console.log("banane");
     }
   }
 };

@@ -7,11 +7,26 @@
           <v-icon x-large color="white">person</v-icon>
         </v-avatar>
         <p class="white--text">
+          Nome:
+          {{ userData.name }}
+        </p>
+        <p class="white--text">
+          Cognome:
+          {{ userData.surname }}
+        </p>
+        <p class="white--text">
+          Data di nascita:
+          {{ userData.dob }}
+        </p>
+        <p class="white--text">
+          Email:
           {{ userData.email }}
         </p>
         <p class="white--text">
+          ID Wallet:
           {{ userData.wallet }}
         </p>
+        <editUserData />
       </v-col>
       <v-divider vertical class="white" />
       <v-col cols="12" sm="6" md="8">
@@ -27,10 +42,12 @@
 
 <script>
 import operasList from "@/components/operasList.vue";
+import editUserData from "@/components/editUserData.vue";
 
 export default {
   components: {
-    operasList
+    operasList,
+    editUserData
   },
   data() {
     return {

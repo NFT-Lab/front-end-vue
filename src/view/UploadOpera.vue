@@ -10,7 +10,7 @@
               <v-flex>
                 <v-form ref="form">
                   <v-text-field
-                    v-model="opera.titolo"
+                    v-model="opera.name"
                     label="Titolo"
                     :rules="[rules.required]"
                     prepend-icon="title"
@@ -53,16 +53,11 @@
                     prepend-icon="category"
                   />
                   <v-text-field
-                    v-model="opera.prezzo"
+                    v-model="opera.price"
                     label="Prezzo"
                     :rules="[rules.required]"
                     prepend-icon="attach_money"
                     hide-details
-                  />
-                  <v-switch
-                    v-model="opera.vendita"
-                    label="In vendita"
-                    value="In vendita"
                   />
                 </v-form>
               </v-flex>
@@ -71,7 +66,7 @@
               {{ errorMessageOpera }}
             </p>
             <v-card-actions>
-              <v-btn block>
+              <v-btn @click="uploadNewOpera">
                 Carica l'opera
               </v-btn>
             </v-card-actions>
@@ -87,13 +82,13 @@ export default {
   data() {
     return {
       opera: {
-        titolo: "",
+        name: "",
         descrizione: "",
-        file: "",
-        prezzo: "",
+        path: "",
+        price: "",
         tipo: "",
         categoria: "",
-        vendita: true
+        currency: "ETH"
       },
       tipologia: ["video", "audio", "img", "doc"],
       url: "",
@@ -104,8 +99,15 @@ export default {
     };
   },
   methods: {
+    uploadNewOpera() {
+      console.log(JSON.stringify(this.opera));
+      this.$store.dispatch(
+        "nftService/uploadOpera",
+        JSON.stringify(this.opera)
+      );
+    },
     previewImage() {
-      this.url = URL.createObjectURL(this.opera.file);
+      this.url = URL.createObjectURL(this.opera.path);
     }
   }
 };
