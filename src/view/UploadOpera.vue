@@ -5,6 +5,16 @@
         <v-col
           class="fill-height d-flex flex-column justify-center align-center"
         >
+          <v-alert
+            v-model="alert"
+            color="red"
+            dense
+            dismissible
+            elevation="5"
+            icon="mdi-alert-circle"
+          >
+            {{ errorMessageOpera }}
+          </v-alert>
           <v-card class="pa-md-1 mx-lg-auto" width="60%">
             <v-card-actions block>
               <v-flex>
@@ -16,14 +26,14 @@
                     prepend-icon="title"
                   />
                   <v-text-field
-                    v-model="opera.descrizione"
+                    v-model="opera.description"
                     label="Descrizione"
                     :rules="[rules.required]"
                     prepend-icon="description"
                   />
                   <div>
                     <v-file-input
-                      v-model="opera.file"
+                      v-model="opera.path"
                       label="File"
                       type="file"
                       counter
@@ -34,7 +44,7 @@
                     <v-img :src="url" max-height="200px" max-width="200px" />
                   </div>
                   <v-combobox
-                    v-model="opera.tipo"
+                    v-model="opera.type"
                     :items="tipologia"
                     clearable
                     chips
@@ -43,7 +53,7 @@
                     prepend-icon="file_upload"
                   />
                   <v-combobox
-                    v-model="opera.categoria"
+                    v-model="opera.categories"
                     :items="tipologia"
                     multiple
                     chips
@@ -62,9 +72,6 @@
                 </v-form>
               </v-flex>
             </v-card-actions>
-            <p class="red--text">
-              {{ errorMessageOpera }}
-            </p>
             <v-card-actions>
               <v-btn @click="uploadNewOpera">
                 Carica l'opera
@@ -81,30 +88,41 @@
 export default {
   data() {
     return {
+      alert: false,
       opera: {
         name: "",
-        descrizione: "",
+        description: "",
         path: "",
         price: "",
-        tipo: "",
-        categoria: "",
-        currency: "ETH"
+        type: "",
+        cateogories: "",
+        currency: "ETH",
+        author: JSON.parse(localStorage.getItem("user")).name,
+        owner: JSON.parse(localStorage.getItem("user")).name
       },
       tipologia: ["video", "audio", "img", "doc"],
       url: "",
-      errorMessageOpera: "",
       rules: {
         required: val => !!val || "Questo è un campo obbligatorio"
       }
     };
   },
+  computed: {
+    errorMessageOpera: {
+      get() {
+        return this.$store.getters["nftService/errorMessageOpera"];
+      }
+    }
+  },
   methods: {
     uploadNewOpera() {
-      console.log(JSON.stringify(this.opera));
-      this.$store.dispatch(
-        "nftService/uploadOpera",
-        JSON.stringify(this.opera)
-      );
+      var formatData = new FormData();
+      formatData.append("file", this.opera.path);
+      formatData.append("opera", this.opera);
+      this.opera.path = formatData;
+      this.$store.dispatch("nftService/uploadOpera", formatData);
+      if (this.$store.getters["nftService/errorMessageOpera"] !== null)
+        this.alert = true;
     },
     previewImage() {
       this.url = URL.createObjectURL(this.opera.path);

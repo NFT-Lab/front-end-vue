@@ -109,14 +109,9 @@ export default {
   },
   methods: {
     sendDataLogin() {
-      //if (this.$refs.form.validate()) {
       this.$store.dispatch("CurrentUser/loginUser", this.user);
       if (this.$store.getters["CurrentUser/errorMessage"] !== null)
         this.alert = true;
-      //} else {
-      //this.errorMessage =
-      //"Non hai inserito correttamente i dati, prova a correggere i dati inseriti";
-      //}
     }
   }
 };

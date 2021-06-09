@@ -1,14 +1,17 @@
 <template>
-  <v-dialog v-model="dialog">
+  <v-dialog v-model="dialog" width="60%">
     <template v-slot:activator="{ on, attrs }">
-      <v-btn @click="dialog = false" v-bind="attrs" v-on="on">
+      <v-btn v-bind="attrs" v-on="on">
         Modifica dati personali
       </v-btn>
     </template>
     <v-card>
-      <v-form>
-        <v-text-field label="Nome" v-model="userData.name"> </v-text-field>
-      </v-form>
+      <v-flex>
+        <v-form>
+          <v-text-field label="ID Wallet" v-model="userData.wallet">
+          </v-text-field>
+        </v-form>
+      </v-flex>
     </v-card>
   </v-dialog>
 </template>
