@@ -25,6 +25,7 @@
               <v-flex>
                 <v-form ref="form">
                   <v-text-field
+                    id="emailInput"
                     v-model="user.email"
                     label="Email"
                     :rules="[rules.required, rules.email]"

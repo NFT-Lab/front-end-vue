@@ -10,7 +10,7 @@
       <p v-if="isLogged" class="white--text">Ciao, {{ userData.name }}!</p>
       <v-spacer />
       <div v-if="isLogged">
-        <v-btn router :to="links[0].userPage">
+        <v-btn router :to="links[0].userPage" class="mx-2">
           Pagina personale
         </v-btn>
         <v-btn @click="logOut">
@@ -21,7 +21,7 @@
         </v-btn>
       </div>
       <div v-else>
-        <v-btn router :to="links[0].login">
+        <v-btn router :to="links[0].login" class="mx-2">
           <span>Log in</span>
           <v-icon right>
             login

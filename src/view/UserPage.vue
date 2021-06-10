@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row>
+    <v-row class="pa-1 d-flex justify-center" dense>
       <v-col cols="6" md="4">
         <h1 class="white--text">Il mio profilo</h1>
         <v-avatar size="96">

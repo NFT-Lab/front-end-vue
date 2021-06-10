@@ -54,7 +54,7 @@
                   />
                   <v-combobox
                     v-model="opera.categories"
-                    :items="tipologia"
+                    :items="categories"
                     multiple
                     chips
                     clearable
@@ -112,7 +112,20 @@ export default {
       get() {
         return this.$store.getters["nftService/errorMessageOpera"];
       }
+    },
+    categories: {
+      get() {
+        var opere = this.$store.getters["nftService/categories"];
+        var ritorno = new Array();
+        for (var i = 0; i < opere.length; i++) {
+          ritorno[i] = opere[i].name;
+        }
+        return ritorno;
+      }
     }
+  },
+  created() {
+    this.$store.dispatch("nftService/getCategories");
   },
   methods: {
     uploadNewOpera() {
