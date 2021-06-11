@@ -67,6 +67,9 @@ const getters = {
   },
   operas: state => {
     return state.operas;
+  },
+  user: state => {
+    return state.user;
   }
 };
 
