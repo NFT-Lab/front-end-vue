@@ -1,6 +1,9 @@
 import axios from 'axios';
 import router from '@/router/router.js';
 
+var urlBackEnd = 'http://localhost:8765/NFTService/';
+var urlStop = 'http://localhost:3100/';
+
 const state = {
   homeOperas: [],
   opera: {},
@@ -9,19 +12,19 @@ const state = {
 };
 const actions = {
   getCategories({ commit }) {
-    axios.get('http://localhost:3100/categories').then(response => {
+    axios.get(urlStop + 'categories').then(response => {
       commit('setCategories', response.data);
     });
   },
   getHomeOperas({ commit }) {
-    axios.get('http://localhost:3100/nft').then(response => {
+    axios.get(urlStop + 'nft').then(response => {
       commit('setHomeOperas', response.data);
     });
   },
   uploadOpera({ commit }, opera) {
     axios
       .post(
-        'http://localhost:3100/nft/user',
+        urlStop + 'nft/user',
         {
           name: opera.name,
           description: opera.description,
@@ -48,7 +51,7 @@ const actions = {
   updateOpera({ commit }, opera) {
     axios
       .post(
-        'http://localhost:3100/nft/user',
+        urlStop + 'nft/user',
         {
           name: opera.name,
           description: opera.description,

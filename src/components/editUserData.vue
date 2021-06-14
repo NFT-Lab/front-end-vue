@@ -41,7 +41,6 @@ export default {
   },
   methods: {
     updateUser() {
-      //console.log(this.user);
       this.$store.dispatch("CurrentUser/updateUser", this.UserData);
     }
   }

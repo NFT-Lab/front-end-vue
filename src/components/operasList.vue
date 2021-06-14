@@ -9,7 +9,6 @@
           <v-card class="pa-3">
             <v-flex>
               <v-form>
-                <!--<v-img :src="url" max-height="200px" max-width="200px" />-->
                 <p>
                   <span style="font-weight: bold;">Titolo:</span>
                   {{ opera.name }}
@@ -84,14 +83,6 @@ export default {
         return this.$store.getters["CurrentUser/operas"];
       }
     }
-    /*url: {
-      get() {
-        var opera = this.$store.getters["CurrentUser/operas"];
-        console.log(opera[0].path);
-        url = URL.createObjectURL(opera[0].path);
-        return url;
-      }
-    }*/
   },
   created() {
     this.$store.dispatch("CurrentUser/userOperas");

@@ -1,6 +1,9 @@
 import axios from 'axios';
 import router from '@/router/router.js';
 
+var urlBackEnd = 'http://localhost:8765/UserService/';
+var urlStop = 'http://localhost:3100/';
+
 const state = {
   user: {},
   loggedIn: false,
@@ -11,7 +14,7 @@ const state = {
 const actions = {
   loginUser({ commit }, user) {
     axios
-      .post('http://localhost:3100/login', {
+      .post(urlStop + 'login', {
         email: user.email,
         password: user.password
       })
@@ -30,7 +33,7 @@ const actions = {
   },
   signUp({ commit }, user) {
     axios
-      .post('http://localhost:3100/signup', {
+      .post(urlStop + 'signup', {
         email: user.email,
         password: user.password,
         name: user.name,
@@ -49,9 +52,7 @@ const actions = {
       });
   },
   updateUser({}, user) {
-    var url = `http://localhost:3100/user/${
-      JSON.parse(localStorage.getItem('user')).id
-    }`;
+    var url = urlStop + `user/${JSON.parse(localStorage.getItem('user')).id}`;
     axios
       .put(url, {
         email: user.email,
@@ -67,7 +68,7 @@ const actions = {
       });
   },
   userOperas({ commit }) {
-    axios.get('http://localhost:3100/nft/user').then(response => {
+    axios.get(urlStop + 'nft/user').then(response => {
       commit('setOperas', response.data);
     });
   }

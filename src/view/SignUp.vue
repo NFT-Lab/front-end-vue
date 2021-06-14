@@ -160,7 +160,7 @@ export default {
           var year = new Date(val).getFullYear();
           console.log(year);
           console.log(new Date().getFullYear());
-          var minus = year - new Date().getFullYear();
+          var minus = new Date().getFullYear() - year;
           console.log(minus);
           return minus >= 0 || "Per iscriverti devi essere maggiorenne";
         }
