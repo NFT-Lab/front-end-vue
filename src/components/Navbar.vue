@@ -49,13 +49,17 @@ export default {
           signup: "/signup",
           userPage: "/userPage"
         }
-      ],
-      userData: JSON.parse(localStorage.getItem("user"))
+      ]
     };
   },
   computed: {
     isLogged() {
       return this.$store.getters["CurrentUser/isAuthenticated"];
+    },
+    userData: {
+      get() {
+        return JSON.parse(localStorage.getItem("user"));
+      }
     }
   },
   methods: {

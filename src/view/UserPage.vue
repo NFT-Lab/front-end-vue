@@ -1,7 +1,7 @@
 <template>
-  <v-container>
+  <v-container style="max-width=100%">
     <v-row class="pa-1 d-flex justify-center" dense>
-      <v-col cols="6" md="4">
+      <v-col cols="6" md="4" class="pa-3">
         <h1 class="white--text">Il mio profilo</h1>
         <v-avatar size="96">
           <v-icon x-large color="white">person</v-icon>
@@ -29,7 +29,7 @@
         <editUserData />
       </v-col>
       <v-divider vertical class="white" />
-      <v-col cols="12" sm="6" md="8">
+      <v-col cols="12" sm="6" md="8" class="pa-3">
         <h1 class="white--text">Le mie opere</h1>
         <operasList />
         <v-btn router :to="links[0].uploadOpera">

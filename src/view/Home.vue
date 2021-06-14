@@ -9,13 +9,13 @@
         v-for="opera in operas"
         :key="opera.name"
       >
-        <v-card class="text-center ma-3">
+        <v-card class="text-center">
           <v-card-text>
             <div class=" text-subtitle-1 ">{{ opera.name }}</div>
             <div>{{ opera.price }}</div>
           </v-card-text>
-          <v-card-actions>
-            <v-btn>Visualizza infomazioni opera</v-btn>
+          <v-card-actions class="text-center">
+            <v-btn rounded>Visualizza opera</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>

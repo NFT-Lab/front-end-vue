@@ -96,7 +96,7 @@ export default {
         },
         email: val => {
           const patternEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          return patternEmail.test(val) || "Invalid e-mail.";
+          return patternEmail.test(val) || "Email non valida";
         }
       }
     };
@@ -104,14 +104,14 @@ export default {
   computed: {
     errorMessage: {
       get() {
-        return this.$store.getters["CurrentUser/errorMessage"];
+        return this.$store.getters["CurrentUser/errorMessageLog"];
       }
     }
   },
   methods: {
     sendDataLogin() {
       this.$store.dispatch("CurrentUser/loginUser", this.user);
-      if (this.$store.getters["CurrentUser/errorMessage"] !== null)
+      if (this.$store.getters["CurrentUser/errorMessageLog"] !== null)
         this.alert = true;
     }
   }

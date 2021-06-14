@@ -4,7 +4,8 @@ import router from '@/router/router.js';
 const state = {
   user: {},
   loggedIn: false,
-  errorMessage: '',
+  errorMessageLog: '',
+  errorMessageSig: '',
   operas: []
 };
 const actions = {
@@ -21,11 +22,49 @@ const actions = {
         router.push('/');
       })
       .catch(error => {
-        commit('setErrorMessage', error.response.status);
+        commit('setErrorMessageLog', error.response.status);
       });
   },
   logOut({ commit }) {
     commit('setLoggedOut');
+  },
+  signUp({ commit }, user) {
+    axios
+      .post('http://localhost:3100/signup', {
+        email: user.email,
+        password: user.password,
+        name: user.name,
+        surname: user.surname,
+        dob: user.dob,
+        wallet: user.wallet
+      })
+      .then(response => {
+        commit('setUser', response.data);
+        commit('setLoggedIn');
+        localStorage.setItem('user', JSON.stringify(response.data));
+        router.push('/');
+      })
+      .catch(error => {
+        commit('setMessageErrorSig', error.response.status);
+      });
+  },
+  updateUser({}, user) {
+    var url = `http://localhost:3100/user/${
+      JSON.parse(localStorage.getItem('user')).id
+    }`;
+    axios
+      .put(url, {
+        email: user.email,
+        password: user.password,
+        name: user.name,
+        surname: user.surname,
+        dob: user.dob,
+        wallet: user.wallet
+      })
+      .then(response => {
+        commit('setUser', response.data);
+        localStorage.setItem('user', JSON.stringify(response.data));
+      });
   },
   userOperas({ commit }) {
     axios.get('http://localhost:3100/nft/user').then(response => {
@@ -34,12 +73,22 @@ const actions = {
   }
 };
 const mutations = {
-  setErrorMessage(state, error) {
+  setMessageErrorSig(state, error) {
     if (error === 400) {
-      state.errorMessage =
+      state.errorMessageSig =
+        'Dati inseriti scorrettamente, prova a reinserire i dati';
+    } else if (error === 409) {
+      state.errorMessageSig = 'Email già presente nel sistema';
+    } else if (error === 500) {
+      ('Server non raggiungibile');
+    }
+  },
+  setErrorMessageLog(state, error) {
+    if (error === 400) {
+      state.errorMessageLog =
         'Dati inseriti scorrettamente, prova a reinserire i dati';
     } else if (error === 204) {
-      state.errorMessage =
+      state.errorMessageLog =
         'Utente non presente nel sistema, prova a reinserire i dati';
     }
   },
@@ -62,8 +111,11 @@ const getters = {
   isAuthenticated: state => {
     return state.loggedIn;
   },
-  errorMessage: state => {
-    return state.errorMessage;
+  errorMessageLog: state => {
+    return state.errorMessageLog;
+  },
+  errorMessageSig: state => {
+    return state.errorMessageSig;
   },
   operas: state => {
     return state.operas;
