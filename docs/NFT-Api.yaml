@@ -70,6 +70,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Nft'
+              examples: {}
       operationId: get-nft
       description: Homepage
       parameters:
@@ -239,9 +240,7 @@ components:
           format: date
         wallet:
           type: string
-          pattern: '^[A-Fa-f0-9]'
-          minLength: 34
-          maxLength: 34
+          pattern: '^0x[a-fA-F0-9]'
       required:
         - email
         - password
@@ -251,7 +250,7 @@ components:
       properties:
         id:
           type: string
-        name:
+        title:
           type: string
         description:
           type: string
@@ -261,6 +260,7 @@ components:
           type: string
         price:
           type: number
+          minimum: 0
         categories:
           type: array
           items:
@@ -276,6 +276,18 @@ components:
           type: string
         path:
           type: string
+      examples:
+        - id: string
+          title: string
+          description: string
+          author: string
+          owner: string
+          price: 0
+          categories:
+            - string
+          type: video
+          currency: string
+          path: string
     Categories:
       title: Categories
       type: object

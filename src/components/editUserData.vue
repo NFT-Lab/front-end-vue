@@ -10,8 +10,10 @@
         <v-form>
           <v-text-field label="Nome" v-model="user.name" />
           <v-text-field label="Cognome" v-model="user.surname" />
-          <v-text-field label="Password" v-model="user.password" />
-          <v-text-field label="Conferma password" v-model="confPassword" />
+          <v-text-field label="Password" v-model="user.password" :type="show ? 'text' : 'password'"
+                    :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"  @click:append="show = !show" />
+          <v-text-field label="Conferma password" v-model="confPassword" :type="show1 ? 'text' : 'password'"
+                    :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"  @click:append="show1 = !show1"/>
           <v-text-field label="ID Wallet" v-model="user.wallet" />
         </v-form>
       </v-flex>
@@ -28,6 +30,8 @@
 export default {
   data() {
     return {
+      show: false,
+      show1: false,
       UserData: JSON.parse(localStorage.getItem("user")),
       user: {
         email: JSON.parse(localStorage.getItem("user")).email,

@@ -8,8 +8,7 @@ const state = {
   user: {},
   loggedIn: false,
   errorMessageLog: '',
-  errorMessageSig: '',
-  operas: []
+  errorMessageSig: ''
 };
 const actions = {
   loginUser({ commit }, user) {
@@ -66,11 +65,6 @@ const actions = {
         commit('setUser', response.data);
         localStorage.setItem('user', JSON.stringify(response.data));
       });
-  },
-  userOperas({ commit }) {
-    axios.get(urlStop + 'nft/user').then(response => {
-      commit('setOperas', response.data);
-    });
   }
 };
 const mutations = {
@@ -93,9 +87,6 @@ const mutations = {
         'Utente non presente nel sistema, prova a reinserire i dati';
     }
   },
-  setOperas(state, data) {
-    state.operas = data;
-  },
   setUser(state, data) {
     state.user = data;
   },
@@ -117,9 +108,6 @@ const getters = {
   },
   errorMessageSig: state => {
     return state.errorMessageSig;
-  },
-  operas: state => {
-    return state.operas;
   },
   user: state => {
     return state.user;

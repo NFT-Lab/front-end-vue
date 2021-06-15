@@ -8,9 +8,15 @@ const state = {
   homeOperas: [],
   opera: {},
   categoriesOpera: [],
-  errorMessageOpera: ''
+  errorMessageOpera: '',
+  operas: []
 };
 const actions = {
+  userOperas({ commit }) {
+    axios.get(urlStop + 'nft/user').then(response => {
+      commit('setOperas', response.data);
+    });
+  },
   getCategories({ commit }) {
     axios.get(urlStop + 'categories').then(response => {
       commit('setCategories', response.data);
@@ -26,7 +32,7 @@ const actions = {
       .post(
         urlStop + 'nft/user',
         {
-          name: opera.name,
+          title: opera.title,
           description: opera.description,
           author: opera.author,
           owner: opera.owner,
@@ -53,7 +59,7 @@ const actions = {
       .post(
         urlStop + 'nft/user',
         {
-          name: opera.name,
+          title: opera.title,
           description: opera.description,
           author: opera.author,
           owner: opera.owner,
@@ -73,6 +79,9 @@ const actions = {
   }
 };
 const mutations = {
+  setOperas(state, data) {
+    state.operas = data;
+  },
   setCategories(state, data) {
     state.categoriesOpera = data;
   },
@@ -87,6 +96,9 @@ const mutations = {
   }
 };
 const getters = {
+  operas: state => {
+    return state.operas;
+  },
   categories: state => {
     return state.categoriesOpera;
   },

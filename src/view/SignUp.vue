@@ -53,8 +53,7 @@
                       <v-text-field
                         v-model="user.dob"
                         label="Anno di nascita"
-                        prepend-icon="calendar-range"
-                        readonly
+                        prepend-icon="mdi-calendar-range"
                         :rules="[rules.required, rules.age]"
                         v-bind="attrs"
                         v-on="on"
@@ -72,14 +71,14 @@
                     v-model="user.wallet"
                     label="ID Wallet"
                     :rules="[rules.required, rules.wallet]"
-                    prepend-icon="wallet"
+                    prepend-icon="mdi-wallet"
                   />
                   <v-text-field
                     v-model="user.password"
                     label="Password"
                     :rules="[rules.required, rules.length]"
                     :type="show ? 'text' : 'password'"
-                    :append-icon="show ? 'eye' : 'eye-off'"
+                    :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
                     prepend-icon="lock"
                     @click:append="show = !show"
                   />
@@ -88,7 +87,7 @@
                     label="Conferma Password"
                     :rules="[rules.required, rules.equals]"
                     :type="show1 ? 'text' : 'password'"
-                    :append-icon="show1 ? 'mdi-eye' : 'eye-off'"
+                    :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                     prepend-icon="lock"
                     @click:append="show1 = !show1"
                   />
@@ -97,7 +96,7 @@
             </v-card-actions>
 
             <v-card-actions>
-              <v-btn block @click="sendDataSignUp">
+              <v-btn block @click="sendDataSignUp" color="grey darken-4" class="white--text">
                 Sign up
               </v-btn>
             </v-card-actions>
@@ -158,11 +157,8 @@ export default {
         },
         age: val => {
           var year = new Date(val).getFullYear();
-          console.log(year);
-          console.log(new Date().getFullYear());
           var minus = new Date().getFullYear() - year;
-          console.log(minus);
-          return minus >= 0 || "Per iscriverti devi essere maggiorenne";
+          return minus >= 18 || "Per iscriverti devi essere maggiorenne";
         }
       }
     };

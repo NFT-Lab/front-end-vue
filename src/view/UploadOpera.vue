@@ -20,7 +20,7 @@
               <v-flex>
                 <v-form ref="form">
                   <v-text-field
-                    v-model="opera.name"
+                    v-model="opera.title"
                     label="Titolo"
                     :rules="[rules.required]"
                     prepend-icon="title"
@@ -90,7 +90,7 @@ export default {
     return {
       alert: false,
       opera: {
-        name: "",
+        title: "",
         description: "",
         path: "",
         price: "",
