@@ -32,6 +32,7 @@
           </v-list-item>
           <v-card-actions class="justify-center">
             <v-btn
+              v-bind:opera="opera"
               router
               :to="links[0].operaDetails"
               rounded

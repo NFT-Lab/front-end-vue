@@ -13,9 +13,13 @@ const state = {
 };
 const actions = {
   userOperas({ commit }) {
-    axios.get(urlStop + 'nft/user').then(response => {
-      commit('setOperas', response.data);
-    });
+    axios
+      .get(urlStop + 'nft/user', {
+        params: localStorage.getItem('user').userId
+      })
+      .then(response => {
+        commit('setOperas', response.data);
+      });
   },
   getCategories({ commit }) {
     axios.get(urlStop + 'categories').then(response => {
@@ -56,23 +60,9 @@ const actions = {
   },
   updateOpera({ commit }, opera) {
     axios
-      .post(
-        urlStop + 'nft/user',
-        {
-          title: opera.title,
-          description: opera.description,
-          author: opera.author,
-          owner: opera.owner,
-          path: opera.path,
-          price: opera.price,
-          categories: opera.categories,
-          type: opera.type,
-          currency: opera.currency
-        },
-        {
-          params: opera.id
-        }
-      )
+      .post(urlStop + 'nft/user', opera, {
+        params: opera.id
+      })
       .then(response => {
         commit('setOpera', response.data);
       });

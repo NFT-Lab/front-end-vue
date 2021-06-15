@@ -165,6 +165,20 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Nft'
+              examples:
+                example-1:
+                  value:
+                    - id: string
+                      title: string
+                      description: string
+                      author: string
+                      owner: string
+                      price: 0
+                      categories:
+                        - string
+                      type: video
+                      currency: string
+                      path: string
       operationId: get-nft-user
       description: Opere dell'utente
       parameters:
@@ -182,6 +196,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Nft'
+              examples:
+                example-1:
+                  value:
+                    id: string
+                    title: string
+                    description: string
+                    author: string
+                    owner: string
+                    price: 0
+                    categories:
+                      - string
+                    type: video
+                    currency: string
+                    path: string
         '500':
           description: Internal Server Error
       description: Inserimento opera
@@ -192,9 +220,23 @@ paths:
           name: userId
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               $ref: '#/components/schemas/Nft'
+            examples:
+              example-1:
+                value:
+                  id: string
+                  title: string
+                  description: string
+                  author: string
+                  owner: string
+                  price: 0
+                  categories:
+                    - string
+                  type: video
+                  currency: string
+                  path: string
       tags:
         - NFT
         - User
@@ -215,9 +257,23 @@ paths:
         - User
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               $ref: '#/components/schemas/Nft'
+            examples:
+              example-1:
+                value:
+                  id: string
+                  title: string
+                  description: string
+                  author: string
+                  owner: string
+                  price: 0
+                  categories:
+                    - string
+                  type: video
+                  currency: string
+                  path: string
 components:
   schemas:
     User:

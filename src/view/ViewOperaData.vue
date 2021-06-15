@@ -1,12 +1,14 @@
 <template>
-  <p>Dettagli opera</p>
+  <p class="withe--text">{{opera.title}}</p>
 </template>
 
 <script>
 export default {
-props: ['selected'],
-created() {
-  console.log(this.selected)
-}
+props: ['opera'],
+ methods: {
+    UpdateOpera() {
+      this.$store.dispatch("nftService/updateOpera");
+    }
+  }
 }
 </script>

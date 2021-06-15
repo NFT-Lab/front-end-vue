@@ -1,7 +1,7 @@
 <template>
   <v-dialog width="60%">
-    <template v-slot:activator="{ on, attrs }">
-      <p  v-bind="attrs" v-on="on">{{ opera.title }}</p>
+    <template v-slot:activator="{ on }">
+      <p  v-on="on">{{ opera.title }}</p>
     </template>
     <v-card class="pa-3">
       <v-flex>
@@ -43,3 +43,9 @@
     </v-card>
   </v-dialog>
 </template>
+
+<script>
+export default {
+props: ['opera'],
+}
+</script>

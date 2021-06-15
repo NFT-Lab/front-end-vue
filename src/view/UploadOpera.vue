@@ -132,7 +132,7 @@ export default {
       var formatData = new FormData();
       formatData.append("file", this.opera.path);
       formatData.append("opera", this.opera);
-      this.opera.path = formatData;
+      this.opera = formatData;
       this.$store.dispatch("nftService/uploadOpera", formatData);
       if (this.$store.getters["nftService/errorMessageOpera"] !== null)
         this.alert = true;

@@ -6,25 +6,25 @@
         v-bind="attrs"
         v-on="on"
       >
-        Modifica dati personali
+        Modifica password
       </v-btn>
     </template>
     <v-card class="pa-3">
       <v-flex>
         <v-form v-model="isFormValid">
           <v-text-field
-            v-model="user.name"
-            label="Nome"
-            :rules="[rules.required]"
-          />
-          <v-text-field
-            v-model="user.surname"
-            label="Cognome"
+            v-model="user.email"
+            label="Email"
             :rules="[rules.required]"
           />
           <v-text-field
             v-model="user.password"
             label="Vecchia password"
+            :rules="[rules.required, rules.length]"
+          />
+           <v-text-field
+            v-model="user.newPassword"
+            label="Nuova password"
             :rules="[rules.required, rules.length]"
           />
         </v-form>
@@ -54,9 +54,8 @@ export default {
       show1: false,
       UserData: JSON.parse(localStorage.getItem("user")),
       user: {
-        name: JSON.parse(localStorage.getItem("user")).name,
-        surname:  JSON.parse(localStorage.getItem("user")).surname,
         password: '',
+        newPassword: '',
         email:  JSON.parse(localStorage.getItem("user")).email,
       },
       rules: {
@@ -73,7 +72,7 @@ export default {
   },
   methods: {
     updateUser() {
-      this.$store.dispatch("CurrentUser/updateUser", this.user);
+      this.$store.dispatch("CurrentUser/updatePassword", this.user);
       this.dialog=false;
     }
   }

@@ -50,16 +50,26 @@ const actions = {
         commit('setMessageErrorSig', error.response.status);
       });
   },
-  updateUser({}, user) {
+  updateUser({ commit }, user) {
     var url = urlStop + `user/${JSON.parse(localStorage.getItem('user')).id}`;
+    console.log(user);
     axios
       .put(url, {
-        email: user.email,
         password: user.password,
         name: user.name,
         surname: user.surname,
-        dob: user.dob,
-        wallet: user.wallet
+        email: user.email
+      })
+      .then(response => {
+        commit('setUser', response.data);
+        localStorage.setItem('user', JSON.stringify(response.data));
+      });
+  },
+  updatePassword({ commit }, user) {
+    axios
+      .put(urlStop + 'user/password', {
+        password: user.newPassword,
+        email: user.email
       })
       .then(response => {
         commit('setUser', response.data);
