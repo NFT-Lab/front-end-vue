@@ -47,7 +47,7 @@
               >
                 label
               </v-icon>
-              {{ category }}
+              {{ category.name }}
             </v-chip>
           </p>
           <p>

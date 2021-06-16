@@ -1,5 +1,8 @@
 <template>
-  <v-dialog v-model="dialog" width="60%">
+  <v-dialog
+    v-model="dialog"
+    width="60%"
+  >
     <template v-slot:activator="{ on, attrs }">
       <v-btn
         class="mx-1"
@@ -18,11 +21,11 @@
             :rules="[rules.required]"
           />
           <v-text-field
-            v-model="user.password"
+            v-model="user.oldPassword"
             label="Vecchia password"
             :rules="[rules.required, rules.length]"
           />
-           <v-text-field
+          <v-text-field
             v-model="user.newPassword"
             label="Nuova password"
             :rules="[rules.required, rules.length]"
@@ -54,7 +57,7 @@ export default {
       show1: false,
       UserData: JSON.parse(localStorage.getItem("user")),
       user: {
-        password: '',
+        oldPassword: '',
         newPassword: '',
         email:  JSON.parse(localStorage.getItem("user")).email,
       },

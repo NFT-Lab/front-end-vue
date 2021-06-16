@@ -1,7 +1,11 @@
 <template>
   <v-container>
     <v-layout fill-height>
-      <v-row id="login-container" class="pa-1" dense>
+      <v-row
+        id="login-container"
+        class="pa-1"
+        dense
+      >
         <v-col
           class="fill-height d-flex flex-column justify-center align-center"
         >
@@ -15,7 +19,10 @@
           >
             {{ errorMessageOpera }}
           </v-alert>
-          <v-card class="pa-md-1 mx-lg-auto" width="60%">
+          <v-card
+            class="pa-md-1 mx-lg-auto"
+            width="60%"
+          >
             <v-card-actions block>
               <v-flex>
                 <v-form ref="form">
@@ -33,7 +40,7 @@
                   />
                   <div>
                     <v-file-input
-                      v-model="opera.path"
+                      v-model="file"
                       label="File"
                       type="file"
                       counter
@@ -41,7 +48,11 @@
                       prepend-icon="file_upload"
                       @change="previewImage"
                     />
-                    <v-img :src="url" max-height="200px" max-width="200px" />
+                    <v-img
+                      :src="url"
+                      max-height="200px"
+                      max-width="200px"
+                    />
                   </div>
                   <v-combobox
                     v-model="opera.type"
@@ -55,6 +66,9 @@
                   <v-combobox
                     v-model="opera.categories"
                     :items="categories"
+                    item-value="name"
+                    item-text="name"
+                    :return-object="true"
                     multiple
                     chips
                     clearable
@@ -92,14 +106,15 @@ export default {
       opera: {
         title: "",
         description: "",
-        path: "",
+        path: "i",
         price: "",
         type: "",
-        cateogories: "",
+        cateogories: [],
         currency: "ETH",
         author: JSON.parse(localStorage.getItem("user")).name,
         owner: JSON.parse(localStorage.getItem("user")).name
       },
+      file: "",
       tipologia: ["video", "audio", "img", "doc"],
       url: "",
       rules: {
@@ -115,13 +130,8 @@ export default {
     },
     categories: {
       get() {
-        var opere = this.$store.getters["nftService/categories"];
-        var ritorno = new Array();
-        for (var i = 0; i < opere.length; i++) {
-          ritorno[i] = opere[i].name;
-        }
-        return ritorno;
-      }
+        return this.$store.getters["nftService/categories"];
+    }
     }
   },
   created() {
@@ -130,15 +140,15 @@ export default {
   methods: {
     uploadNewOpera() {
       var formatData = new FormData();
-      formatData.append("file", this.opera.path);
-      formatData.append("opera", this.opera);
+      formatData.append("file", this.file);
+      formatData.append("opera", JSON.stringify(this.opera));
       this.opera = formatData;
       this.$store.dispatch("nftService/uploadOpera", formatData);
       if (this.$store.getters["nftService/errorMessageOpera"] !== null)
         this.alert = true;
     },
     previewImage() {
-      this.url = URL.createObjectURL(this.opera.path);
+      this.url = URL.createObjectURL(this.file);
     }
   }
 };

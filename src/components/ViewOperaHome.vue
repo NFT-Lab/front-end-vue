@@ -40,10 +40,11 @@
           <v-chip
             v-for="category in opera.categories"
             :key="category.name"
+            item-text="name"
             class="ma-2"
-            color="pink"
+            color="amber accent-4"
             label
-            text-color="white"
+            text-color="black"
           >
             <v-icon
               small
@@ -51,7 +52,7 @@
             >
               label
             </v-icon>
-            {{ category }}
+            {{ category.name }}
           </v-chip>
         </v-col>
       </v-row>

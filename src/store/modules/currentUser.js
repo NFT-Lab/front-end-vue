@@ -2,7 +2,7 @@ import axios from 'axios';
 import router from '@/router/router.js';
 
 var urlBackEnd = 'http://localhost:8765/UserService/';
-var urlStop = 'http://localhost:3100/';
+var urlStop = 'http://localhost:3103/';
 
 const state = {
   user: {},
@@ -58,7 +58,9 @@ const actions = {
         password: user.password,
         name: user.name,
         surname: user.surname,
-        email: user.email
+        email: user.email,
+        dob: JSON.parse(localStorage.getItem('user')).dob,
+        wallet: JSON.parse(localStorage.getItem('user')).wallet
       })
       .then(response => {
         commit('setUser', response.data);
@@ -67,8 +69,9 @@ const actions = {
   },
   updatePassword({}, user) {
     axios.put(urlStop + 'user/password', {
-      password: user.newPassword,
-      email: user.email
+      email: user.email,
+      oldPassword: user.oldPassword,
+      newPassword: user.newPassword
     });
   }
 };

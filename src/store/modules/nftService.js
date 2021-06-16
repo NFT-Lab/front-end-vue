@@ -2,7 +2,7 @@ import axios from 'axios';
 import router from '@/router/router.js';
 
 var urlBackEnd = 'http://localhost:8765/NFTService/';
-var urlStop = 'http://localhost:3100/';
+var urlStop = 'http://localhost:3103/';
 
 const state = {
   homeOperas: [],
@@ -13,13 +13,11 @@ const state = {
 };
 const actions = {
   userOperas({ commit }) {
-    axios
-      .get(urlStop + 'nft/user', {
-        params: localStorage.getItem('user').userId
-      })
-      .then(response => {
-        commit('setOperas', response.data);
-      });
+    var url =
+      urlStop + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
+    axios.get(url).then(response => {
+      commit('setOperas', response.data);
+    });
   },
   getCategories({ commit }) {
     axios.get(urlStop + 'categories').then(response => {
@@ -32,24 +30,10 @@ const actions = {
     });
   },
   uploadOpera({ commit }, opera) {
+    var url =
+      urlStop + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
     axios
-      .post(
-        urlStop + 'nft/user',
-        {
-          title: opera.title,
-          description: opera.description,
-          author: opera.author,
-          owner: opera.owner,
-          path: opera.path,
-          price: opera.price,
-          categories: opera.categories,
-          type: opera.type,
-          currency: opera.currency
-        },
-        {
-          params: localStorage.getItem('user').userId
-        }
-      )
+      .post(url, opera)
       .then(response => {
         commit('setOpera', response.data);
         router.push('/');
@@ -59,8 +43,9 @@ const actions = {
       });
   },
   updateOpera({ commit }, opera) {
+    var url = urlStop + `nft/user/${opera.id}`;
     axios
-      .post(urlStop + 'nft/user', opera, {
+      .post(url, opera, {
         params: opera.id
       })
       .then(response => {
