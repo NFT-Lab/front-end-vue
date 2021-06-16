@@ -1,7 +1,20 @@
 <template>
   <v-dialog width="60%">
     <template v-slot:activator="{ on }">
-      <p  v-on="on">{{ opera.title }}</p>
+      <v-list-item-avatar
+        size="60"
+        v-on="on"
+      >
+        <img src="@/assets/3.jpg">
+      </v-list-item-avatar>
+      <v-list-item-content v-on="on">
+        <v-list-item-title
+          v-text="opera.title"
+        />
+        <v-list-item-subtitle
+          v-text="opera.description"
+        />
+      </v-list-item-content>
     </template>
     <v-card class="pa-3">
       <v-flex>
@@ -28,7 +41,10 @@
               label
               text-color="white"
             >
-              <v-icon small left>
+              <v-icon
+                small
+                left
+              >
                 label
               </v-icon>
               {{ category }}

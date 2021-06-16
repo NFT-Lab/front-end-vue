@@ -13,10 +13,11 @@
           <v-list-item three-line>
             <v-list-item-content>
               <v-list-item-title v-text="opera.title" />
-
               <v-list-item-subtitle
-                class="text--primary"
                 v-text="opera.description"
+              />
+              <v-list-item-subtitle
+                v-text="opera.price+opera.currency"
               />
             </v-list-item-content>
 
@@ -31,14 +32,7 @@
             </v-list-item-avatar>
           </v-list-item>
           <v-card-actions class="justify-center">
-            <v-btn
-              v-bind:opera="opera"
-              router
-              :to="links[0].operaDetails"
-              rounded
-            >
-              Visualizza opera
-            </v-btn>
+            <ViewOperaHome :opera="opera" />
           </v-card-actions>
         </v-card>
       </v-col>
@@ -47,13 +41,15 @@
 </template>
 
 <script>
+import ViewOperaHome from "@/components/ViewOperaHome.vue"
+
 export default {
+  components: {
+    ViewOperaHome
+  },
   data() {
     return {
       selected: [],
-      links: [{
-        operaDetails: "/viewOperaData",
-      }],
       page: 1
     };
   },

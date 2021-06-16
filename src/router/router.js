@@ -5,7 +5,6 @@ import LogIn from '@/view/LogIn.vue';
 import SignUp from '@/view/SignUp.vue';
 import UploadOpera from '@/view/UploadOpera.vue';
 import UserPage from '@/view/UserPage.vue';
-import ViewOperaData from '@/view/ViewOperaData.vue';
 
 Vue.use(VueRouter);
 
@@ -34,11 +33,6 @@ const routes = [
     path: '/userPage',
     name: 'userPage',
     component: UserPage
-  },
-  {
-    path: '/viewOperaData',
-    name: 'viewOperaData',
-    component: ViewOperaData
   }
 ];
 

@@ -65,16 +65,11 @@ const actions = {
         localStorage.setItem('user', JSON.stringify(response.data));
       });
   },
-  updatePassword({ commit }, user) {
-    axios
-      .put(urlStop + 'user/password', {
-        password: user.newPassword,
-        email: user.email
-      })
-      .then(response => {
-        commit('setUser', response.data);
-        localStorage.setItem('user', JSON.stringify(response.data));
-      });
+  updatePassword({}, user) {
+    axios.put(urlStop + 'user/password', {
+      password: user.newPassword,
+      email: user.email
+    });
   }
 };
 const mutations = {

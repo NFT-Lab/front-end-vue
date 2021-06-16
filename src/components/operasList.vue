@@ -6,24 +6,18 @@
     >
       <template v-for="opera in operas">
         <v-list-item :key="opera.title">
-          <template>
-            <v-list-item-content>
-              <v-list-item-title>
-              <ShowOpera v-bind:opera="opera"/>
-              </v-list-item-title>
-              <v-list-item-subtitle
-                class="text--primary"
-                v-text="opera.description"
-              />
-            </v-list-item-content>
-            <v-list-item-action>
-              <editOpera v-bind:opera="opera"/>
-            </v-list-item-action>
-          </template>
+          <ShowOpera :opera="opera" />
+          <v-list-item-action>
+            <editOpera :opera="opera" />
+          </v-list-item-action>
         </v-list-item>
-        <v-divider :key="opera.title"></v-divider>
+        <v-divider :key="opera.title" />
       </template>
     </v-list-item-group>
+    <v-pagination
+      v-model="page"
+      :length="Math.ceil(pages.length/perPage)"
+    />
   </v-list>
 </template>
 
@@ -39,6 +33,9 @@ export default {
   data() {
     return {
       selected: [],
+      page: 1,
+      perPage: 4,
+      pages: [0,1,2,3,4,5,6,7,8,9,10,11,12,13]
     }
   },
   computed: {
@@ -47,6 +44,9 @@ export default {
         return this.$store.getters["nftService/operas"];
       }
     },
+    visiblePages () {
+      return this.pages.slice((this.page - 1)* this.perPage, this.page* this.perPage)
+    }
   },
   created() {
     this.$store.dispatch("nftService/userOperas");

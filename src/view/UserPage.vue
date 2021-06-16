@@ -17,23 +17,26 @@
             person
           </v-icon>
         </v-avatar>
-        <h2 class="amber--text">
-          {{ userData.name }}
-          {{ userData.surname }}
-        </h2>
-
-        <p class="white--text">
-          Data di nascita:
-          {{ userData.dob }}
-        </p>
-        <p class="white--text">
-          Email:
-          {{ userData.email }}
-        </p>
-        <p class="white--text">
-          Wallet Address:
-          {{ userData.wallet }}
-        </p>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title
+              class="amber--text"
+              v-text="userData.name+userData.surname"
+            />
+            <v-list-item-subtitle class="amber--text">
+              Data di nascita:
+              {{ userData.dob }}
+            </v-list-item-subtitle>
+            <v-list-item-subtitle class="amber--text">
+              Email:
+              {{ userData.email }}
+            </v-list-item-subtitle>
+            <v-list-item-subtitle class="amber--text">
+              Wallet Address:
+              {{ userData.wallet }}
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
         <editUserData />
         <editUserPassword />
       </v-col>
