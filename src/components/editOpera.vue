@@ -23,9 +23,17 @@
             v-model="opera.type"
             label="Tipo"
           />
-          <v-text-field
+          <v-combobox
             v-model="opera.categories"
+            :items="categories"
+            item-value="name"
+            item-text="name"
+            :return-object="true"
+            multiple
+            chips
+            clearable
             label="Categoria"
+            prepend-icon="category"
           />
           <v-text-field
             v-model="opera.price"
@@ -50,10 +58,20 @@
 <script>
 export default {
 props: ['opera'],
+  computed: {
+    categories: {
+      get() {
+        return this.$store.getters["nftService/categories"];
+    }
+    },
  methods: {
     UpdateOpera() {
       this.$store.dispatch("nftService/updateOpera");
     }
-  }
+  },
+  },
+  created() {
+    this.$store.dispatch("nftService/getCategories");
+  },
 }
 </script>

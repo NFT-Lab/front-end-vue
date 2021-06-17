@@ -13,13 +13,13 @@
       </v-toolbar-title>
       <v-spacer />
       <p
-        v-if="isLogged && this.userData!==null"
+        v-if="isLogged || userData!==null"
         class="white--text"
       >
         Ciao, {{ userData.name }}!
       </p>
       <v-spacer />
-      <div v-if="isLogged && this.userData!==null">
+      <div v-if="isLogged || userData!==null">
         <v-btn
           router
           :to="links[0].userPage"

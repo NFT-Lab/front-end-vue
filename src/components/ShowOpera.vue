@@ -37,7 +37,7 @@
               v-for="category in opera.categories"
               :key="category.name"
               class="ma-2"
-              color="pink"
+              color="amber accent-4"
               label
               text-color="white"
             >

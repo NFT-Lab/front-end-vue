@@ -109,7 +109,7 @@ export default {
         path: "i",
         price: "",
         type: "",
-        cateogories: [],
+        categories: [],
         currency: "ETH",
         author: JSON.parse(localStorage.getItem("user")).name,
         owner: JSON.parse(localStorage.getItem("user")).name
