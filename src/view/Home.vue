@@ -2,8 +2,8 @@
   <v-container class="my-5">
     <v-row>
       <v-col
-        v-for="opera in operas"
-        :key="opera.title"
+        v-for="visiblePage in visiblePages"
+        :key="visiblePage.title"
         cols="12"
         sm="6"
         md="4"
@@ -12,13 +12,11 @@
         <v-card class="text-center">
           <v-list-item three-line>
             <v-list-item-content>
-              <v-list-item-title v-text="opera.title" />
+              <v-list-item-title v-text="visiblePage.title" />
               <v-list-item-subtitle
-                v-text="opera.description"
+                v-text="visiblePage.description"
               />
-              <v-list-item-subtitle
-                v-text="opera.price+opera.currency"
-              />
+              <v-list-item-subtitle>{{ visiblePage.price+" "+visiblePage.currency }}</v-list-item-subtitle>
             </v-list-item-content>
 
             <v-list-item-avatar
@@ -32,11 +30,15 @@
             </v-list-item-avatar>
           </v-list-item>
           <v-card-actions class="justify-center">
-            <ViewOperaHome :opera="opera" />
+            <ViewOperaHome :visible-page="visiblePage" />
           </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
+    <v-pagination
+      v-model="page"
+      :length="Math.ceil(pages.length/perPage)"
+    />
   </v-container>
 </template>
 
@@ -49,8 +51,10 @@ export default {
   },
   data() {
     return {
+      page: 1,
+      perPage: 5,
+      pages: [0,1,2,3,4,5,6,7,8,9,10,11,12,13],
       selected: [],
-      page: 1
     };
   },
   computed: {
@@ -58,6 +62,15 @@ export default {
       get() {
         return this.$store.getters["nftService/homeOperas"];
       }
+    },
+    visiblePages: {
+      get () {
+      var operaToSee = new Array();
+      var init = this.page * this.perPage - this.perPage;
+      var end = this.page * this.perPage;
+      operaToSee = this.operas.slice(init, end);
+      return operaToSee;
+    }
     }
   },
   created() {

@@ -22,30 +22,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>3/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>3/6</span>
             </div>
         
             
@@ -54,7 +54,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -211,13 +211,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -226,11 +223,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -257,13 +257,13 @@
       &lt;/v-toolbar-title&gt;
       &lt;v-spacer /&gt;
       &lt;p
-        v-if="isLogged || userData!==null"
+        v-if="userData!==null"
         class="white--text"
       &gt;
         Ciao, {{ userData.name }}!
       &lt;/p&gt;
       &lt;v-spacer /&gt;
-      &lt;div v-if="isLogged || userData!==null"&gt;
+      &lt;div v-if="userData!==null"&gt;
         &lt;v-btn
           router
           :to="links[0].userPage"
@@ -304,10 +304,10 @@
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
-<span class="cstat-no" title="statement not covered" >import router from "../router/router";</span>
+import router from "../router/router";
 export default {
-<span class="fstat-no" title="function not covered" >  data() {</span>
-<span class="cstat-no" title="statement not covered" >    return {</span>
+  data() {
+    return {
       links: [
         {
           login: "/login",
@@ -322,15 +322,15 @@ export default {
 <span class="cstat-no" title="statement not covered" >      return this.$store.getters["CurrentUser/isAuthenticated"];</span>
     },
     userData: {
-<span class="fstat-no" title="function not covered" >      get() {</span>
-<span class="cstat-no" title="statement not covered" >        return JSON.parse(localStorage.getItem("user"));</span>
+      get() {
+        return JSON.parse(localStorage.getItem("user"));
       }
-    }
+    },
   },
   methods: {
 <span class="fstat-no" title="function not covered" >    logOut() {</span>
 <span class="cstat-no" title="statement not covered" >      this.$store.dispatch("CurrentUser/logOut");</span>
-<span class="cstat-no" title="statement not covered" >      router.push("/");</span>
+<span class="cstat-no" title="statement not covered" >      if(this.$router.currentRoute.fullPath!=="/") router.push("/");</span>
     }
   }
 };
@@ -342,7 +342,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Jun 17 2021 12:01:52 GMT+0200 (Ora legale dell’Europa centrale)
+                at Thu Jun 17 2021 18:31:29 GMT+0200 (Ora legale dell’Europa centrale)
             </div>
         </div>
         <script src="..\..\prettify.js"></script>

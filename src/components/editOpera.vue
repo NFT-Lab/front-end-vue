@@ -1,5 +1,5 @@
 <template>
-  <v-dialog width="60%">
+  <v-dialog v-model="dialog" width="60%">
     <template v-slot:activator="{ on, attrs }">
       <v-icon
         v-bind="attrs"
@@ -12,19 +12,19 @@
       <v-flex>
         <v-form>
           <v-text-field
-            v-model="opera.title"
+            v-model="visiblePage.title"
             label="Titolo"
           />
           <v-text-field
-            v-model="opera.description"
+            v-model="visiblePage.description"
             label="Descrizione"
           />
           <v-text-field
-            v-model="opera.type"
+            v-model="visiblePage.type"
             label="Tipo"
           />
           <v-combobox
-            v-model="opera.categories"
+            v-model="visiblePage.categories"
             :items="categories"
             item-value="name"
             item-text="name"
@@ -36,7 +36,7 @@
             prepend-icon="category"
           />
           <v-text-field
-            v-model="opera.price"
+            v-model="visiblePage.price"
             label="Prezzo"
           />
         </v-form>
@@ -46,7 +46,7 @@
           color="grey darken-4"
           class="white--text"
           block
-          @click="UpdateOpera"
+          @click="Update"
         >
           Modifica i dati
         </v-btn>
@@ -57,18 +57,24 @@
 
 <script>
 export default {
-props: ['opera'],
+  props: ['visiblePage'],
+  data() {
+    return {
+      dialog: false,
+    }
+  },
   computed: {
     categories: {
       get() {
         return this.$store.getters["nftService/categories"];
     }
     },
- methods: {
-    UpdateOpera() {
-      this.$store.dispatch("nftService/updateOpera");
-    }
   },
+ methods: {
+    Update() {
+      this.$store.dispatch("nftService/updateOpera");
+      this.dialog=false;
+    }
   },
   created() {
     this.$store.dispatch("nftService/getCategories");

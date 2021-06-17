@@ -13,13 +13,13 @@
       </v-toolbar-title>
       <v-spacer />
       <p
-        v-if="isLogged || userData!==null"
+        v-if="userData!==null"
         class="white--text"
       >
         Ciao, {{ userData.name }}!
       </p>
       <v-spacer />
-      <div v-if="isLogged || userData!==null">
+      <div v-if="userData!==null">
         <v-btn
           router
           :to="links[0].userPage"
@@ -81,12 +81,12 @@ export default {
       get() {
         return JSON.parse(localStorage.getItem("user"));
       }
-    }
+    },
   },
   methods: {
     logOut() {
       this.$store.dispatch("CurrentUser/logOut");
-      router.push("/");
+      if(this.$router.currentRoute.fullPath!=="/") router.push("/");
     }
   }
 };

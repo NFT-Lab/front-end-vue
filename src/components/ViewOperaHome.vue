@@ -30,17 +30,16 @@
         >
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-title v-text="opera.title" />
-              <v-list-item-subtitle v-text="opera.price+opera.currency" />
-              <v-list-item-subtitle v-text="opera.author" />
-              <v-list-item-subtitle v-text="opera.owner" />
-              <v-list-item-subtitle v-text="opera.description" />
+              <v-list-item-title v-text="visiblePage.title" />
+              <v-list-item-subtitle v-text="visiblePage.price+visiblePage.currency" />
+              <v-list-item-subtitle v-text="visiblePage.author" />
+              <v-list-item-subtitle v-text="visiblePage.owner" />
+              <v-list-item-subtitle v-text="visiblePage.description" />
             </v-list-item-content>
           </v-list-item>
           <v-chip
-            v-for="category in opera.categories"
+            v-for="category in visiblePage.categories"
             :key="category.name"
-            item-text="name"
             class="ma-2"
             color="amber accent-4"
             label
@@ -62,6 +61,6 @@
 
 <script>
 export default {
-props: ['opera'],
+props: ['visiblePage'],
 }
 </script>

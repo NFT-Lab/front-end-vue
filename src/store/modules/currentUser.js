@@ -3,6 +3,7 @@ import router from '@/router/router.js';
 
 var urlBackEnd = 'http://localhost:8765/UserService/';
 var urlStop = 'http://localhost:3100/';
+var examples = '?__example=test1';
 
 const state = {
   user: {},

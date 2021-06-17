@@ -22,30 +22,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/4</span>
+                <span class='fraction'>7/7</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">50% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/4</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -54,7 +54,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -123,7 +123,21 @@
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
 <a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -173,7 +187,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -181,12 +195,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -194,8 +218,8 @@
   &lt;v-container class="my-5"&gt;
     &lt;v-row&gt;
       &lt;v-col
-        v-for="opera in operas"
-        :key="opera.title"
+        v-for="visiblePage in visiblePages"
+        :key="visiblePage.title"
         cols="12"
         sm="6"
         md="4"
@@ -204,13 +228,11 @@
         &lt;v-card class="text-center"&gt;
           &lt;v-list-item three-line&gt;
             &lt;v-list-item-content&gt;
-              &lt;v-list-item-title v-text="opera.title" /&gt;
+              &lt;v-list-item-title v-text="visiblePage.title" /&gt;
               &lt;v-list-item-subtitle
-                v-text="opera.description"
+                v-text="visiblePage.description"
               /&gt;
-              &lt;v-list-item-subtitle
-                v-text="opera.price+opera.currency"
-              /&gt;
+              &lt;v-list-item-subtitle&gt;{{ visiblePage.price+" "+visiblePage.currency }}&lt;/v-list-item-subtitle&gt;
             &lt;/v-list-item-content&gt;
 &nbsp;
             &lt;v-list-item-avatar
@@ -224,11 +246,15 @@
             &lt;/v-list-item-avatar&gt;
           &lt;/v-list-item&gt;
           &lt;v-card-actions class="justify-center"&gt;
-            &lt;ViewOperaHome :opera="opera" /&gt;
+            &lt;ViewOperaHome :visible-page="visiblePage" /&gt;
           &lt;/v-card-actions&gt;
         &lt;/v-card&gt;
       &lt;/v-col&gt;
     &lt;/v-row&gt;
+    &lt;v-pagination
+      v-model="page"
+      :length="Math.ceil(pages.length/perPage)"
+    /&gt;
   &lt;/v-container&gt;
 &lt;/template&gt;
 &nbsp;
@@ -239,21 +265,31 @@ export default {
   components: {
     ViewOperaHome
   },
-<span class="fstat-no" title="function not covered" >  data() {</span>
-<span class="cstat-no" title="statement not covered" >    return {</span>
+  data() {
+    return {
+      page: 1,
+      perPage: 4,
+      pages: [0,1,2,3,4,5,6,7,8,9,10,11,12,13],
       selected: [],
-      page: 1
     };
   },
   computed: {
     operas: {
-<span class="fstat-no" title="function not covered" >      get() {</span>
-<span class="cstat-no" title="statement not covered" >        return this.$store.getters["nftService/homeOperas"];</span>
+      get() {
+        return this.$store.getters["nftService/homeOperas"];
       }
+    },
+    visiblePages: {
+      get () {
+      var operaToSee = new Array();
+<span class="missing-if-branch" title="else path not taken" >E</span>      if(this.page===1) operaToSee = this.operas.slice(this.page*0,this.perPage);
+      else operaToSee = this.operas.slice(this.page*2-2,this.perPage*2);
+      return operaToSee;
+    }
     }
   },
-<span class="fstat-no" title="function not covered" >  created() {</span>
-<span class="cstat-no" title="statement not covered" >    this.$store.dispatch("nftService/getHomeOperas");</span>
+  created() {
+    this.$store.dispatch("nftService/getHomeOperas");
   },
 };
 &lt;/script&gt;
@@ -264,7 +300,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Jun 17 2021 12:01:52 GMT+0200 (Ora legale dell’Europa centrale)
+                at Thu Jun 17 2021 18:31:29 GMT+0200 (Ora legale dell’Europa centrale)
             </div>
         </div>
         <script src="..\..\prettify.js"></script>

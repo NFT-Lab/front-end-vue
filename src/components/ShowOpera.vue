@@ -9,10 +9,10 @@
       </v-list-item-avatar>
       <v-list-item-content v-on="on">
         <v-list-item-title
-          v-text="opera.title"
+          v-text="visiblePage.title"
         />
         <v-list-item-subtitle
-          v-text="opera.description"
+          v-text="visiblePage.description"
         />
       </v-list-item-content>
     </template>
@@ -21,20 +21,20 @@
         <v-form>
           <p>
             <span style="font-weight: bold;">Titolo:</span>
-            {{ opera.title }}
+            {{ visiblePage.title }}
           </p>
           <p>
             <span style="font-weight: bold;">Descrizione:</span>
-            {{ opera.description }}
+            {{ visiblePage.description }}
           </p>
           <p>
             <span style="font-weight: bold;">Tipologia:</span>
-            {{ opera.type }}
+            {{ visiblePage.type }}
           </p>
           <p>
             <span style="font-weight: bold;">Categorie:</span>
             <v-chip
-              v-for="category in opera.categories"
+              v-for="category in visiblePage.categories"
               :key="category.name"
               class="ma-2"
               color="amber accent-4"
@@ -52,7 +52,7 @@
           </p>
           <p>
             <span style="font-weight: bold;">Prezzo:</span>
-            {{ opera.price }}
+            {{ visiblePage.price }}
           </p>
         </v-form>
       </v-flex>
@@ -62,6 +62,6 @@
 
 <script>
 export default {
-props: ['opera'],
+props: ['visiblePage'],
 }
 </script>

@@ -22,30 +22,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/6</span>
+                <span class='fraction'>8/8</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">50% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/6</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -54,7 +54,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -111,7 +111,12 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -144,7 +149,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -154,15 +159,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -172,14 +182,14 @@
       v-model="selected"
       active-class="amber accent-4--text"
     &gt;
-      &lt;template v-for="opera in operas"&gt;
-        &lt;v-list-item :key="opera.title"&gt;
-          &lt;ShowOpera :opera="opera" /&gt;
+      &lt;template v-for="visiblePage in visiblePages"&gt;
+        &lt;v-list-item :key="visiblePage.title"&gt;
+          &lt;ShowOpera :visiblePage="visiblePage" /&gt;
           &lt;v-list-item-action&gt;
-            &lt;editOpera :opera="opera" /&gt;
+            &lt;editOpera :visiblePage="visiblePage" /&gt;
           &lt;/v-list-item-action&gt;
         &lt;/v-list-item&gt;
-        &lt;v-divider :key="opera.title" /&gt;
+        &lt;v-divider :key="visiblePage.title" /&gt;
       &lt;/template&gt;
     &lt;/v-list-item-group&gt;
     &lt;v-pagination
@@ -198,8 +208,8 @@ export default {
     ShowOpera,
     editOpera
   },
-<span class="fstat-no" title="function not covered" >  data() {</span>
-<span class="cstat-no" title="statement not covered" >    return {</span>
+  data() {
+    return {
       selected: [],
       page: 1,
       perPage: 4,
@@ -208,16 +218,21 @@ export default {
   },
   computed: {
     operas: {
-<span class="fstat-no" title="function not covered" >      get() {</span>
-<span class="cstat-no" title="statement not covered" >        return this.$store.getters["nftService/operas"];</span>
+      get() {
+        return this.$store.getters["nftService/operas"];
       }
     },
-<span class="fstat-no" title="function not covered" >    visiblePages () {</span>
-<span class="cstat-no" title="statement not covered" >      return this.pages.slice((this.page - 1)* this.perPage, this.page* this.perPage)</span>
+    visiblePages: {
+      get () {
+      var operaToSee = new Array();
+<span class="missing-if-branch" title="else path not taken" >E</span>      if(this.page===1) operaToSee = this.operas.slice(this.page*0,this.perPage);
+      else operaToSee = this.operas.slice(this.page*2-1,this.perPage*2);
+      return operaToSee;
+    }
     }
   },
-<span class="fstat-no" title="function not covered" >  created() {</span>
-<span class="cstat-no" title="statement not covered" >    this.$store.dispatch("nftService/userOperas");</span>
+  created() {
+    this.$store.dispatch("nftService/userOperas");
   },
 };
 &lt;/script&gt;
@@ -228,7 +243,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Jun 17 2021 12:01:52 GMT+0200 (Ora legale dell’Europa centrale)
+                at Thu Jun 17 2021 18:31:29 GMT+0200 (Ora legale dell’Europa centrale)
             </div>
         </div>
         <script src="..\..\prettify.js"></script>

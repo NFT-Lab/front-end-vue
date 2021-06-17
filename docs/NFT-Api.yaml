@@ -70,7 +70,85 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Nft'
-              examples: {}
+              examples:
+                test1:
+                  value:
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: video
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 2
+                          name: sport
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 2
+                          name: sport
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 2
+                          name: sport
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 2
+                          name: sport
       operationId: get-nft
       description: Homepage
       parameters:
@@ -107,6 +185,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Category'
+              examples:
+                test1:
+                  value:
+                    - id: 3
+                      name: food
+                    - id: 2
+                      name: sport
       operationId: get-categories
       description: Categorie di un opera
   '/user/{id}':
@@ -150,7 +235,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/NewPassword'
-  /nft/user:
+  '/nft/user/{userId}':
     get:
       summary: Your GET endpoint
       tags:
@@ -165,13 +250,88 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Nft'
+              examples:
+                test1:
+                  value:
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: video
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 2
+                          name: sport
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 2
+                          name: sport
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 2
+                          name: sport
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 3
+                          name: food
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Filippo Baggio
+                      description: ciccio pasticcio
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Sinatra
+                      author: Frank Sinatra
+                      categories:
+                        - id: 2
+                          name: sport
       operationId: get-nft-user
       description: Opere dell'utente
-      parameters:
-        - schema:
-            type: string
-          in: query
-          name: userId
+      parameters: []
     post:
       summary: ''
       operationId: post-nft-user
@@ -185,11 +345,7 @@ paths:
         '500':
           description: Internal Server Error
       description: Inserimento opera
-      parameters:
-        - schema:
-            type: string
-          in: query
-          name: userId
+      parameters: []
       requestBody:
         content:
           multipart/form-data:
@@ -206,11 +362,7 @@ paths:
       responses:
         '200':
           description: OK
-      parameters:
-        - schema:
-            type: string
-          in: query
-          name: nftId
+      parameters: []
       description: Modifica di un opera dell'utente
       tags:
         - NFT
@@ -235,6 +387,12 @@ paths:
                   type: string
                   currency: string
                   path: string
+    parameters:
+      - schema:
+          type: string
+        name: userId
+        in: path
+        required: true
 components:
   schemas:
     User:
@@ -293,6 +451,11 @@ components:
             $ref: '#/components/schemas/Category'
         type:
           type: string
+          enum:
+            - img
+            - video
+            - audio
+            - doc
         currency:
           type: string
         path:

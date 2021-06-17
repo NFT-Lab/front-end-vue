@@ -58,10 +58,9 @@
             </v-list-item>
             <v-card-actions>
               <editUserData />
-
             </v-card-actions>
             <v-card-actions>
-<editUserPassword />
+              <editUserPassword />
             </v-card-actions>
           </v-card>
         </v-flex>

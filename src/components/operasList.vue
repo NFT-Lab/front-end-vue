@@ -4,14 +4,14 @@
       v-model="selected"
       active-class="amber accent-4--text"
     >
-      <template v-for="opera in operas">
-        <v-list-item :key="opera.title">
-          <ShowOpera :opera="opera" />
+      <template v-for="visiblePage in visiblePages">
+        <v-list-item :key="visiblePage.title">
+          <ShowOpera :visiblePage="visiblePage" />
           <v-list-item-action>
-            <editOpera :opera="opera" />
+            <editOpera :visiblePage="visiblePage" />
           </v-list-item-action>
         </v-list-item>
-        <v-divider :key="opera.title" />
+        <v-divider :key="visiblePage.title" />
       </template>
     </v-list-item-group>
     <v-pagination
@@ -44,8 +44,14 @@ export default {
         return this.$store.getters["nftService/operas"];
       }
     },
-    visiblePages () {
-      return this.pages.slice((this.page - 1)* this.perPage, this.page* this.perPage)
+    visiblePages: {
+      get () {
+      var operaToSee = new Array();
+      var init = this.page * this.perPage - this.perPage;
+      var end = this.page * this.perPage;
+      operaToSee = this.operas.slice(init, end);
+      return operaToSee;
+    }
     }
   },
   created() {

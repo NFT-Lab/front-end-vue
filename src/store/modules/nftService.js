@@ -3,6 +3,7 @@ import router from '@/router/router.js';
 
 var urlBackEnd = 'http://localhost:8765/NFTService/';
 var urlStop = 'http://localhost:3100/';
+var examples = '?__example=test1';
 
 const state = {
   homeOperas: [],
@@ -43,14 +44,11 @@ const actions = {
       });
   },
   updateOpera({ commit }, opera) {
-    var url = urlStop + `nft/user/${opera.id}`;
-    axios
-      .post(url, opera, {
-        params: opera.id
-      })
-      .then(response => {
-        commit('setOpera', response.data);
-      });
+    var url =
+      urlStop + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
+    axios.post(url, opera).then(response => {
+      commit('setOpera', response.data);
+    });
   }
 };
 const mutations = {
