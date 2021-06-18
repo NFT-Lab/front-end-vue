@@ -3,7 +3,6 @@ import router from '@/router/router.js';
 
 var urlBackEnd = 'http://localhost:8765/UserService/';
 var urlStop = 'http://localhost:3100/';
-var examples = '?__example=test1';
 
 const state = {
   user: {},
@@ -30,6 +29,7 @@ const actions = {
   },
   logOut({ commit }) {
     commit('setLoggedOut');
+    localStorage.clear('user');
   },
   signUp({ commit }, user) {
     axios
@@ -105,7 +105,6 @@ const mutations = {
   setLoggedOut(state) {
     state.loggedIn = false;
     state.user = null;
-    localStorage.clear('user');
   }
 };
 const getters = {

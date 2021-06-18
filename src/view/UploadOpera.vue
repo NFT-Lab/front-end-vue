@@ -31,7 +31,7 @@
                     :rules="[rules.required]"
                     prepend-icon="description"
                   />
-                  <div>
+                  <v-flex>
                     <v-file-input
                       v-model="file"
                       label="File"
@@ -41,14 +41,35 @@
                       prepend-icon="file_upload"
                       @change="previewImage"
                     />
-                    <v-img :src="url" max-height="200px" max-width="200px" />
-                  </div>
-                  <v-combobox
+                    <v-img
+                      v-if="typeNumber == 1"
+                      :src="url"
+                      max-height="200px"
+                      max-width="200px"
+                    />
+                    <v-img
+                      v-else-if="typeNumber == 2"
+                      src="@/assets/video.jpg"
+                      max-height="200px"
+                      max-width="200px"
+                    />
+                    <v-img
+                      v-else-if="typeNumber == 3"
+                      src="@/assets/audio.jpg"
+                      max-height="200px"
+                      max-width="200px"
+                    />
+                    <v-img
+                      v-else
+                      src="@/assets/doc.png"
+                      max-height="200px"
+                      max-width="200px"
+                    />-->
+                  </v-flex>
+                  <v-text-field
                     v-model="opera.type"
-                    :items="tipologia"
-                    clearable
-                    chips
                     label="Tipo"
+                    readonly
                     :rules="[rules.required]"
                     prepend-icon="file_upload"
                   />
@@ -92,6 +113,7 @@ export default {
   data() {
     return {
       alert: false,
+      typeNumber: 0,
       opera: {
         title: "",
         description: "",
@@ -104,10 +126,14 @@ export default {
         owner: JSON.parse(localStorage.getItem("user")).name
       },
       file: "",
-      tipologia: ["video", "audio", "img", "doc"],
       url: "",
       rules: {
         required: val => !!val || "Questo è un campo obbligatorio"
+      },
+      urlPreview: {
+        doc: "require('@src/assets/doc.png)",
+        audio: "require('@src/assets/audio.jpg)",
+        video: "require('@src/assets/video.jpg)"
       }
     };
   },
@@ -128,6 +154,10 @@ export default {
   },
   methods: {
     uploadNewOpera() {
+      if (this.opera.type === "Immagine") this.opera.type = "img";
+      else if (this.opera.type === "Video") this.opera.type = "video";
+      else if (this.opera.type === "Audio") this.opera.type = "audio";
+      else this.opera.type = "doc";
       var formatData = new FormData();
       formatData.append("file", this.file);
       formatData.append("opera", JSON.stringify(this.opera));
@@ -137,7 +167,27 @@ export default {
         this.alert = true;
     },
     previewImage() {
-      this.url = URL.createObjectURL(this.file);
+      if (this.file === null) {
+        this.url = "";
+      } else {
+        if (this.file.type.includes("image")) {
+          typeNumber = 1;
+          this.url = URL.createObjectURL(this.file);
+          this.opera.type = "Immagine";
+        } else if (this.file.type.includes("video")) {
+          typeNumber = 2;
+          this.url = "@src/assets/video.jpg";
+          this.opera.type = "Video";
+        } else if (this.file.type.includes("audio")) {
+          typeNumber = 3;
+          this.url = this.urlPreview.audio;
+          this.opera.type = "Audio";
+        } else {
+          typeNumber = 4;
+          this.url = this.urlPreview.doc;
+          this.opera.type = "Documento";
+        }
+      }
     }
   }
 };

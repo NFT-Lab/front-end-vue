@@ -24,28 +24,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>0/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>0/10</span>
             </div>
         
             
@@ -139,12 +139,17 @@
 <a name='L81'></a><a href='#L81'>81</a>
 <a name='L82'></a><a href='#L82'>82</a>
 <a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -203,7 +208,24 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -215,38 +237,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
   &lt;v-dialog v-model="dialog" width="60%"&gt;
     &lt;template v-slot:activator="{ on, attrs }"&gt;
-      &lt;v-icon
-        v-bind="attrs"
-        v-on="on"
-      &gt;
+      &lt;v-icon v-bind="attrs" v-on="on"&gt;
         edit
       &lt;/v-icon&gt;
     &lt;/template&gt;
     &lt;v-card class="pa-3"&gt;
       &lt;v-flex&gt;
-        &lt;v-form&gt;
+        &lt;v-form v-model="isFormValid"&gt;
           &lt;v-text-field
             v-model="visiblePage.title"
             label="Titolo"
+            :rules="[rules.required]"
           /&gt;
           &lt;v-text-field
             v-model="visiblePage.description"
             label="Descrizione"
+            :rules="[rules.required]"
           /&gt;
-          &lt;v-text-field
-            v-model="visiblePage.type"
-            label="Tipo"
-          /&gt;
+          &lt;v-text-field v-model="visiblePage.type" readonly label="Tipo" /&gt;
           &lt;v-combobox
             v-model="visiblePage.categories"
             :items="categories"
@@ -258,11 +274,9 @@
             clearable
             label="Categoria"
             prepend-icon="category"
+            :rules="[rules.required]"
           /&gt;
-          &lt;v-text-field
-            v-model="visiblePage.price"
-            label="Prezzo"
-          /&gt;
+          &lt;v-text-field v-model="visiblePage.price" label="Prezzo" /&gt;
         &lt;/v-form&gt;
       &lt;/v-flex&gt;
       &lt;v-card-actions&gt;
@@ -271,6 +285,7 @@
           class="white--text"
           block
           @click="Update"
+          :disabled="!isFormValid"
         &gt;
           Modifica i dati
         &lt;/v-btn&gt;
@@ -281,29 +296,44 @@
 &nbsp;
 &lt;script&gt;
 export default {
-  props: ['visiblePage'],
+  props: ["visiblePage"],
 <span class="fstat-no" title="function not covered" >  data() {</span>
 <span class="cstat-no" title="statement not covered" >    return {</span>
       dialog: false,
-    }
+      rules: {
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >        required: val =&gt; !!val || "Questo è un campo obbligatorio"</span></span>
+      }
+    };
   },
   computed: {
     categories: {
 <span class="fstat-no" title="function not covered" >      get() {</span>
 <span class="cstat-no" title="statement not covered" >        return this.$store.getters["nftService/categories"];</span>
-    }
-    },
-  },
- methods: {
-<span class="fstat-no" title="function not covered" >    Update() {</span>
-<span class="cstat-no" title="statement not covered" >      this.$store.dispatch("nftService/updateOpera");</span>
-<span class="cstat-no" title="statement not covered" >      this.dialog=false;</span>
+      }
     }
   },
 <span class="fstat-no" title="function not covered" >  created() {</span>
+<span class="cstat-no" title="statement not covered" >    var type = this.visiblePage.type;</span>
+<span class="cstat-no" title="statement not covered" >    if (type === "img") this.visiblePage.type = "Immagine";</span>
+    else if (type === "video") this.visiblePage.type = "Video";
+    else if (type == "audio") this.visiblePage.type = "Audio";
+    else this.visiblePage.type = "Documento";
 <span class="cstat-no" title="statement not covered" >    this.$store.dispatch("nftService/getCategories");</span>
   },
-}
+  methods: {
+<span class="fstat-no" title="function not covered" >    Update() {</span>
+<span class="cstat-no" title="statement not covered" >      if (this.visiblePage.type === "Immagine") this.visiblePage.type = "img";</span>
+      else if (this.visiblePage.type === "Immagine")
+        this.visiblePage.type = "img";
+      else if (this.visiblePage.type === "Immagine")
+        this.visiblePage.type = "img";
+      else this.visiblePage.type = "doc";
+<span class="cstat-no" title="statement not covered" >      console.log(this.visiblePage.type);</span>
+<span class="cstat-no" title="statement not covered" >      this.$store.dispatch("nftService/updateOpera", this.visiblePage);</span>
+<span class="cstat-no" title="statement not covered" >      this.dialog = false;</span>
+    }
+  }
+};
 &lt;/script&gt;
 &nbsp;</pre></td></tr></table></pre>
 
@@ -312,7 +342,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Jun 18 2021 09:25:48 GMT+0200 (Ora legale dell’Europa centrale)
+                at Fri Jun 18 2021 18:00:27 GMT+0200 (Ora legale dell’Europa centrale)
             </div>
         </div>
         <script src="..\..\prettify.js"></script>

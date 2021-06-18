@@ -46,9 +46,22 @@ const actions = {
   updateOpera({ commit }, opera) {
     var url =
       urlStop + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
-    axios.post(url, opera).then(response => {
-      commit('setOpera', response.data);
-    });
+    axios
+      .put(url, {
+        id: opera.id,
+        description: opera.description,
+        title: opera.title,
+        price: Number(opera.price),
+        currency: 'ETH',
+        type: opera.type,
+        author: opera.author,
+        owner: opera.owner,
+        categories: opera.categories,
+        path: opera.path
+      })
+      .then(response => {
+        commit('setOpera', response.data);
+      });
   }
 };
 const mutations = {

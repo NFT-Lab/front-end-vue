@@ -48,9 +48,6 @@
 
 <script>
 export default {
-  props: ["visiblePage"],
-  mounted() {
-    console.log(this.visiblePage.categories.name);
-  }
+  props: ["visiblePage"]
 };
 </script>

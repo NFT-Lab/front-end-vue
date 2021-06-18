@@ -53,7 +53,7 @@
               </p>
             </v-card-text>
             <v-card-actions>
-              <v-btn block @click="sendDataLogin" color="grey darken-4" class="white--text">
+              <v-btn block @click="sendDataLogin" dark>
                 Login
               </v-btn>
             </v-card-actions>

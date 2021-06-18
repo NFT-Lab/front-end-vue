@@ -7,11 +7,9 @@
         </router-link>
       </v-toolbar-title>
       <v-spacer />
-      <p v-if="userData !== null" class="white--text">
-        Ciao, {{ userData.name }}!
-      </p>
+      <p v-if="isLogged" class="white--text">Ciao, {{ userData.name }}!</p>
       <v-spacer />
-      <div v-if="userData !== null">
+      <div v-if="isLogged">
         <v-btn router :to="links[0].userPage" class="mx-2">
           Pagina personale
         </v-btn>
@@ -55,12 +53,15 @@ export default {
     };
   },
   computed: {
-    isLogged() {
-      return this.$store.getters["CurrentUser/isAuthenticated"];
+    isLogged: {
+      get() {
+        console.log(this.$store.getters["CurrentUser/isAuthenticated"]);
+        return this.$store.getters["CurrentUser/isAuthenticated"];
+      }
     },
     userData: {
       get() {
-        return JSON.parse(localStorage.getItem("user"));
+        return this.$store.getters["CurrentUser/user"];
       }
     }
   },

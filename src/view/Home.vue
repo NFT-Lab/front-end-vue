@@ -1,6 +1,6 @@
 <template>
-  <v-container class="my-5">
-    <v-row>
+  <v-container fluid>
+    <v-row fill-height>
       <v-col
         v-for="visiblePage in visiblePages"
         :key="visiblePage.title"

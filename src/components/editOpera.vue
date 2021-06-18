@@ -7,10 +7,18 @@
     </template>
     <v-card class="pa-3">
       <v-flex>
-        <v-form>
-          <v-text-field v-model="visiblePage.title" label="Titolo" />
-          <v-text-field v-model="visiblePage.description" label="Descrizione" />
-          <v-text-field v-model="visiblePage.type" label="Tipo" />
+        <v-form v-model="isFormValid">
+          <v-text-field
+            v-model="visiblePage.title"
+            label="Titolo"
+            :rules="[rules.required]"
+          />
+          <v-text-field
+            v-model="visiblePage.description"
+            label="Descrizione"
+            :rules="[rules.required]"
+          />
+          <v-text-field v-model="visiblePage.type" readonly label="Tipo" />
           <v-combobox
             v-model="visiblePage.categories"
             :items="categories"
@@ -22,12 +30,19 @@
             clearable
             label="Categoria"
             prepend-icon="category"
+            :rules="[rules.required]"
           />
           <v-text-field v-model="visiblePage.price" label="Prezzo" />
         </v-form>
       </v-flex>
       <v-card-actions>
-        <v-btn color="grey darken-4" class="white--text" block @click="Update">
+        <v-btn
+          color="grey darken-4"
+          class="white--text"
+          block
+          @click="Update"
+          :disabled="!isFormValid"
+        >
           Modifica i dati
         </v-btn>
       </v-card-actions>
@@ -40,7 +55,10 @@ export default {
   props: ["visiblePage"],
   data() {
     return {
-      dialog: false
+      dialog: false,
+      rules: {
+        required: val => !!val || "Questo è un campo obbligatorio"
+      }
     };
   },
   computed: {
@@ -50,14 +68,26 @@ export default {
       }
     }
   },
+  created() {
+    var type = this.visiblePage.type;
+    if (type === "img") this.visiblePage.type = "Immagine";
+    else if (type === "video") this.visiblePage.type = "Video";
+    else if (type == "audio") this.visiblePage.type = "Audio";
+    else this.visiblePage.type = "Documento";
+    this.$store.dispatch("nftService/getCategories");
+  },
   methods: {
     Update() {
+      if (this.visiblePage.type === "Immagine") this.visiblePage.type = "img";
+      else if (this.visiblePage.type === "Immagine")
+        this.visiblePage.type = "img";
+      else if (this.visiblePage.type === "Immagine")
+        this.visiblePage.type = "img";
+      else this.visiblePage.type = "doc";
+      console.log(this.visiblePage.type);
       this.$store.dispatch("nftService/updateOpera", this.visiblePage);
       this.dialog = false;
     }
-  },
-  created() {
-    this.$store.dispatch("nftService/getCategories");
   }
 };
 </script>

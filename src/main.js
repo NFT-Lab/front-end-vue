@@ -8,8 +8,9 @@ import '@mdi/font/css/materialdesignicons.css';
 
 Vue.config.productionTip = false;
 
+Vue.use(vuetify);
+
 new Vue({
-  vuetify,
   store,
   router,
   render: h => h(App)
