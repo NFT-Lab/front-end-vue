@@ -13,20 +13,17 @@
           <v-list-item three-line>
             <v-list-item-content>
               <v-list-item-title v-text="visiblePage.title" />
-              <v-list-item-subtitle
-                v-text="visiblePage.description"
-              />
-              <v-list-item-subtitle>{{ visiblePage.price+" "+visiblePage.currency }}</v-list-item-subtitle>
+              <v-list-item-subtitle v-text="visiblePage.description" />
+              <v-list-item-subtitle>
+                {{ visiblePage.price + " " + visiblePage.currency }}
+              </v-list-item-subtitle>
             </v-list-item-content>
 
-            <v-list-item-avatar
-              tile
-              size="80"
-              color="grey"
-            >
+            <v-list-item-avatar tile size="80" color="grey">
               <img
-                src="@/assets/3.jpg"
-              >
+                src="https://cloudflare-ipfs.com/ipfs/QmX5FkTotxKRziu5a7NXz16YeHrVgYw98RzTgNWvi8HmDC"
+              />
+              <!--qua metto un id preciso perchè stoplight mi torna parole in latino-->
             </v-list-item-avatar>
           </v-list-item>
           <v-card-actions class="justify-center">
@@ -35,15 +32,12 @@
         </v-card>
       </v-col>
     </v-row>
-    <v-pagination
-      v-model="page"
-      :length="Math.ceil(pages.length/perPage)"
-    />
+    <v-pagination v-model="page" :length="Math.ceil(pages.length / perPage)" />
   </v-container>
 </template>
 
 <script>
-import ViewOperaHome from "@/components/ViewOperaHome.vue"
+import ViewOperaHome from "@/components/ViewOperaHome.vue";
 
 export default {
   components: {
@@ -53,8 +47,8 @@ export default {
     return {
       page: 1,
       perPage: 5,
-      pages: [0,1,2,3,4,5,6,7,8,9,10,11,12,13],
-      selected: [],
+      pages: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+      selected: []
     };
   },
   computed: {
@@ -64,17 +58,17 @@ export default {
       }
     },
     visiblePages: {
-      get () {
-      var operaToSee = new Array();
-      var init = this.page * this.perPage - this.perPage;
-      var end = this.page * this.perPage;
-      operaToSee = this.operas.slice(init, end);
-      return operaToSee;
-    }
+      get() {
+        var operaToSee = new Array();
+        var init = this.page * this.perPage - this.perPage;
+        var end = this.page * this.perPage;
+        operaToSee = this.operas.slice(init, end);
+        return operaToSee;
+      }
     }
   },
   created() {
     this.$store.dispatch("nftService/getHomeOperas");
-  },
+  }
 };
 </script>

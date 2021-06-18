@@ -1,11 +1,7 @@
 <template>
   <v-container>
     <v-layout fill-height>
-      <v-row
-        id="login-container"
-        class="pa-1"
-        dense
-      >
+      <v-row id="login-container" class="pa-1" dense>
         <v-col
           class="fill-height d-flex flex-column justify-center align-center"
         >
@@ -19,10 +15,7 @@
           >
             {{ errorMessageOpera }}
           </v-alert>
-          <v-card
-            class="pa-md-1 mx-lg-auto"
-            width="60%"
-          >
+          <v-card class="pa-md-1 mx-lg-auto" width="60%">
             <v-card-actions block>
               <v-flex>
                 <v-form ref="form">
@@ -48,11 +41,7 @@
                       prepend-icon="file_upload"
                       @change="previewImage"
                     />
-                    <v-img
-                      :src="url"
-                      max-height="200px"
-                      max-width="200px"
-                    />
+                    <v-img :src="url" max-height="200px" max-width="200px" />
                   </div>
                   <v-combobox
                     v-model="opera.type"
@@ -131,7 +120,7 @@ export default {
     categories: {
       get() {
         return this.$store.getters["nftService/categories"];
-    }
+      }
     }
   },
   created() {

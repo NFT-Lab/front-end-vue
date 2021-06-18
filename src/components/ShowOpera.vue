@@ -1,19 +1,14 @@
 <template>
   <v-dialog width="60%">
     <template v-slot:activator="{ on }">
-      <v-list-item-avatar
-        size="60"
-        v-on="on"
-      >
-        <img src="@/assets/3.jpg">
+      <v-list-item-avatar size="60" v-on="on">
+        <img
+          src="https://cloudflare-ipfs.com/ipfs/QmX5FkTotxKRziu5a7NXz16YeHrVgYw98RzTgNWvi8HmDC"
+        />
       </v-list-item-avatar>
       <v-list-item-content v-on="on">
-        <v-list-item-title
-          v-text="visiblePage.title"
-        />
-        <v-list-item-subtitle
-          v-text="visiblePage.description"
-        />
+        <v-list-item-title v-text="visiblePage.title" />
+        <v-list-item-subtitle v-text="visiblePage.description" />
       </v-list-item-content>
     </template>
     <v-card class="pa-3">
@@ -41,10 +36,7 @@
               label
               text-color="white"
             >
-              <v-icon
-                small
-                left
-              >
+              <v-icon small left>
                 label
               </v-icon>
               {{ category.name }}
@@ -62,6 +54,6 @@
 
 <script>
 export default {
-props: ['visiblePage'],
-}
+  props: ["visiblePage"]
+};
 </script>

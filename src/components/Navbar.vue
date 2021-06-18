@@ -3,28 +3,16 @@
     <v-app-bar class="grey darken-4">
       <v-toolbar-title>
         <router-link to="/">
-          <v-img
-            src="@/assets/logo.jpg"
-            alt="logo"
-            height="40"
-            width="100"
-          />
+          <v-img src="@/assets/logo.png" alt="logo" height="40" width="100" />
         </router-link>
       </v-toolbar-title>
       <v-spacer />
-      <p
-        v-if="userData!==null"
-        class="white--text"
-      >
+      <p v-if="userData !== null" class="white--text">
         Ciao, {{ userData.name }}!
       </p>
       <v-spacer />
-      <div v-if="userData!==null">
-        <v-btn
-          router
-          :to="links[0].userPage"
-          class="mx-2"
-        >
+      <div v-if="userData !== null">
+        <v-btn router :to="links[0].userPage" class="mx-2">
           Pagina personale
         </v-btn>
         <v-btn @click="logOut">
@@ -35,20 +23,13 @@
         </v-btn>
       </div>
       <div v-else>
-        <v-btn
-          router
-          :to="links[0].login"
-          class="mx-2"
-        >
+        <v-btn router :to="links[0].login" class="mx-2">
           <span>Log in</span>
           <v-icon right>
             login
           </v-icon>
         </v-btn>
-        <v-btn
-          router
-          :to="links[0].signup"
-        >
+        <v-btn router :to="links[0].signup">
           <span>Sign up</span>
           <v-icon right>
             login
@@ -81,12 +62,12 @@ export default {
       get() {
         return JSON.parse(localStorage.getItem("user"));
       }
-    },
+    }
   },
   methods: {
     logOut() {
       this.$store.dispatch("CurrentUser/logOut");
-      if(this.$router.currentRoute.fullPath!=="/") router.push("/");
+      if (this.$router.currentRoute.fullPath !== "/") router.push("/");
     }
   }
 };
