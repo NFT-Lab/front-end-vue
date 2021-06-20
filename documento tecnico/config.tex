@@ -1,0 +1,107 @@
+%COMANDO PER AVERE IL CAPITOLO CON IL NOME CHE VOGLIAMO NOI
+
+\titleformat{\chapter}
+{\normalfont\bfseries\LARGE}{\thechapter}{18pt}{\LARGE}
+
+%COMANDO PER LA SPAZIATURA DEI TITOLI DAL BORDO DEL FOGLIO
+
+\titlespacing*{\chapter}{0cm}{0cm}{0.2cm}
+\setlength{\headsep}{1.5cm} % spaziatura tra header e testo
+
+
+%COMANDO PER LA SPAZIATURA DEL TESTO DAI BORDI LATERALI
+
+\geometry{
+	left=20mm,
+	right=20mm,
+}
+
+%COMADNO PER AVERE L'INDICE DEL NOME CHE SI VUOLE
+
+\renewcommand{\contentsname}{Indice}
+
+%COMADNI PER OTTENERE SUBSUBSECTION NUMERATE E PRESENTI NELL'INDICE
+
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
+
+%COMANDI PER OTTENERE HEADER E FOOTER
+
+\pagestyle{plain}
+
+\fancypagestyle{plain}{
+	\fancyhf{}
+	\lhead{\includegraphics[width=2.5cm]{immagini/logo.jpg}}
+	\chead{}
+	\rhead{\fontsize{12}{10}Documento tecnico NTFLab}
+	\lfoot{}
+	\cfoot{\thepage\ di \pageref{LastPage}}
+	\rfoot{}
+}
+
+\pagestyle{plain}
+
+%COMANDI PER LINK
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	filecolor=black,
+	urlcolor=blue,
+	citecolor=black,
+}
+
+\lstset{
+	language=[LaTeX]Tex,%C++,
+	keywordstyle=\color{RoyalBlue}, %\bfseries,
+	basicstyle=\small\ttfamily,
+	%identifierstyle=\color{NavyBlue},
+	commentstyle=\color{Green}\ttfamily,
+	stringstyle=\rmfamily,
+	numbers=none, %left,%
+	numberstyle=\scriptsize, %\tiny
+	stepnumber=5,
+	numbersep=8pt,
+	showstringspaces=false,
+	breaklines=true,
+	frameround=ftff,
+	frame=single
+} 
+
+% add frame environment
+\usepackage[%
+framemethod=tikz,
+skipbelow=8pt,
+skipabove=13pt
+]{mdframed}
+\mdfsetup{%
+	leftmargin=0pt,
+	rightmargin=0pt,
+	backgroundcolor=atomdarkgrey,
+	middlelinecolor=atomdarkgrey,
+	roundcorner=6
+}
+
+%BIBLIOGRAFIA
+
+\makeatletter
+\def\thebibliography#1{\chapter*{Bibliografia\@mkboth
+		{Bibliografia}{Bibliografia}}\list
+	{[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
+		\advance\leftmargin\labelsep
+		\usecounter{enumi}}
+	\def\newblock{\hskip .11em plus .33em minus .07em}
+	\sloppy\clubpenalty4000\widowpenalty4000
+	\sfcode`\.=1000\relax}
+\makeatother
+
+%DEFINIZIONE COLORI
+
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	filecolor=black,
+	urlcolor=blue,
+	citecolor=black,
+}

@@ -1,0 +1,44 @@
+\input{package}
+\input{config}
+
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+\begin{document}
+
+\makeatletter
+\begin{titlepage}
+	\begin{center}
+		\vspace*{-1,0cm}
+		\author{Margherita Mitillo}
+		\title{Documento tecnico}
+		\date{} %LASCIARE QUESTO CAMPO VUOTO, SE LO TOLGO STAMPA LA DATA CORRENTE
+		\includegraphics[width=0.5\linewidth]{immagini/logo.jpg}\\[4ex]
+		{\huge \bfseries  \@title }\\[2ex]
+		{\LARGE  \@author}\\[50ex]
+		\vspace*{-9,0cm}
+		\begin{table}[H]
+			\renewcommand{\arraystretch}{1.4}
+			\centering
+			\begin{tabular}{r | l}
+				\textbf{Progetto} & \makecell[tl]{ NFTLab } \\
+				\textbf{Durata progetto} & \makecell[tl]{ 320 ore } \\
+				\textbf{Inizio progetto} & \makecell[tl]{ 03-05-2020 } \\
+				\textbf{Fine progetto} & \makecell[tl]{ 28-06-2020 } \\
+			\end{tabular}
+		\end{table}
+		\vspace{0.2cm}
+		\hfill \break
+		\fontsize{17}{10}\textbf{Sommario} \\
+		\vspace{0.3cm}
+		Questo documento offre una spiegazione tecnica del progetto NFTLab, in particolare tratta lo sviluppo delle maschere eseguito con il framework Vue.js
+	\end{center}
+\end{titlepage}
+\makeatother
+
+\tableofcontents{}
+
+\include{capitoli/c1_introduzione}
+\include{capitoli/c2_progettazione}
+
+\end{document}
