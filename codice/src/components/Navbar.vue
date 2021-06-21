@@ -7,33 +7,59 @@
         </router-link>
       </v-toolbar-title>
       <v-spacer />
-      <p v-if="isLogged" class="white--text">Ciao, {{ userData.name }}!</p>
-      <v-spacer />
-      <div v-if="isLogged">
-        <v-btn router :to="links[0].userPage" class="mx-2">
-          Pagina personale
-        </v-btn>
-        <v-btn @click="logOut">
-          <span>Log out</span>
-          <v-icon right>
-            logout
-          </v-icon>
-        </v-btn>
-      </div>
-      <div v-else>
-        <v-btn router :to="links[0].login" class="mx-2">
-          <span>Log in</span>
-          <v-icon right>
-            login
-          </v-icon>
-        </v-btn>
-        <v-btn router :to="links[0].signup">
-          <span>Sign up</span>
-          <v-icon right>
-            login
-          </v-icon>
-        </v-btn>
-      </div>
+          <div v-if="isLogged">
+            <v-row>
+              <v-col>
+                <v-btn
+                  router
+                  :to="links[0].userPage"
+                  class="mx-2 black--text"
+                  color="amber accent-4"
+                >
+                  {{userData.name}}
+                </v-btn>
+              </v-col>
+              <v-col>
+                <v-btn @click="logOut" color="amber accent-4" class="black--text">
+                  <span>Log out</span>
+                  <v-icon right>
+                    logout
+                  </v-icon>
+                </v-btn>
+              </v-col>
+            </v-row>
+          </div>
+          <div v-else>
+            <v-row>
+              <v-col cols="6">
+                <v-btn
+                  router
+                  :to="links[0].login"
+                  class="mx-2"
+                  color="amber accent-4"
+                  black--text
+                >
+                  <span>Log in</span>
+                  <v-icon right>
+                    login
+                  </v-icon>
+                </v-btn>
+              </v-col>
+              <v-col cols="6">
+                <v-btn
+                  router
+                  :to="links[0].signup"
+                  color="amber accent-4"
+                  class="black--text"
+                >
+                  <span>Sign up</span>
+                  <v-icon right>
+                    login
+                  </v-icon>
+                </v-btn>
+              </v-col>
+            </v-row>
+          </div>
     </v-app-bar>
   </nav>
 </template>

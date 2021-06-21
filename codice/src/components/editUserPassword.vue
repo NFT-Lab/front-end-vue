@@ -1,46 +1,54 @@
 <template>
   <v-dialog
     v-model="dialog"
-    width="60%"
+    width="60%" dark
+    persistent
   >
     <template v-slot:activator="{ on, attrs }">
       <v-btn
-        class="mx-1"
+        class="mx-1 black--text"
         v-bind="attrs"
         v-on="on"
+        color="amber accent-4"
       >
         Modifica password
       </v-btn>
     </template>
     <v-card class="pa-3">
-      <v-flex>
+      <v-card-title class="text-h5 amber accent-4">
+        <v-btn icon dark @click="dialog = false">
+          <v-icon>mdi-close</v-icon> </v-btn
+        >Modifica password</v-card-title
+      >
         <v-form v-model="isFormValid">
           <v-text-field
             v-model="user.email"
             label="Email"
             :rules="[rules.required]"
+            color="amber accent-4"
           />
           <v-text-field
             v-model="user.oldPassword"
             label="Vecchia password"
             :rules="[rules.required, rules.length]"
+            color="amber accent-4"
           />
           <v-text-field
             v-model="user.newPassword"
             label="Nuova password"
             :rules="[rules.required, rules.length]"
+            color="amber accent-4"
           />
         </v-form>
-      </v-flex>
       <v-card-actions>
         <v-btn
-          color="grey darken-4"
-          class="white--text"
+          class="black--text"
           block
           :disabled="!isFormValid"
           @click="updateUser"
+          color="amber accent-4"
         >
-          Modifica i dati
+          Conferma modifica
         </v-btn>
       </v-card-actions>
     </v-card>

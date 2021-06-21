@@ -1,6 +1,6 @@
 <template>
   <v-app class="grey darken-4">
-    <navbar v-if="!['login', 'signup'].includes($route.name)" />
+    <navbar v-if="!['login', 'signup', 'uploadOpera'].includes($route.name)" />
     <v-main class="grey darken-4">
       <router-view />
     </v-main>

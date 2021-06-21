@@ -1,7 +1,11 @@
 <template>
-  <v-container>
+  <v-container fluid style="height: 100vh;">
+    <Particle />
     <v-layout fill-height>
-      <v-row id="login-container" class="pa-1" dense>
+      <v-row class="pa-1" dense>
+        <v-btn class="my-2 black--text" router :to="links[0].paginaPersonale" color="amber accent-4">
+          Pagina personale
+        </v-btn>
         <v-col
           class="fill-height d-flex flex-column justify-center align-center"
         >
@@ -18,18 +22,20 @@
           <v-card class="pa-md-1 mx-lg-auto" width="60%">
             <v-card-actions block>
               <v-flex>
-                <v-form ref="form">
+                <v-form ref="form" v-model="isFormValid">
                   <v-text-field
                     v-model="opera.title"
                     label="Titolo"
                     :rules="[rules.required]"
                     prepend-icon="title"
+                    color="amber accent-4"
                   />
                   <v-text-field
                     v-model="opera.description"
                     label="Descrizione"
                     :rules="[rules.required]"
                     prepend-icon="description"
+                    color="amber accent-4"
                   />
                   <v-flex>
                     <v-file-input
@@ -40,6 +46,7 @@
                       :rules="[rules.required]"
                       prepend-icon="file_upload"
                       @change="previewImage"
+                      color="amber accent-4"
                     />
                     <v-img
                       v-if="typeNumber == 1"
@@ -60,11 +67,11 @@
                       max-width="200px"
                     />
                     <v-img
-                      v-else
+                      v-else-if="typeNumber == 4"
                       src="@/assets/doc.png"
                       max-height="200px"
                       max-width="200px"
-                    />-->
+                    />
                   </v-flex>
                   <v-text-field
                     v-model="opera.type"
@@ -72,6 +79,7 @@
                     readonly
                     :rules="[rules.required]"
                     prepend-icon="file_upload"
+                    color="amber accent-4"
                   />
                   <v-combobox
                     v-model="opera.categories"
@@ -85,6 +93,7 @@
                     label="Categoria"
                     :rules="[rules.required]"
                     prepend-icon="category"
+                    color="amber accent-4"
                   />
                   <v-text-field
                     v-model="opera.price"
@@ -92,12 +101,14 @@
                     :rules="[rules.required]"
                     prepend-icon="attach_money"
                     hide-details
+                    color="amber accent-4"
                   />
                 </v-form>
               </v-flex>
             </v-card-actions>
             <v-card-actions>
-              <v-btn @click="uploadNewOpera">
+              <v-btn @click="uploadNewOpera" color="amber accent-4"
+          class="black--text" block :disabled="!isFormValid">
                 Carica l'opera
               </v-btn>
             </v-card-actions>
@@ -109,9 +120,20 @@
 </template>
 
 <script>
+import Particle from "@/view/Particle.vue";
+
 export default {
+  components: {
+    Particle
+  },
   data() {
     return {
+      isFormValid: false,
+      links: [
+        {
+          paginaPersonale: "/userPage"
+        }
+      ],
       alert: false,
       typeNumber: 0,
       opera: {
@@ -171,19 +193,19 @@ export default {
         this.url = "";
       } else {
         if (this.file.type.includes("image")) {
-          typeNumber = 1;
+          this.typeNumber = 1;
           this.url = URL.createObjectURL(this.file);
           this.opera.type = "Immagine";
         } else if (this.file.type.includes("video")) {
-          typeNumber = 2;
+          this.typeNumber = 2;
           this.url = "@src/assets/video.jpg";
           this.opera.type = "Video";
         } else if (this.file.type.includes("audio")) {
-          typeNumber = 3;
+          this.typeNumber = 3;
           this.url = this.urlPreview.audio;
           this.opera.type = "Audio";
-        } else {
-          typeNumber = 4;
+        } else if(this.file.type.includes("document")) {
+          this.typeNumber = 4;
           this.url = this.urlPreview.doc;
           this.opera.type = "Documento";
         }

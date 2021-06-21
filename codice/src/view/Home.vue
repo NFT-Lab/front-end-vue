@@ -1,5 +1,18 @@
 <template>
   <v-container fluid>
+    <v-combobox
+        v-model="filterCategories"
+        :items="categories"
+        item-value="name"
+        item-text="name"
+        :return-object="true"
+        multiple
+        chips
+        clearable
+        label="Filtro per categoria"
+        prepend-icon="category"
+        color="amber accent-4"
+      />
     <v-row fill-height>
       <v-col
         v-for="visiblePage in visiblePages"
@@ -9,22 +22,26 @@
         md="4"
         lg="3"
       >
-        <v-card class="text-center">
-          <v-list-item three-line>
+        <v-card class="text-center" dark>
+          <v-list-item>
             <v-list-item-content>
+              <v-list-item-avatar tile size="100">
+                <img
+                  :src="
+                    'https://cloudflare-ipfs.com/ipfs/' +
+                      opereId[Math.floor(Math.random() * opereId.length)]
+                  "
+                />
+                <!--<v-img
+            :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
+          />-->
+              </v-list-item-avatar>
               <v-list-item-title v-text="visiblePage.title" />
               <v-list-item-subtitle v-text="visiblePage.description" />
               <v-list-item-subtitle>
                 {{ visiblePage.price + " " + visiblePage.currency }}
               </v-list-item-subtitle>
             </v-list-item-content>
-
-            <v-list-item-avatar tile size="80" color="grey">
-              <img
-                src="https://cloudflare-ipfs.com/ipfs/QmX5FkTotxKRziu5a7NXz16YeHrVgYw98RzTgNWvi8HmDC"
-              />
-              <!--qua metto un id preciso perchè stoplight mi torna parole in latino-->
-            </v-list-item-avatar>
           </v-list-item>
           <v-card-actions class="justify-center">
             <ViewOperaHome :visible-page="visiblePage" />
@@ -32,7 +49,13 @@
         </v-card>
       </v-col>
     </v-row>
-    <v-pagination v-model="page" :length="Math.ceil(pages.length / perPage)" />
+    <v-pagination
+      dark
+      class="black--text"
+      v-model="page"
+      :length="Math.ceil(pages.length / perPage)"
+      color="amber accent-4"
+    />
   </v-container>
 </template>
 
@@ -45,8 +68,30 @@ export default {
   },
   data() {
     return {
+      opereId: [
+        "QmX5FkTotxKRziu5a7NXz16YeHrVgYw98RzTgNWvi8HmDC",
+
+        "QmUZr5giEkQynVP4whjkrPA5x9HjfmonCt2j5WCCJ6GJYt",
+
+        "QmdDN19DFWsGAL5hsdYDiPWLJpcNnezEqcMai8UnWayTCy",
+
+        "QmUoxQnAHehMEKH1CCbr1bu69P4r79kPXRKFqn6v3Pyret",
+
+        "QmNe7jwQqawJ9TNouzBwDLfS294SxNo7FEuuKBkkpRRFHh",
+
+        "QmRMEwa9jLv2iNxrpfZ8Z2bNMTZEFeyUVnt6fF5Xenk7Ms",
+
+        "QmbHx7zHgibMF9ktjaRm5dDT3bRAtqa7EVBPJ8jTvpLahe",
+
+        "QmWjHc9zb5ojPsjA43B3SFyKRPqd9Mc57R9EnTCgduyNzv",
+
+        "Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat",
+
+        "QmUZKcyxFm82CpsuRxkentY3zw8dRxGxHni8ggDuxQQYDP"
+      ],
+      filterCategories: [],
       page: 1,
-      perPage: 5,
+      perPage: 8,
       pages: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
       selected: []
     };
@@ -59,16 +104,31 @@ export default {
     },
     visiblePages: {
       get() {
+        var operaToFilter = new Array();
         var operaToSee = new Array();
+        var cat = this.filterCategories;
+        if (cat.length !== 0) {
+          operaToFilter = this.operas.filter(function(opera) {
+            return opera.categories === cat;
+          });
+        } else {
+          operaToFilter = this.operas;
+        }
         var init = this.page * this.perPage - this.perPage;
         var end = this.page * this.perPage;
-        operaToSee = this.operas.slice(init, end);
+        operaToSee = operaToFilter.slice(init, end);
         return operaToSee;
+      }
+    },
+    categories: {
+      get() {
+        return this.$store.getters["nftService/categories"];
       }
     }
   },
   created() {
     this.$store.dispatch("nftService/getHomeOperas");
+    this.$store.dispatch("nftService/getCategories");
   }
 };
 </script>

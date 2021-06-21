@@ -3,7 +3,7 @@
     <Particle />
     <v-layout fill-height>
       <v-row id="login-container" class="pa-1" dense>
-        <v-btn class="my-2" router :to="links[0].home">
+        <v-btn class="my-2 black--text" router :to="links[0].home" color="amber accent-4">
           Home
         </v-btn>
         <v-col
@@ -22,24 +22,27 @@
           <v-card class="pa-md-1 mx-lg-auto" width="60%">
             <v-card-actions block>
               <v-flex>
-                <v-form ref="form">
+                <v-form ref="form" v-model="isFormValid">
                   <v-text-field
                     v-model="user.name"
                     label="Nome"
                     :rules="[rules.required]"
                     prepend-icon="person"
+                    color="amber accent-4"
                   />
                   <v-text-field
                     v-model="user.surname"
                     label="Cognome"
                     :rules="[rules.required]"
                     prepend-icon="person"
+                    color="amber accent-4"
                   />
                   <v-text-field
                     v-model="user.email"
                     label="Email"
                     :rules="[rules.required, rules.email]"
                     prepend-icon="email"
+                    color="amber accent-4"
                   />
                   <v-menu
                     ref="menu"
@@ -57,6 +60,7 @@
                         :rules="[rules.required, rules.age]"
                         v-bind="attrs"
                         v-on="on"
+                        color="amber accent-4"
                       />
                     </template>
                     <v-date-picker
@@ -69,9 +73,10 @@
                   </v-menu>
                   <v-text-field
                     v-model="user.wallet"
-                    label="ID Wallet"
+                    label="Wallet Address"
                     :rules="[rules.required, rules.wallet]"
                     prepend-icon="mdi-wallet"
+                    color="amber accent-4"
                   />
                   <v-text-field
                     v-model="user.password"
@@ -81,6 +86,7 @@
                     :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
                     prepend-icon="lock"
                     @click:append="show = !show"
+                    color="amber accent-4"
                   />
                   <v-text-field
                     v-model="confPassword"
@@ -90,13 +96,14 @@
                     :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                     prepend-icon="lock"
                     @click:append="show1 = !show1"
+                    color="amber accent-4"
                   />
                 </v-form>
               </v-flex>
             </v-card-actions>
 
             <v-card-actions>
-              <v-btn block @click="sendDataSignUp" color="grey darken-4" class="white--text">
+              <v-btn block @click="sendDataSignUp" color="amber accent-4" class="black--text" :disabled="!isFormValid">
                 Sign up
               </v-btn>
             </v-card-actions>
@@ -117,6 +124,7 @@ export default {
   },
   data() {
     return {
+      isFormValid: false,
       alert: false,
       links: [
         {

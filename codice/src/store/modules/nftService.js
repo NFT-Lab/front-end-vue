@@ -21,12 +21,12 @@ const actions = {
     });
   },
   getCategories({ commit }) {
-    axios.get(urlStop + 'categories').then(response => {
+    axios.get(urlStop + 'categories'+examples).then(response => {
       commit('setCategories', response.data);
     });
   },
   getHomeOperas({ commit }) {
-    axios.get(urlStop + 'nft').then(response => {
+    axios.get(urlStop + 'nft'+examples).then(response => {
       commit('setHomeOperas', response.data);
     });
   },

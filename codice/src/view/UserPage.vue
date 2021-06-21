@@ -1,8 +1,10 @@
 <template>
   <v-container fluid>
     <v-row class="pa-1 d-flex justify-center" dense>
-      <v-col cols="6" md="4" class="justify-center align-center">
-        <v-flex row align-center>
+      <v-col cols="6"
+        sm="12"
+        xs="12"
+        md="6" class="justify-center align-center">
           <v-card dark>
             <v-list-item>
               <v-list-item-content>
@@ -36,7 +38,7 @@
               <v-list-item-content>
                 <v-list-item-subtitle>
                   Wallet Address:
-                  {{ userData.wallet }}
+                  <a :href="'https://www.cointracker.io/wallet/bitcoin?address='+userData.wallet" target="_blank">{{userData.wallet}}</a>
                 </v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
@@ -47,17 +49,12 @@
               <editUserPassword />
             </v-card-actions>
           </v-card>
-        </v-flex>
       </v-col>
-      <v-divider vertical class="white" />
-      <v-col cols="12" sm="6" md="8" class="pa-3">
-        <h1 class="white--text">
-          Le mie opere
-        </h1>
+      <v-col cols="6"
+        sm="12"
+        md="6"
+        xs="12" class="pa-3">
         <operasList />
-        <v-btn router :to="links[0].uploadOpera">
-          Carica una nuova opera
-        </v-btn>
       </v-col>
     </v-row>
   </v-container>

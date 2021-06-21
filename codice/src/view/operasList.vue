@@ -1,5 +1,5 @@
 <template>
-  <v-list two-line>
+  <v-list two-line dark>
     <v-list-item-group v-model="selected" active-class="amber accent-4--text">
       <template v-for="visiblePage in visiblePages">
         <v-list-item :key="visiblePage.id">
@@ -11,7 +11,18 @@
         <v-divider :key="visiblePage.id" />
       </template>
     </v-list-item-group>
-    <v-pagination v-model="page" :length="Math.ceil(pages.length / perPage)" />
+    <v-row class="pa-3">
+       <v-col cols="6"
+        sm="12"
+        md="6">
+    <v-pagination v-model="page" :length="Math.ceil(pages.length / perPage)" color="amber accent-4" />
+    </v-col>
+    <v-col>
+<v-btn router :to="links[0].uploadOpera" color="amber accent-4" class="black--text">
+          Carica una nuova opera
+        </v-btn>
+    </v-col>
+    </v-row>
   </v-list>
 </template>
 
@@ -26,6 +37,11 @@ export default {
   },
   data() {
     return {
+      links: [
+        {
+          uploadOpera: "/uploadOpera"
+        }
+      ],
       selected: [],
       page: 1,
       perPage: 4,

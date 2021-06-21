@@ -7,7 +7,7 @@
     </template>
     <v-card class="pa-3">
       <v-flex>
-        <v-form v-model="isFormValid">
+        <v-form v-model="isFormValid" class="pa-3">
           <v-text-field
             v-model="visiblePage.title"
             label="Titolo"

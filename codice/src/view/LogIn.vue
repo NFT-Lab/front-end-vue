@@ -4,7 +4,7 @@
     <Particle />
     <v-layout fill-height>
       <v-row id="login-container" class="pa-1" dense>
-        <v-btn class="my-2" router :to="links[0].home">
+        <v-btn class="my-2 black--text" router :to="links[0].home" color="amber accent-4">
           Home
         </v-btn>
         <v-col
@@ -23,13 +23,14 @@
           <v-card class="pa-md-1 mx-lg-auto" width="60%">
             <v-card-actions block>
               <v-flex>
-                <v-form ref="form">
+                <v-form ref="form" v-model="isFormValid">
                   <v-text-field
                     id="emailInput"
                     v-model="user.email"
                     label="Email"
                     :rules="[rules.required, rules.email]"
                     prepend-icon="email"
+                    color="amber accent-4"
                   />
                   <v-text-field
                     v-model="user.password"
@@ -39,6 +40,7 @@
                     :append-icon="show ? 'mdi-eye-outline' : 'mdi-eye-off'"
                     prepend-icon="lock"
                     @click:append="show = !show"
+                    color="amber accent-4"
                   />
                 </v-form>
               </v-flex>
@@ -53,7 +55,8 @@
               </p>
             </v-card-text>
             <v-card-actions>
-              <v-btn block @click="sendDataLogin" dark>
+              <v-btn block @click="sendDataLogin" color="amber accent-4"
+          class="black--text" :disabled="!isFormValid">
                 Login
               </v-btn>
             </v-card-actions>
@@ -74,6 +77,7 @@ export default {
   },
   data() {
     return {
+      isFormValid: false,
       alert: false,
       user: {
         email: "",

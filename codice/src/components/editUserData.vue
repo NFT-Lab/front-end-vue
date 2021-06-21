@@ -1,43 +1,84 @@
 <template>
-  <v-dialog v-model="dialog" width="60%">
+  <v-dialog v-model="dialog" width="60%" dark persistent>
     <template v-slot:activator="{ on, attrs }">
       <v-btn
-        class="mx-1"
+        class="mx-1 black--text"
         v-bind="attrs"
         v-on="on"
+        color="amber accent-4"
       >
         Modifica dati personali
       </v-btn>
     </template>
     <v-card class="pa-3">
-      <v-flex>
+      <v-card-title class="text-h5 amber accent-4">
+        <v-btn icon dark @click="dialog = false">
+          <v-icon>mdi-close</v-icon> </v-btn
+        >Modifica dati</v-card-title
+      >
         <v-form v-model="isFormValid">
           <v-text-field
             v-model="user.name"
             label="Nome"
             :rules="[rules.required]"
+            color="amber accent-4"
           />
           <v-text-field
             v-model="user.surname"
             label="Cognome"
             :rules="[rules.required]"
+            color="amber accent-4"
           />
+          <v-menu
+                    ref="menu"
+                    v-model="menu"
+                    :close-on-content-click="false"
+                    transition="scale-transition"
+                    offset-y
+                    min-width="auto"
+                  >
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-text-field
+                        v-model="user.dob"
+                        label="Anno di nascita"
+                        prepend-icon="mdi-calendar-range"
+                        :rules="[rules.required, rules.age]"
+                        v-bind="attrs"
+                        v-on="on"
+                        color="amber accent-4"
+                      />
+                    </template>
+                    <v-date-picker
+                      v-model="user.dob"
+                      :active-picker.sync="activePicker"
+                      :max="new Date().toISOString().substr(0, 10)"
+                      @change="save"
+                      color="amber accent-4"
+                    />
+                  </v-menu>
+                  <v-text-field
+                    v-model="user.wallet"
+                    label="Wallet Address"
+                    :rules="[rules.required, rules.wallet]"
+                    prepend-icon="mdi-wallet"
+                    color="amber accent-4"
+                  />
           <v-text-field
             v-model="user.password"
-            label="Vecchia password"
+            label="Inserisci la password per confermare la modifica"
             :rules="[rules.required, rules.length]"
+            color="amber accent-4"
           />
         </v-form>
-      </v-flex>
       <v-card-actions>
         <v-btn
-          color="grey darken-4"
-          class="white--text"
+          class="black--text"
           block
           :disabled="!isFormValid"
           @click="updateUser"
+          color="amber accent-4"
         >
-          Modifica i dati
+          Conferma modifiche
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -52,12 +93,14 @@ export default {
       isFormValid: false,
       show: false,
       show1: false,
-      UserData: JSON.parse(localStorage.getItem("user")),
+      UserData: this.$store.getters["CurrentUser/user"],
       user: {
-        name: JSON.parse(localStorage.getItem("user")).name,
-        surname:  JSON.parse(localStorage.getItem("user")).surname,
+        name: this.$store.getters["CurrentUser/user"].name,
+        surname:  this.$store.getters["CurrentUser/user"].surname,
         password: '',
-        email:  JSON.parse(localStorage.getItem("user")).email,
+        email:  this.$store.getters["CurrentUser/user"].email,
+        dob: this.$store.getters["CurrentUser/user"].dob,
+        wallet: this.$store.getters["CurrentUser/user"].wallet
       },
       rules: {
         required: val => !!val || "Questo è un campo obbligatorio",
