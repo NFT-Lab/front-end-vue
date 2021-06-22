@@ -144,8 +144,8 @@ export default {
         type: "",
         categories: [],
         currency: "ETH",
-        author: JSON.parse(localStorage.getItem("user")).name,
-        owner: JSON.parse(localStorage.getItem("user")).name
+        author: this.$store.getters["CurrentUser/user"].name,
+        owner: this.$store.getters["CurrentUser/user"].name
       },
       file: "",
       url: "",

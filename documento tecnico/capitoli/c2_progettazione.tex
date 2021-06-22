@@ -30,6 +30,7 @@ Un pregio di questo framework è che adotta un approccio al mobile, questo signi
 	\end{center}
 \end{figure}
 \subsection{Vuex}
+Vuex è uno state management pattern per applicazioni sviluppate in Vue.js e serve come store centralizzato per tutti i componenti dell'applicazione. Esso contiene stati e regole che assicurano che lo stato può essere modificato solo in modo prevedibile.
 
 \section{Organizzazione dei file}
 Quando si crea un progetto per la prima volta tramite il framework Vue.js vengono create di default delle cartelle e dei file per facilitare la progettazione del software. La suddivisione delle cartelle è rappresentata e spiegata qui di seguito.
@@ -122,16 +123,19 @@ Pagina principale del sito tramite la quale l'utente può visualizzare tutte le 
 In questa pagina l'utente può effettuare l'autenticazione nel sito tramite email e password. In questi due campi sono state inserite delle regole che, se non rispettate, generano un errore visualizzabile tramite una scritta sotto il campo che si sta modificando. Le regole in questione sono:
 \begin{itemize}
 	\item entrambi i campi sono obbligatori, quindi devono essere tutti compilati;
-	\item l'email inserita deve essere valida;
+	\item l'email inserita deve essere valida\\
+	\textit{esempio di email valida: nome@email.it};
 	\item la password deve avere una lunghezza di minimo otto caratteri di cui almeno una lettera maiuscola, una minuscola, un numero e una carattere speciale.
 \end{itemize}
 \subsection{Registrazione}
 In questa pagine l'utente può effettuare la registrazione nel sito inserendo: nome, cognome, email, data di nascita, wallet address, password e conferma password. Similmente alla pagina di login sono state inserite delle regole che, se non rispettate, generano un errore visualizzabile tramite una scritta sotto il campo che si sta modificando. Le regole in questione sono:
 \begin{itemize}
 	\item tutti i campi sono obbligatori, quindi devono essere tutti compilati;
-	\item l'email inserita deve essere valida;
+	\item l'email inserita deve essere valida\\
+	\textit{esempio di email valida: nome@email.it};
 	\item la data di nascita deve corrispondere ad una persona maggiorenne;
-	\item il wallett address inserito deve essere valido;
+	\item il wallett address inserito deve essere valido\\ 
+	\textit{esempio di wallett address valido: 0x390c7a1EA64e521B725b1869Ea054DDBF05F9abe};
 	\item la password deve avere una lunghezza di minimo otto caratteri di cui almeno una lettera maiuscola, una minuscola, un numero e una carattere speciale;
 	\item la conferma della password deve essere identica alla password appena inserita.
 \end{itemize}

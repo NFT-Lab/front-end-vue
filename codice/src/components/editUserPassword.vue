@@ -63,11 +63,11 @@ export default {
       isFormValid: false,
       show: false,
       show1: false,
-      UserData: JSON.parse(localStorage.getItem("user")),
+      UserData: this.$store.getters["CurrentUser/user"],
       user: {
         oldPassword: '',
         newPassword: '',
-        email:  JSON.parse(localStorage.getItem("user")).email,
+        email:  this.$store.getters["CurrentUser/user"].email,
       },
       rules: {
         required: val => !!val || "Questo è un campo obbligatorio",

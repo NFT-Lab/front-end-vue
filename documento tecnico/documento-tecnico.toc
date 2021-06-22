@@ -8,16 +8,16 @@
 \contentsline {subsection}{\numberline {2.1.2}Vuetify}{4}{subsection.2.1.2}%
 \contentsline {subsection}{\numberline {2.1.3}Vuex}{5}{subsection.2.1.3}%
 \contentsline {section}{\numberline {2.2}Organizzazione dei file}{5}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Chiamate al back end}{7}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Maschere implementate}{8}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}View}{8}{subsection.2.4.1}%
-\contentsline {subsubsection}{\numberline {2.4.1.1}Home}{8}{subsubsection.2.4.1.1}%
-\contentsline {subsection}{\numberline {2.4.2}Login}{8}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}Registrazione}{9}{subsection.2.4.3}%
-\contentsline {subsection}{\numberline {2.4.4}Pagina dell'utente}{9}{subsection.2.4.4}%
-\contentsline {subsubsection}{\numberline {2.4.4.1}Upload opera}{9}{subsubsection.2.4.4.1}%
-\contentsline {subsection}{\numberline {2.4.5}Components}{9}{subsection.2.4.5}%
-\contentsline {subsubsection}{\numberline {2.4.5.1}Barra di navigazione}{9}{subsubsection.2.4.5.1}%
-\contentsline {subsubsection}{\numberline {2.4.5.2}Gestione opere}{10}{subsubsection.2.4.5.2}%
-\contentsline {subsubsection}{\numberline {2.4.5.3}Modifica dati personali}{10}{subsubsection.2.4.5.3}%
-\contentsline {subsubsection}{\numberline {2.4.5.4}Modifica password}{10}{subsubsection.2.4.5.4}%
+\contentsline {section}{\numberline {2.3}Chiamate al back end}{6}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Maschere implementate}{7}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}View}{7}{subsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.1.1}Home}{7}{subsubsection.2.4.1.1}%
+\contentsline {subsection}{\numberline {2.4.2}Login}{7}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Registrazione}{7}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}Pagina dell'utente}{8}{subsection.2.4.4}%
+\contentsline {subsubsection}{\numberline {2.4.4.1}Upload opera}{8}{subsubsection.2.4.4.1}%
+\contentsline {subsection}{\numberline {2.4.5}Components}{8}{subsection.2.4.5}%
+\contentsline {subsubsection}{\numberline {2.4.5.1}Barra di navigazione}{8}{subsubsection.2.4.5.1}%
+\contentsline {subsubsection}{\numberline {2.4.5.2}Gestione opere}{8}{subsubsection.2.4.5.2}%
+\contentsline {subsubsection}{\numberline {2.4.5.3}Modifica dati personali}{8}{subsubsection.2.4.5.3}%
+\contentsline {subsubsection}{\numberline {2.4.5.4}Modifica password}{9}{subsubsection.2.4.5.4}%

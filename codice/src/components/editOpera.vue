@@ -55,6 +55,7 @@ export default {
   props: ["visiblePage"],
   data() {
     return {
+      isFormValid: false,
       dialog: false,
       rules: {
         required: val => !!val || "Questo è un campo obbligatorio"
@@ -84,7 +85,6 @@ export default {
       else if (this.visiblePage.type === "Immagine")
         this.visiblePage.type = "img";
       else this.visiblePage.type = "doc";
-      console.log(this.visiblePage.type);
       this.$store.dispatch("nftService/updateOpera", this.visiblePage);
       this.dialog = false;
     }
