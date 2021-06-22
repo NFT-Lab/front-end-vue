@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.6.18)  20 JUN 2021 20:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.6.18)  21 JUN 2021 21:26
 entering extended mode
 **./documento-tecnico.tex
 (documento-tecnico.tex
@@ -783,130 +783,14 @@ File: lstlang3.sty 2020/03/24 1.8d listings language file
 )
 (C:\Users\margh\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-)
-(C:\Users\margh\AppData\Local\Programs\MiKTeX\tex/latex/mdframed\mdframed.sty
-Package: mdframed 2013/07/01 1.9b: mdframed
-
-(C:\Users\margh\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xpars
-e.sty
-(C:\Users\margh\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
-Package: expl3 2021-06-01 L3 programming layer (loader) 
-
+))
 (C:\Users\margh\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
 File: l3backend-pdftex.def 2021-05-07 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count321
 \l__pdf_internal_box=\box74
-))
-Package: xparse 2021-06-01 L3 Experimental document command parser
-)
-(C:\Users\margh\AppData\Local\Programs\MiKTeX\tex/latex/zref\zref-abspage.sty
-Package: zref-abspage 2020-07-03 v2.32 Module abspage for zref (HO)
-
-(C:\Users\margh\AppData\Local\Programs\MiKTeX\tex/latex/zref\zref-base.sty
-Package: zref-base 2020-07-03 v2.32 Module base for zref (HO)
-Package zref Info: New property list: main on input line 764.
-Package zref Info: New property: default on input line 765.
-Package zref Info: New property: page on input line 766.
-)
-\c@abspage=\count322
-Package zref Info: New property: abspage on input line 66.
-)
-(C:\Users\margh\AppData\Local\Programs\MiKTeX\tex/latex/needspace\needspace.sty
-Package: needspace 2010/09/12 v1.3d reserve vertical space
-)
-\mdf@templength=\skip79
-\c@mdf@globalstyle@cnt=\count323
-\mdf@skipabove@length=\skip80
-\mdf@skipbelow@length=\skip81
-\mdf@leftmargin@length=\skip82
-\mdf@rightmargin@length=\skip83
-\mdf@innerleftmargin@length=\skip84
-\mdf@innerrightmargin@length=\skip85
-\mdf@innertopmargin@length=\skip86
-\mdf@innerbottommargin@length=\skip87
-\mdf@splittopskip@length=\skip88
-\mdf@splitbottomskip@length=\skip89
-\mdf@outermargin@length=\skip90
-\mdf@innermargin@length=\skip91
-\mdf@linewidth@length=\skip92
-\mdf@innerlinewidth@length=\skip93
-\mdf@middlelinewidth@length=\skip94
-\mdf@outerlinewidth@length=\skip95
-\mdf@roundcorner@length=\skip96
-\mdf@footenotedistance@length=\skip97
-\mdf@userdefinedwidth@length=\skip98
-\mdf@needspace@length=\skip99
-\mdf@frametitleaboveskip@length=\skip100
-\mdf@frametitlebelowskip@length=\skip101
-\mdf@frametitlerulewidth@length=\skip102
-\mdf@frametitleleftmargin@length=\skip103
-\mdf@frametitlerightmargin@length=\skip104
-\mdf@shadowsize@length=\skip105
-\mdf@extratopheight@length=\skip106
-\mdf@subtitleabovelinewidth@length=\skip107
-\mdf@subtitlebelowlinewidth@length=\skip108
-\mdf@subtitleaboveskip@length=\skip109
-\mdf@subtitlebelowskip@length=\skip110
-\mdf@subtitleinneraboveskip@length=\skip111
-\mdf@subtitleinnerbelowskip@length=\skip112
-\mdf@subsubtitleabovelinewidth@length=\skip113
-\mdf@subsubtitlebelowlinewidth@length=\skip114
-\mdf@subsubtitleaboveskip@length=\skip115
-\mdf@subsubtitlebelowskip@length=\skip116
-\mdf@subsubtitleinneraboveskip@length=\skip117
-\mdf@subsubtitleinnerbelowskip@length=\skip118
-
-(C:\Users\margh\AppData\Local\Programs\MiKTeX\tex/latex/mdframed\md-frame-1.mdf
-File: md-frame-1.mdf 2013/07/01\ 1.9b: md-frame-1
-)
-\mdf@frametitlebox=\box75
-\mdf@footnotebox=\box76
-\mdf@splitbox@one=\box77
-\mdf@splitbox@two=\box78
-\mdf@splitbox@save=\box79
-\mdfsplitboxwidth=\skip119
-\mdfsplitboxtotalwidth=\skip120
-\mdfsplitboxheight=\skip121
-\mdfsplitboxdepth=\skip122
-\mdfsplitboxtotalheight=\skip123
-\mdfframetitleboxwidth=\skip124
-\mdfframetitleboxtotalwidth=\skip125
-\mdfframetitleboxheight=\skip126
-\mdfframetitleboxdepth=\skip127
-\mdfframetitleboxtotalheight=\skip128
-\mdffootnoteboxwidth=\skip129
-\mdffootnoteboxtotalwidth=\skip130
-\mdffootnoteboxheight=\skip131
-\mdffootnoteboxdepth=\skip132
-\mdffootnoteboxtotalheight=\skip133
-\mdftotallinewidth=\skip134
-\mdfboundingboxwidth=\skip135
-\mdfboundingboxtotalwidth=\skip136
-\mdfboundingboxheight=\skip137
-\mdfboundingboxdepth=\skip138
-\mdfboundingboxtotalheight=\skip139
-\mdf@freevspace@length=\skip140
-\mdf@horizontalwidthofbox@length=\skip141
-\mdf@verticalmarginwhole@length=\skip142
-\mdf@horizontalspaceofbox=\skip143
-\mdfsubtitleheight=\skip144
-\mdfsubsubtitleheight=\skip145
-\c@mdfcountframes=\count324
-
-****** mdframed patching \endmdf@trivlist
-
-****** -- success******
-
-\mdf@envdepth=\count325
-\c@mdf@env@i=\count326
-\c@mdf@env@ii=\count327
-\c@mdf@zref@counter=\count328
-Package zref Info: New property: mdf@pagevalue on input line 895.
-)
-Package hyperref Info: Option `colorlinks' set `true' on input line 107.
 ) (documento-tecnico.aux (capitoli/c1_introduzione.aux)
-(capitoli/c1_progettazione.aux))
+(capitoli/c2_progettazione.aux))
 \openout1 = `documento-tecnico.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
@@ -942,16 +826,16 @@ italian.ldf    on input line 7.
 (C:\Users\margh\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count329
+\scratchcounter=\count322
 \scratchdimen=\dimen288
-\scratchbox=\box80
-\nofMPsegments=\count330
-\nofMParguments=\count331
+\scratchbox=\box75
+\nofMPsegments=\count323
+\nofMParguments=\count324
 \everyMPshowfont=\toks43
-\MPscratchCnt=\count332
+\MPscratchCnt=\count325
 \MPscratchDim=\dimen289
-\MPnumerator=\count333
-\makeMPintoPDFobject=\count334
+\MPnumerator=\count326
+\makeMPintoPDFobject=\count327
 \everyMPtoPDFconversion=\toks44
 )
 (C:\Users\margh\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
@@ -979,7 +863,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 lestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count335
+\c@section@level=\count328
 )
 LaTeX Info: Redefining \ref on input line 7.
 LaTeX Info: Redefining \pageref on input line 7.
@@ -1030,7 +914,7 @@ Package caption Info: longtable package is loaded.
 Package: ltcaption 2020/05/30 v1.4b longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count336
+\c@lstlisting=\count329
 <immagini/logo.jpg, id=90, 1839.87375pt x 1123.19624pt>
 File: immagini/logo.jpg Graphic file (type jpg)
 <use immagini/logo.jpg>
@@ -1097,7 +981,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
  (capitoli/c2_progettazione.tex
 Capitolo 2.
-<immagini/vue.png, id=132, 1219.55624pt x 511.9125pt>
+<immagini/vue.png, id=133, 1219.55624pt x 511.9125pt>
 File: immagini/vue.png Graphic file (type png)
 <use immagini/vue.png>
 Package pdftex.def Info: immagini/vue.png  used on input line 8.
@@ -1120,7 +1004,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 
  <./immagini/vue.png>]
-<immagini/vuetify.png, id=141, 660.96938pt x 379.4175pt>
+<immagini/vuetify.png, id=142, 660.96938pt x 379.4175pt>
 File: immagini/vuetify.png Graphic file (type png)
 <use immagini/vuetify.png>
 Package pdftex.def Info: immagini/vuetify.png  used on input line 28.
@@ -1230,10 +1114,10 @@ Package rerunfilecheck Info: File `documento-tecnico.out' has not changed.
 (rerunfilecheck)             Checksum: C8192082F9DD3981D1D6C47EA0D599D3;2766.
  ) 
 Here is how much of TeX's memory you used:
- 26465 strings out of 478840
- 473355 string characters out of 2848060
+ 25626 strings out of 478840
+ 456147 string characters out of 2848060
  1060453 words of memory out of 3000000
- 43854 multiletter control sequences out of 15000+600000
+ 43041 multiletter control sequences out of 15000+600000
  410407 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,16n,86p,987b,3023s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1248,7 +1132,7 @@ ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/margh/AppData
 h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/latxfont/lcircle1.p
 fb><C:/Users/margh/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sf
 rm1200.pfb>
-Output written on documento-tecnico.pdf (11 pages, 450663 bytes).
+Output written on documento-tecnico.pdf (11 pages, 451075 bytes).
 PDF statistics:
  276 PDF objects out of 1000 (max. 8388607)
  74 named destinations out of 1000 (max. 500000)

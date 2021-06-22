@@ -102,15 +102,24 @@ export default {
         return this.$store.getters["nftService/homeOperas"];
       }
     },
+      categories: {
+      get() {
+        return this.$store.getters["nftService/categories"];
+      }
+    },
     visiblePages: {
       get() {
         var operaToFilter = new Array();
         var operaToSee = new Array();
         var cat = this.filterCategories;
+        console.log(this.operas.length);
+        console.log(this.$store.getters["nftService/homeOperas"].length)
         if (cat.length !== 0) {
-          operaToFilter = this.operas.filter(function(opera) {
-            return opera.categories === cat;
-          });
+         for(var i=0;i<this.operas.length;i++) {
+          if(this.operas[i].categories.name === cat.name) {
+            operaToFilter.push(this.operas[i]);
+          }
+        }
         } else {
           operaToFilter = this.operas;
         }
@@ -120,11 +129,6 @@ export default {
         return operaToSee;
       }
     },
-    categories: {
-      get() {
-        return this.$store.getters["nftService/categories"];
-      }
-    }
   },
   created() {
     this.$store.dispatch("nftService/getHomeOperas");
