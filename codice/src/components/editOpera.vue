@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="dialog" width="60%">
     <template v-slot:activator="{ on, attrs }">
-      <v-icon v-bind="attrs" v-on="on">
+      <v-icon v-bind="attrs" v-on="on" class="white--text">
         edit
       </v-icon>
     </template>
@@ -30,6 +30,8 @@
             clearable
             label="Categoria"
             prepend-icon="category"
+            item-color="amber accent-4"
+            color="amber accent-4"
             :rules="[rules.required]"
           />
           <v-text-field v-model="visiblePage.price" label="Prezzo" />

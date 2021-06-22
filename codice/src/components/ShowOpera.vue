@@ -5,22 +5,32 @@
     fullscreen
     transition="dialog-bottom-transition"
   >
-    <template v-slot:activator="{ on }">
-      <v-list-item-avatar size="60" v-on="on">
-        <img
-          :src="
-            'https://cloudflare-ipfs.com/ipfs/' +
-              opereId[Math.floor(Math.random() * opereId.length)]
-          "
-        />
-        <!--<v-img
+    <template v-slot:activator="{ on, attrs }">
+        <v-list-item-avatar size="80" v-bind="attrs" v-on="on">
+          <img
+            :src="
+              'https://cloudflare-ipfs.com/ipfs/' +
+                opereId[Math.floor(Math.random() * opereId.length)]
+            "
+          />
+          <!--<v-img
             :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
           />-->
-      </v-list-item-avatar>
-      <v-list-item-content v-on="on">
-        <v-list-item-title v-text="visiblePage.title" />
-        <v-list-item-subtitle v-text="visiblePage.description" />
-      </v-list-item-content>
+        </v-list-item-avatar>
+        <v-list-item-content>
+          <v-list-item-title
+            v-text="visiblePage.title"
+            v-bind="attrs"
+            v-on="on"
+            class="white--text"
+          />
+          <v-list-item-subtitle
+            v-text="visiblePage.description"
+            v-bind="attrs"
+            v-on="on"
+            class="white--text"
+          />
+        </v-list-item-content>
     </template>
     <v-card>
       <v-card-title class="text-h5" color="amber accent-4">
@@ -44,13 +54,26 @@
           <v-col cols="12" sm="6" md="8" class="pa-3">
             <v-list-item>
               <v-list-item-content>
-                <v-list-item-title v-text="visiblePage.title" />
-                <v-list-item-subtitle
-                  v-text="visiblePage.price + visiblePage.currency"
+                <v-list-item-title
+                  class="amber--text font-weight-bold"
+                  v-text="visiblePage.title"
                 />
-                <v-list-item-subtitle v-text="visiblePage.author" />
-                <v-list-item-subtitle v-text="visiblePage.owner" />
-                <v-list-item-subtitle v-text="visiblePage.description" />
+                <v-list-item-subtitle>
+                  <span class="font-weight-bold">Prezzo: </span>
+                  {{ visiblePage.price + " " + visiblePage.currency }}
+                </v-list-item-subtitle>
+                <v-list-item-subtitle>
+                  <span class="font-weight-bold">Autore: </span>
+                  {{ visiblePage.author }}
+                </v-list-item-subtitle>
+                <v-list-item-subtitle>
+                  <span class="font-weight-bold">Proprietario: </span>
+                  {{ visiblePage.owner }}
+                </v-list-item-subtitle>
+                <v-list-item-subtitle>
+                  <span class="font-weight-bold">Descrizione: </span>
+                  {{ visiblePage.description }}
+                </v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
             <v-chip

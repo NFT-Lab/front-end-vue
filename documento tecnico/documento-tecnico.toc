@@ -20,4 +20,4 @@
 \contentsline {subsubsection}{\numberline {2.4.5.1}Barra di navigazione}{8}{subsubsection.2.4.5.1}%
 \contentsline {subsubsection}{\numberline {2.4.5.2}Gestione opere}{8}{subsubsection.2.4.5.2}%
 \contentsline {subsubsection}{\numberline {2.4.5.3}Modifica dati personali}{8}{subsubsection.2.4.5.3}%
-\contentsline {subsubsection}{\numberline {2.4.5.4}Modifica password}{9}{subsubsection.2.4.5.4}%
+\contentsline {subsubsection}{\numberline {2.4.5.4}Modifica password}{8}{subsubsection.2.4.5.4}%

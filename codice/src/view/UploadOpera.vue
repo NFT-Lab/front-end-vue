@@ -3,7 +3,12 @@
     <Particle />
     <v-layout fill-height>
       <v-row class="pa-1" dense>
-        <v-btn class="my-2 black--text" router :to="links[0].paginaPersonale" color="amber accent-4">
+        <v-btn
+          class="my-2 black--text"
+          router
+          :to="links[0].paginaPersonale"
+          color="amber accent-4"
+        >
           Pagina personale
         </v-btn>
         <v-col
@@ -37,42 +42,53 @@
                     prepend-icon="description"
                     color="amber accent-4"
                   />
-                  <v-flex>
-                    <v-file-input
-                      v-model="file"
-                      label="File"
-                      type="file"
-                      counter
-                      :rules="[rules.required]"
-                      prepend-icon="file_upload"
-                      @change="previewImage"
-                      color="amber accent-4"
-                    />
-                    <v-img
-                      v-if="typeNumber == 1"
-                      :src="url"
-                      max-height="200px"
-                      max-width="200px"
-                    />
-                    <v-img
-                      v-else-if="typeNumber == 2"
-                      src="@/assets/video.jpg"
-                      max-height="200px"
-                      max-width="200px"
-                    />
-                    <v-img
-                      v-else-if="typeNumber == 3"
-                      src="@/assets/audio.jpg"
-                      max-height="200px"
-                      max-width="200px"
-                    />
-                    <v-img
-                      v-else-if="typeNumber == 4"
-                      src="@/assets/doc.png"
-                      max-height="200px"
-                      max-width="200px"
-                    />
-                  </v-flex>
+                  <v-row>
+                    <v-col>
+                      <v-file-input
+                        v-model="file"
+                        label="File"
+                        type="file"
+                        counter
+                        :rules="[rules.required]"
+                        prepend-icon="file_upload"
+                        @change="previewImage"
+                        color="amber accent-4"
+                      />
+                    </v-col>
+                    <v-col>
+                        <v-img
+                          v-if="typeNumber == 0"
+                          src="@/assets/upload.png"
+                          max-height="100"
+                          max-width="100px"
+                        />
+                      <v-img
+                        v-else-if="typeNumber == 1"
+                        :src="url"
+                        max-height="200px"
+                        max-width="200px"
+                      />
+                      <v-img
+                        v-else-if="typeNumber == 2"
+                        src="@/assets/video.jpg"
+                        max-height="200px"
+                        max-width="200px"
+                      />
+                      <v-img
+                        v-else-if="typeNumber == 3"
+                        src="@/assets/audio.jpg"
+                        max-height="200px"
+                        max-width="200px"
+                      />
+                      <v-img
+                        v-else-if="typeNumber == 4"
+                        src="@/assets/doc.png"
+                        max-height="200px"
+                        max-width="200px"
+                      />
+                    </v-col>
+                  </v-row>
+
                   <v-text-field
                     v-model="opera.type"
                     label="Tipo"
@@ -94,6 +110,7 @@
                     :rules="[rules.required]"
                     prepend-icon="category"
                     color="amber accent-4"
+                    item-color="amber accent-4"
                   />
                   <v-text-field
                     v-model="opera.price"
@@ -107,8 +124,13 @@
               </v-flex>
             </v-card-actions>
             <v-card-actions>
-              <v-btn @click="uploadNewOpera" color="amber accent-4"
-          class="black--text" block :disabled="!isFormValid">
+              <v-btn
+                @click="uploadNewOpera"
+                color="amber accent-4"
+                class="black--text"
+                block
+                :disabled="!isFormValid"
+              >
                 Carica l'opera
               </v-btn>
             </v-card-actions>
@@ -189,6 +211,7 @@ export default {
         this.alert = true;
     },
     previewImage() {
+      console.log(this.file.type);
       if (this.file === null) {
         this.url = "";
       } else {
@@ -204,7 +227,7 @@ export default {
           this.typeNumber = 3;
           this.url = this.urlPreview.audio;
           this.opera.type = "Audio";
-        } else if(this.file.type.includes("document")) {
+        } else {
           this.typeNumber = 4;
           this.url = this.urlPreview.doc;
           this.opera.type = "Documento";

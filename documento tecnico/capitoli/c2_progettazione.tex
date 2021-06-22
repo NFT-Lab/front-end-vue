@@ -33,7 +33,7 @@ Un pregio di questo framework è che adotta un approccio al mobile, questo signi
 Vuex è uno state management pattern per applicazioni sviluppate in Vue.js e serve come store centralizzato per tutti i componenti dell'applicazione. Esso contiene stati e regole che assicurano che lo stato può essere modificato solo in modo prevedibile.
 
 \section{Organizzazione dei file}
-Quando si crea un progetto per la prima volta tramite il framework Vue.js vengono create di default delle cartelle e dei file per facilitare la progettazione del software. La suddivisione delle cartelle è rappresentata e spiegata qui di seguito.
+Quando si crea un progetto per la prima volta tramite il framework Vue.js vengono create di default delle cartelle e dei file per facilitare la progettazione del software. La suddivisione delle cartelle è rappresentata qui di seguito.
 
 \begin{lstlisting}
 	|-- front-end-vue
@@ -75,14 +75,11 @@ Quando si crea un progetto per la prima volta tramite il framework Vue.js vengon
 	| | |-- unit
 \end{lstlisting}
 
-La cartella principale si chiama \textbf{\textit{front-end-vue}} ed essa contiene i file di configurazione del progetto, il file \textbf{\textit{readme}} ed il file di \textbf{\textit{gitignore}}. Le sottocartelle invece sono le seguenti:
+La cartella principale si chiama \textbf{\textit{front-end-vue}} ed essa contiene i file di configurazione del progetto, il file \textbf{\textit{readme}} ed il file di \textbf{\textit{gitignore}}. I file e le sottocartelle create automaticamente alla creazione del progetto non verranno spiegate, mentre i restanti elementi sono i seguenti:
 \begin{itemize}
-	\item \textbf{\textit{.vscode}}: cartella che contiene i file di configurazione di Visual Studio Code;
 	\item \textbf{\textit{coverage}}: cartella che contiene i file e le cartelle create automaticamente quando vengono fatti partire i test di unità;
-	\item \textbf{\textit{dist}}: DEVO CAPIRE CHE CARTELLA SIA
 	\item \textbf{\textit{doc}}: cartella che contiene file YAML utilizzato per la configurazione di Stoplight;
-	\item \textbf{\textit{pubblic}}: cartella creata automaticamente alla creazione del progetto;
-	\item \textbf{\textit{src}}: cartella importante in cui sono presenti file e cartelle necessari per il funzionamento del progetto e sono:
+	\item \textbf{\textit{src}}: cartella in cui sono presenti file e cartelle necessari per il funzionamento del progetto e sono:
 	\begin{itemize}
 		\item il file \textbf{\textit{App.vue}} è la radice dell'applicazione definita nel formato Vue Component e di solito serve a definire il modello della pagina;
 		\item il file \textbf{\textit{directoryList.md}} che viene creato automaticamente attraverso il comando \textit{mddir} dove viene scritta la struttura delle cartelle del progetto;

@@ -5,10 +5,10 @@
         sm="12"
         xs="12"
         md="6" class="justify-center align-center">
-          <v-card dark>
+          <v-card class="text-center" color="grey darken-3">
             <v-list-item>
               <v-list-item-content>
-                <v-list-item-title>
+                <v-list-item-title class="white--text">
                   <v-avatar size="96">
                     <v-icon size="96" color="amber accent-4">
                       person
@@ -20,7 +20,7 @@
             </v-list-item>
             <v-list-item>
               <v-list-item-content>
-                <v-list-item-subtitle>
+                <v-list-item-subtitle class="white--text">
                   Data di nascita:
                   {{ userData.dob }}
                 </v-list-item-subtitle>
@@ -28,7 +28,7 @@
             </v-list-item>
             <v-list-item>
               <v-list-item-content>
-                <v-list-item-subtitle>
+                <v-list-item-subtitle class="white--text">
                   Email:
                   {{ userData.email }}
                 </v-list-item-subtitle>
@@ -36,17 +36,17 @@
             </v-list-item>
             <v-list-item>
               <v-list-item-content>
-                <v-list-item-subtitle>
+                <v-list-item-subtitle class="white--text">
                   Wallet Address:
                   <a :href="'https://www.cointracker.io/wallet/bitcoin?address='+userData.wallet" target="_blank">{{userData.wallet}}</a>
                 </v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
-            <v-card-actions>
-              <editUserData />
+            <v-card-actions class="justify-center">
+              <EditUserData />
             </v-card-actions>
-            <v-card-actions>
-              <editUserPassword />
+            <v-card-actions class="justify-center">
+              <EditUserPassword />
             </v-card-actions>
           </v-card>
       </v-col>
@@ -54,23 +54,23 @@
         sm="12"
         md="6"
         xs="12" class="pa-3">
-        <operasList />
+        <OperasList />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import operasList from "@/view/operasList.vue";
-import editUserData from "@/components/editUserData.vue";
-import editUserPassword from "@/components/editUserPassword.vue";
+import OperasList from "@/view/operasList.vue";
+import EditUserData from "@/components/editUserData.vue";
+import EditUserPassword from "@/components/editUserPassword.vue";
 
 export default {
   name: "UserPage",
   components: {
-    operasList,
-    editUserData,
-    editUserPassword
+    OperasList,
+    EditUserData,
+    EditUserPassword
   },
   data() {
     return {

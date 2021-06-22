@@ -1,18 +1,21 @@
 <template>
   <v-container fluid>
     <v-combobox
-        v-model="filterCategories"
-        :items="categories"
-        item-value="name"
-        item-text="name"
-        :return-object="true"
-        multiple
-        chips
-        clearable
-        label="Filtro per categoria"
-        prepend-icon="category"
-        color="amber accent-4"
-      />
+      v-model="filterCategories"
+      :items="categories"
+      item-value="name"
+      item-text="name"
+      :return-object="true"
+      multiple
+      chips
+      clearable
+      filled
+      solo
+      label="Filtro per categoria"
+      prepend-inner-icon="category"
+      color="amber accent-4"
+      item-color="amber accent-4"
+    />
     <v-row fill-height>
       <v-col
         v-for="visiblePage in visiblePages"
@@ -22,8 +25,8 @@
         md="4"
         lg="3"
       >
-        <v-card class="text-center" dark>
-          <v-list-item>
+        <v-card class="text-center" color="grey darken-3">
+          <v-list-item >
             <v-list-item-content>
               <v-list-item-avatar tile size="100">
                 <img
@@ -36,9 +39,9 @@
             :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
           />-->
               </v-list-item-avatar>
-              <v-list-item-title v-text="visiblePage.title" />
-              <v-list-item-subtitle v-text="visiblePage.description" />
-              <v-list-item-subtitle>
+              <v-list-item-title class="amber--text font-weight-bold" v-text="visiblePage.title" />
+              <v-list-item-subtitle class="white--text" v-text="visiblePage.description" />
+              <v-list-item-subtitle class="white--text">
                 {{ visiblePage.price + " " + visiblePage.currency }}
               </v-list-item-subtitle>
             </v-list-item-content>
@@ -53,7 +56,7 @@
       dark
       class="black--text"
       v-model="page"
-      :length="Math.ceil(pages.length / perPage)"
+      :length="Math.ceil(this.operas.length / perPage)"
       color="amber accent-4"
     />
   </v-container>
@@ -92,7 +95,7 @@ export default {
       filterCategories: [],
       page: 1,
       perPage: 8,
-      pages: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+      pages: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
       selected: []
     };
   },
@@ -102,7 +105,7 @@ export default {
         return this.$store.getters["nftService/homeOperas"];
       }
     },
-      categories: {
+    categories: {
       get() {
         return this.$store.getters["nftService/categories"];
       }
@@ -112,14 +115,18 @@ export default {
         var operaToFilter = new Array();
         var operaToSee = new Array();
         var cat = this.filterCategories;
-        console.log(this.operas.length);
-        console.log(this.$store.getters["nftService/homeOperas"].length)
         if (cat.length !== 0) {
-         for(var i=0;i<this.operas.length;i++) {
-          if(this.operas[i].categories.name === cat.name) {
-            operaToFilter.push(this.operas[i]);
+          for (var i = 0; i < this.operas.length; i++) {
+            for (var categories = 0; categories < cat.length; categories++) {
+              for (var x = 0; x < this.operas[i].categories.length; x++) {
+                if (
+                  this.operas[i].categories[x].name === cat[categories].name
+                ) {
+                  operaToFilter.push(this.operas[i]);
+                }
+              }
+            }
           }
-        }
         } else {
           operaToFilter = this.operas;
         }
@@ -128,7 +135,7 @@ export default {
         operaToSee = operaToFilter.slice(init, end);
         return operaToSee;
       }
-    },
+    }
   },
   created() {
     this.$store.dispatch("nftService/getHomeOperas");

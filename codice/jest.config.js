@@ -8,7 +8,7 @@ module.exports = {
   moduleFileExtensions: ['js', 'ts', 'json', 'vue'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
-    'vuetify/lib(.*)': '<rootDir>/node_modules/vuetify/es5$1'
+    'vuetify/': '<rootDir>/node_modules/vuetify/es5$1'
   },
   modulePaths: ['<rootDir>/src', '<rootDir>/node_modules'],
   transform: {

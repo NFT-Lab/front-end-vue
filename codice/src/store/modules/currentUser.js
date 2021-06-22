@@ -60,8 +60,8 @@ const actions = {
         name: user.name,
         surname: user.surname,
         email: user.email,
-        dob: JSON.parse(localStorage.getItem('user')).dob,
-        wallet: JSON.parse(localStorage.getItem('user')).wallet
+        dob: user.dob,
+        wallet: user.wallet
       })
       .then(response => {
         commit('setUser', response.data);
@@ -91,7 +91,7 @@ const mutations = {
     if (error === 400) {
       state.errorMessageLog =
         'Dati inseriti scorrettamente, prova a reinserire i dati';
-    } else if (error === 204) {
+    } else if (error === 404) {
       state.errorMessageLog =
         'Utente non presente nel sistema, prova a reinserire i dati';
     }

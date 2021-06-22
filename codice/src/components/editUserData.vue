@@ -2,7 +2,7 @@
   <v-dialog v-model="dialog" width="60%" dark persistent>
     <template v-slot:activator="{ on, attrs }">
       <v-btn
-        class="mx-1 black--text"
+        class="mx-1 black--text font-weight-bold"
         v-bind="attrs"
         v-on="on"
         color="amber accent-4"
@@ -90,6 +90,8 @@ export default {
   data() {
     return {
       dialog: false,
+      menu: false,
+      activePicker: null,
       isFormValid: false,
       show: false,
       show1: false,
@@ -97,6 +99,7 @@ export default {
       user: {
         name: this.$store.getters["CurrentUser/user"].name,
         surname:  this.$store.getters["CurrentUser/user"].surname,
+        dob: this.$store.getters["CurrentUser/user"].dob,
         password: '',
         email:  this.$store.getters["CurrentUser/user"].email,
         dob: this.$store.getters["CurrentUser/user"].dob,
@@ -118,6 +121,9 @@ export default {
     updateUser() {
       this.$store.dispatch("CurrentUser/updateUser", this.user);
       this.dialog=false;
+    },
+    save(date) {
+      this.$refs.menu.save(date);
     }
   }
 };

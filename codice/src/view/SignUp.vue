@@ -3,7 +3,7 @@
     <Particle />
     <v-layout fill-height>
       <v-row id="login-container" class="pa-1" dense>
-        <v-btn class="my-2 black--text" router :to="links[0].home" color="amber accent-4">
+        <v-btn class="my-2 black--text font-weight-bold" router :to="links[0].home" color="amber accent-4">
           Home
         </v-btn>
         <v-col

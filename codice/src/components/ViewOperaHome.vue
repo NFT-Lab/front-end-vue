@@ -6,7 +6,11 @@
     transition="dialog-bottom-transition"
   >
     <template v-slot:activator="{ on }">
-      <v-btn v-on="on" color="amber accent-4" class="black--text">
+      <v-btn
+        v-on="on"
+        color="amber accent-4"
+        class="black--text font-weight-bold"
+      >
         Visualizza dettagli
       </v-btn>
     </template>
@@ -17,48 +21,63 @@
         >Informazioni opera</v-card-title
       >
       <v-container>
-<v-row class="pa-4">
-        <v-col cols="6">
-        <v-img
-          :src="
-            'https://cloudflare-ipfs.com/ipfs/' +
-              opereId[Math.floor(Math.random() * opereId.length)]
-          "
-        />
-        <!--<v-img
+        <v-row class="pa-4">
+          <v-col cols="6">
+            <v-img
+              contain
+              max-height="800"
+              max-width="800"
+              :src="
+                'https://cloudflare-ipfs.com/ipfs/' +
+                  opereId[Math.floor(Math.random() * opereId.length)]
+              "
+            />
+            <!--<v-img
             :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
           />-->
           </v-col>
-        <v-col cols="6">
-          <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title v-text="visiblePage.title" />
-          <v-list-item-subtitle
-            v-text="visiblePage.price + visiblePage.currency"
-          />
-          <v-list-item-subtitle v-text="visiblePage.author" />
-          <v-list-item-subtitle v-text="visiblePage.owner" />
-          <v-list-item-subtitle v-text="visiblePage.description" />
-        </v-list-item-content>
-        
-      </v-list-item>
-      <v-chip
-        v-for="category in visiblePage.categories"
-        :key="category.name"
-        item-value="name"
-        item-text="name"
-        class="ma-2"
-        color="amber accent-4"
-        label
-        text-color="black"
-      >
-        <v-icon small left>
-          label
-        </v-icon>
-        {{ category.name }}
-      </v-chip>
-        </v-col>
-      </v-row>
+          <v-col cols="6">
+            <v-list-item>
+              <v-list-item-content>
+                <v-list-item-title
+                  class="amber--text font-weight-bold"
+                  v-text="visiblePage.title"
+                />
+                <v-list-item-subtitle>
+                  <span class="font-weight-bold">Prezzo: </span>
+                  {{ visiblePage.price + " " + visiblePage.currency }}
+                </v-list-item-subtitle>
+                <v-list-item-subtitle>
+                  <span class="font-weight-bold">Autore: </span>
+                  {{ visiblePage.author }}
+                </v-list-item-subtitle>
+                <v-list-item-subtitle>
+                  <span class="font-weight-bold">Proprietario: </span>
+                  {{ visiblePage.owner }}
+                </v-list-item-subtitle>
+                <v-list-item-subtitle >
+                   <span class="font-weight-bold">Descrizione: </span>
+                  {{ visiblePage.description }}
+                </v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+            <v-chip
+              v-for="category in visiblePage.categories"
+              :key="category.name"
+              item-value="name"
+              item-text="name"
+              class="ma-2"
+              color="amber accent-4"
+              label
+              text-color="black"
+            >
+              <v-icon small left>
+                label
+              </v-icon>
+              {{ category.name }}
+            </v-chip>
+          </v-col>
+        </v-row>
       </v-container>
     </v-card>
   </v-dialog>
