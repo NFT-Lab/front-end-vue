@@ -36,53 +36,56 @@ Vuex è uno state management pattern per applicazioni sviluppate in Vue.js e ser
 Quando si crea un progetto per la prima volta tramite il framework Vue.js vengono create di default delle cartelle e dei file per facilitare la progettazione del software. La suddivisione delle cartelle è rappresentata qui di seguito.
 
 \begin{lstlisting}
-	|-- front-end-vue
-	|-- .editorconfig
-	|-- .eslintignore
-	|-- .eslintrc.js
-	|-- .gitignore
-	|-- .prettierc.json
-	|-- .prettierignore
-	|-- babel.config.js
-	|-- jest.config.js
-	|-- jsconfig.json
-	|-- package-lock.json
-	|-- package.json
-	|-- README.md
-	|-- vue.config.js
-	|-- .vscode
-	| |-- extensions.json
-	| |-- settings.json
-	|-- coverage
-	|-- dist
-	|-- docs
-	|-- pubblic
-	|-- src
-	| |-- App.vue
-	| |-- directoryList.md
-	| |-- main.js
-	| |-- assets
-	| |-- components
-	| |-- plugins
-	| |-- router
-	| |-- store
-	| | |-- index.js
-	| | |-- modules
-	| | |-- currentUser.js
-	| | |-- nftService.js
-	| |-- view
-	|-- tests
-	| | |-- unit
+|-- front-end-vue
+|-- codice
+|   |-- .editorconfig
+|   |-- .eslintignore
+|   |-- .eslintrc.js
+|   |-- .gitignore
+|   |-- .prettierc.json
+|   |-- .prettierignore
+|   |-- babel.config.js
+|   |-- jest.config.js
+|   |-- jsconfig.json
+|   |-- package-lock.json
+|   |-- package.json
+|   |-- README.md
+|   |-- vue.config.js
+|   |-- .vscode
+|   |-- coverage
+|   |-- dist
+|   |-- pubblic
+|   |-- src
+|   |   |-- App.vue
+|   |   |-- main.js
+|   |   |-- style.css
+|   |   |-- assets
+|   |   |-- components
+|   |   |-- plugins
+|   |   |-- router
+|   |   |-- store
+|   |   |   |-- index.js
+|   |   |   |-- modules
+|   |   |-- view
+|   |-- tests
+|       |-- unit
+|-- docs
+|-- documento tecnico
+|-- directoryList.md
 \end{lstlisting}
 
-La cartella principale si chiama \textbf{\textit{front-end-vue}} ed essa contiene i file di configurazione del progetto, il file \textbf{\textit{readme}} ed il file di \textbf{\textit{gitignore}}. I file e le sottocartelle create automaticamente alla creazione del progetto non verranno spiegate, mentre i restanti elementi sono i seguenti:
+La cartella principale si chiama \textbf{\textit{front-end-vue}} ed essa contiene i file di configurazione del progetto, il file \textbf{\textit{readme}}, il file di \textbf{\textit{gitignore}} ed il file \textbf{\textit{directoryList.md}}, creato automaticamente attraverso il comando \textit{mddir} dove viene scritta la struttura delle cartelle del progetto. Inoltre sono presenti tre cartelle:
+\begin{itemize}
+	\item \textbf{\textit{codice}}, contenente il codice del progetto;
+	\item \textbf{\textit{docs}}, contenente file YAML utilizzato per la configurazione di Stoplight;
+	\item \textbf{\textit{documento tecnico}}, contente i file latex utilizzati per la stesura di questo documento.
+\end{itemize} 
+Per quanto riguarda la cartella legata al codice, essendo la più importante, necessita di una spiegazione degli elementi che la contengono. I file e le sottocartelle create automaticamente alla creazione del progetto però non verranno spiegate, mentre i restanti elementi sono i seguenti:
 \begin{itemize}
 	\item \textbf{\textit{coverage}}: cartella che contiene i file e le cartelle create automaticamente quando vengono fatti partire i test di unità;
-	\item \textbf{\textit{doc}}: cartella che contiene file YAML utilizzato per la configurazione di Stoplight;
 	\item \textbf{\textit{src}}: cartella in cui sono presenti file e cartelle necessari per il funzionamento del progetto e sono:
 	\begin{itemize}
 		\item il file \textbf{\textit{App.vue}} è la radice dell'applicazione definita nel formato Vue Component e di solito serve a definire il modello della pagina;
-		\item il file \textbf{\textit{directoryList.md}} che viene creato automaticamente attraverso il comando \textit{mddir} dove viene scritta la struttura delle cartelle del progetto;
 		\item il file \textbf{\textit{Main.js}} di tipo javascript che inizializza il file \textit{App.vue} ed è responsabile dell'impostazione dei plugin e dei componenti di terze parti da utilizzare per lo sviluppo dell'applicazione;
 		\item la cartella \textbf{\textit{assets}} contenente le immagini utilizzate all'interno del sito, come quella del logo;
 		\item la cartella \textbf{\textit{components}} contenente la barra di navigazione (navbar) e le varie finestre d'avviso;
@@ -97,8 +100,8 @@ La cartella principale si chiama \textbf{\textit{front-end-vue}} ed essa contien
 \textit{Nelle sezioni di seguito verranno spiegate in dettaglio il funzionamento delle chiamate al back end e delle varie maschere implementate con le loro criticità}
 
 \section{Chiamate al back end}
-Il file principale, \textbf{\textit{index.js}}, contiene la configurazione di Vuex e del persisted state con l'inclusione dei moduli tanti quanti sono i servizi del back end che vanno ad invocare. (NON MI PIACE) Per rendere più chiaro ed efficiente il lavoro ho creato tanti file quanti sono i servizi che vado ad invocare quindi sono presenti il file \textbf{\textit{CurrentUser.js}}, legato al servizio del back end dell'utente, e il file \textbf{\textit{NftService.js}}, legato al servizio del back end degli NFT.\\
-Entrambi i file hanno la struttura uguale e quello che cambia è il contenuto, infatti sono caratterizzati da tot variabili costanti:
+Il file principale, \textbf{\textit{index.js}}, contiene la configurazione di Vuex e del persisted state con l'inclusione dei moduli che sono di numero tanti quanti sono i servizi del back end che vanno ad invocare. Per rendere più chiaro ed efficiente il lavoro ho creato quindi il file \textbf{\textit{CurrentUser.js}}, legato al servizio del back end dell'utente, e il file \textbf{\textit{NftService.js}}, legato al servizio del back end degli NFT.\\
+Entrambi i file hanno la struttura uguale e quello che cambia è il contenuto, infatti sono caratterizzati da quattro elementi costanti:
 \begin{itemize}
 	\item state, contenente le risorse che verranno utilizzate nei metodi;
 	\item actions, contenente i metodi dove vengono fatte le invocazioni ai servizi del backend tramite axios;
@@ -106,8 +109,128 @@ Entrambi i file hanno la struttura uguale e quello che cambia è il contenuto, i
 	\item getters, contenente i metodi che ritornano i valori presenti nelle risorse.
 \end{itemize}
 
-Gli state del file \textbf{\textit{CurrentUser.js}} li ho resi persistenti, in questo modo potranno essere utilizzati all'interno della web application. Ad esempio nel momento in cui l'utente effettua il login la variabile booleana \textit{loggedIn} viene settata a \textit{true} e può essere utilizzata per fare dei controlli che decidono(VERBO MIGLIORE?) se reindirizzare o meno certe parti della web application.\\
-Essendo legati a servizi diversi i metodi e le chiamate al back end dei due file sono molto diversi; infatti ad esempio nel file \textbf{\textit{CurrentUser.js}} ho implementato il metodo \textit{loginUser} che effettua una POST per autenticare l'utente nel sito salvando le sue informazioni per poterle utilizzare dove necessario, mentre nel file \textbf{\textit{NftService.js}} ho implementato il metodo \textit{uploadOpera} che effettua una POST per salvare una nuova opera nel database.
+Gli state del file \textbf{\textit{CurrentUser.js}} li ho resi persistenti, in questo modo potranno essere utilizzati all'interno della web application, per esempio dopo che l'utente ha eseguito l'autenticazione utilizzo i suoi dati per visualizzare il suo nome nel bottone che lo porta alla pagina personale. Queste informazioni possono essere utilizzate per fare dei controlli che decidono se reindirizzare o meno certe parti della web application.\\
+Essendo legati a servizi diversi i metodi e le chiamate al back end dei due file sono molto diversi. infatti ad esempio nel file \textbf{\textit{CurrentUser.js}} ho implementato il metodo \textit{loginUser} che effettua una POST per autenticare l'utente nel sito salvando le sue informazioni per poterle utilizzare dove necessario, mentre nel file \textbf{\textit{NftService.js}} ho implementato il metodo \textit{uploadOpera} che effettua una POST per salvare una nuova opera nel database.
+
+\subsection{CurrentUser.js}
+
+In questo file ho implementato diversi servizi legati all'utente. I servizi in questione sono:
+\begin{itemize}
+	\item \textbf{autenticazione}: l'utente prova ad effettuare il login e nella componente legata all'autenticazione avviene una chiamata al metodo \textbf{\textit{LoginUser}} passando come parametro l'utente.
+	\begin{lstlisting}
+		loginUser({ commit }, user) {
+			axios
+			.post(urlStop + 'login', {
+				email: user.email,
+				password: user.password
+			})
+			.then(response => {
+				commit('setUser', response.data);
+				commit('setLoggedIn');
+				localStorage.setItem('user', JSON.stringify(response.data));
+				router.push('/');
+			})
+			.catch(error => {
+				commit('setErrorMessageLog', error.response.status);
+			});
+		}
+	\end{lstlisting}
+	Come si può vedere dall'immagine soprastante viene eseguita una chiamata POST al database specificando i dati dell'utente che verranno inviati. Se la chiamata va a buon fine i dati dell'utente autenticato verranno salvati sia nello stato persistente che nel localStorage del web e si verrà reindirizzati alla homepage. Se invece la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna il back end;
+	\item \textbf{registrazione}
+	\begin{lstlisting}
+		  signUp({ commit }, user) {
+			axios
+			.post(urlStop + 'signup', {
+				email: user.email,
+				password: user.password,
+				name: user.name,
+				surname: user.surname,
+				dob: user.dob,
+				wallet: user.wallet
+			})
+			.then(response => {
+				commit('setUser', response.data);
+				commit('setLoggedIn');
+				localStorage.setItem('user', JSON.stringify(response.data));
+				router.push('/');
+			})
+			.catch(error => {
+				commit('setMessageErrorSig', error.response.status);
+			});
+		}
+	\end{lstlisting}
+	Come si può vedere dall'immagine soprastante viene eseguita anche per la registrazione una chiamata POST al database specificando i dati dell'utente che verranno inviati, di numero maggiore rispetto ai dati per l'autenticazione. Se la chiamata va a buon fine i dati dell'utente autenticato verranno salvati sia nello stato persistente che nel localStorage del web e si verrà reindirizzati alla homepage. Se invece la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna il back end;
+	\item \textbf{logout}
+	\begin{lstlisting}
+		  logOut({ commit }) {
+			commit('setLoggedOut');
+			localStorage.clear('user');
+		}
+	\end{lstlisting}
+	Questo è l'unico metodo che non possiede chiamate effettive al back end, infatti quando l'utente vuole effettuare il log out verrà semplicemente chiamato un metodo che fa ritornare l'utente alla homepage e cancella i dati dell'utente nello stato persistente. Infine viene svuotato il localStorage dai dati dell'utente;
+	\item \textbf{modifca dati personali}
+	\begin{lstlisting}
+		  updateUser({ commit }, user) {
+			var url = urlStop + `user/${JSON.parse(localStorage.getItem('user')).id}`;
+			console.log(user);
+			axios
+			.put(url, {
+				password: user.password,
+				name: user.name,
+				surname: user.surname,
+				email: user.email,
+				dob: user.dob,
+				wallet: user.wallet
+			})
+			.then(response => {
+				commit('setUser', response.data);
+				localStorage.setItem('user', JSON.stringify(response.data));
+			});
+		}
+	\end{lstlisting}
+	\item \textbf{modifica password}
+	\begin{lstlisting}
+		  updatePassword({}, user) {
+			axios.put(urlStop + 'user/password', {
+				email: user.email,
+				oldPassword: user.oldPassword,
+				newPassword: user.newPassword
+			});
+		}
+	}
+	\end{lstlisting}
+\end{itemize}
+
+\subsection{NftService.js}
+In questo file ho implementato diversi servizi legati agli NFT. I servizi in questione sono:
+\begin{itemize}
+	\item \textbf{opere utente}
+	\begin{lstlisting}
+		userOperas({ commit }) {
+			var url =
+			urlStop + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
+			axios.get(url).then(response => {
+				commit('setOperas', response.data);
+			});
+		}
+	\end{lstlisting}
+	\item \textbf{categorie}
+	\begin{lstlisting}
+		contenuto...
+	\end{lstlisting}
+	\item \textbf{upload}
+	\begin{lstlisting}
+		contenuto...
+	\end{lstlisting}
+		\item \textbf{modifica}
+	\begin{lstlisting}
+		contenuto...
+	\end{lstlisting}
+		\item \textbf{home}
+	\begin{lstlisting}
+		contenuto...
+	\end{lstlisting}
+\end{itemize}
 
 \section{Maschere implementate}
 
