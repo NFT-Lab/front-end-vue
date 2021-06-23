@@ -4,7 +4,12 @@
     <Particle />
     <v-layout fill-height>
       <v-row id="login-container" class="pa-1" dense>
-        <v-btn class="my-2 black--text font-weight-bold" router :to="links[0].home" color="amber accent-4">
+        <v-btn
+          class="my-2 black--text font-weight-bold"
+          router
+          :to="links[0].home"
+          color="amber accent-4"
+        >
           Home
         </v-btn>
         <v-col
@@ -33,6 +38,7 @@
                     color="amber accent-4"
                   />
                   <v-text-field
+                    id="passwordInput"
                     v-model="user.password"
                     label="Password"
                     :rules="[rules.required, rules.length]"
@@ -55,8 +61,13 @@
               </p>
             </v-card-text>
             <v-card-actions>
-              <v-btn block @click="sendDataLogin" color="amber accent-4"
-          class="black--text" :disabled="!isFormValid">
+              <v-btn
+                block
+                @click="sendDataLogin"
+                color="amber accent-4"
+                class="black--text"
+                :disabled="!isFormValid"
+              >
                 Login
               </v-btn>
             </v-card-actions>

@@ -22,9 +22,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.67% </span>
+                <span class="strong">14.29% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/6</span>
+                <span class='fraction'>1/7</span>
             </div>
         
             
@@ -36,16 +36,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/4</span>
+                <span class='fraction'>1/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.67% </span>
+                <span class="strong">14.29% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/6</span>
+                <span class='fraction'>1/7</span>
             </div>
         
             
@@ -181,7 +181,22 @@
 <a name='L123'></a><a href='#L123'>123</a>
 <a name='L124'></a><a href='#L124'>124</a>
 <a name='L125'></a><a href='#L125'>125</a>
-<a name='L126'></a><a href='#L126'>126</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -287,20 +302,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -310,7 +330,7 @@
   &lt;v-dialog v-model="dialog" width="60%" dark persistent&gt;
     &lt;template v-slot:activator="{ on, attrs }"&gt;
       &lt;v-btn
-        class="mx-1 black--text"
+        class="mx-1 black--text font-weight-bold"
         v-bind="attrs"
         v-on="on"
         color="amber accent-4"
@@ -324,60 +344,65 @@
           &lt;v-icon&gt;mdi-close&lt;/v-icon&gt; &lt;/v-btn
         &gt;Modifica dati&lt;/v-card-title
       &gt;
-        &lt;v-form v-model="isFormValid"&gt;
-          &lt;v-text-field
-            v-model="user.name"
-            label="Nome"
-            :rules="[rules.required]"
+      &lt;v-form v-model="isFormValid"&gt;
+        &lt;v-text-field
+          id="nameMInput"
+          v-model="user.name"
+          label="Nome"
+          :rules="[rules.required]"
+          color="amber accent-4"
+        /&gt;
+        &lt;v-text-field
+          id="surnameMInput"
+          v-model="user.surname"
+          label="Cognome"
+          :rules="[rules.required]"
+          color="amber accent-4"
+        /&gt;
+        &lt;v-menu
+          ref="menu"
+          v-model="menu"
+          :close-on-content-click="false"
+          transition="scale-transition"
+          offset-y
+          min-width="auto"
+        &gt;
+          &lt;template v-slot:activator="{ on, attrs }"&gt;
+            &lt;v-text-field
+              v-model="user.dob"
+              label="Anno di nascita"
+              prepend-icon="mdi-calendar-range"
+              :rules="[rules.required, rules.age]"
+              v-bind="attrs"
+              v-on="on"
+              color="amber accent-4"
+            /&gt;
+          &lt;/template&gt;
+          &lt;v-date-picker
+            id="dobMInput"
+            v-model="user.dob"
+            :active-picker.sync="activePicker"
+            :max="new Date().toISOString().substr(0, 10)"
+            @change="save"
             color="amber accent-4"
           /&gt;
-          &lt;v-text-field
-            v-model="user.surname"
-            label="Cognome"
-            :rules="[rules.required]"
-            color="amber accent-4"
-          /&gt;
-          &lt;v-menu
-                    ref="menu"
-                    v-model="menu"
-                    :close-on-content-click="false"
-                    transition="scale-transition"
-                    offset-y
-                    min-width="auto"
-                  &gt;
-                    &lt;template v-slot:activator="{ on, attrs }"&gt;
-                      &lt;v-text-field
-                        v-model="user.dob"
-                        label="Anno di nascita"
-                        prepend-icon="mdi-calendar-range"
-                        :rules="[rules.required, rules.age]"
-                        v-bind="attrs"
-                        v-on="on"
-                        color="amber accent-4"
-                      /&gt;
-                    &lt;/template&gt;
-                    &lt;v-date-picker
-                      v-model="user.dob"
-                      :active-picker.sync="activePicker"
-                      :max="new Date().toISOString().substr(0, 10)"
-                      @change="save"
-                      color="amber accent-4"
-                    /&gt;
-                  &lt;/v-menu&gt;
-                  &lt;v-text-field
-                    v-model="user.wallet"
-                    label="Wallet Address"
-                    :rules="[rules.required, rules.wallet]"
-                    prepend-icon="mdi-wallet"
-                    color="amber accent-4"
-                  /&gt;
-          &lt;v-text-field
-            v-model="user.password"
-            label="Inserisci la password per confermare la modifica"
-            :rules="[rules.required, rules.length]"
-            color="amber accent-4"
-          /&gt;
-        &lt;/v-form&gt;
+        &lt;/v-menu&gt;
+        &lt;v-text-field
+          id="walletMInput"
+          v-model="user.wallet"
+          label="Wallet Address"
+          :rules="[rules.required, rules.wallet]"
+          prepend-icon="mdi-wallet"
+          color="amber accent-4"
+        /&gt;
+        &lt;v-text-field
+          id="passwordMInput"
+          v-model="user.password"
+          label="Inserisci la password per confermare la modifica"
+          :rules="[rules.required, rules.length]"
+          color="amber accent-4"
+        /&gt;
+      &lt;/v-form&gt;
       &lt;v-card-actions&gt;
         &lt;v-btn
           class="black--text"
@@ -398,16 +423,18 @@ export default {
   data() {
     return {
       dialog: false,
+      menu: false,
+      activePicker: null,
       isFormValid: false,
       show: false,
       show1: false,
       UserData: this.$store.getters["CurrentUser/user"],
       user: {
         name: this.$store.getters["CurrentUser/user"].name,
-        surname:  this.$store.getters["CurrentUser/user"].surname,
+        surname: this.$store.getters["CurrentUser/user"].surname,
         dob: this.$store.getters["CurrentUser/user"].dob,
-        password: '',
-        email:  this.$store.getters["CurrentUser/user"].email,
+        password: "",
+        email: this.$store.getters["CurrentUser/user"].email,
         dob: this.$store.getters["CurrentUser/user"].dob,
         wallet: this.$store.getters["CurrentUser/user"].wallet
       },
@@ -419,14 +446,17 @@ export default {
             patternPwd.test(val) ||
             "La password deve essere lunga minimo otto caratteri con una lettera maiuscola, una minuscola, un numero ed un carattere speciale"
           );
-        },
+        }
       }
     };
   },
   methods: {
 <span class="fstat-no" title="function not covered" >    updateUser() {</span>
 <span class="cstat-no" title="statement not covered" >      this.$store.dispatch("CurrentUser/updateUser", this.user);</span>
-<span class="cstat-no" title="statement not covered" >      this.dialog=false;</span>
+<span class="cstat-no" title="statement not covered" >      this.dialog = false;</span>
+    },
+<span class="fstat-no" title="function not covered" >    save(date) {</span>
+<span class="cstat-no" title="statement not covered" >      this.$refs.menu.save(date);</span>
     }
   }
 };
@@ -438,7 +468,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Jun 22 2021 15:54:46 GMT+0200 (Ora legale dell’Europa centrale)
+                at Wed Jun 23 2021 11:52:59 GMT+0200 (Ora legale dell’Europa centrale)
             </div>
         </div>
         <script src="..\..\prettify.js"></script>

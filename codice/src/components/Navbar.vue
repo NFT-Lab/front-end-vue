@@ -7,10 +7,11 @@
         </router-link>
       </v-toolbar-title>
       <v-spacer />
-      <div v-if="isLogged">
+      <div id="userLogged" v-if="isLogged">
         <v-row>
           <v-col>
             <v-btn
+            id="buttonNameUser"
               router
               :to="links[0].userPage"
               color="amber accent-4"
@@ -33,7 +34,7 @@
           </v-col>
         </v-row>
       </div>
-      <div v-else>
+      <div id="userNotLogged" v-else>
         <v-row>
           <v-col cols="6">
             <v-btn

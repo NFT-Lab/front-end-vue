@@ -1,25 +1,36 @@
-import Vuex from 'vuex';
 import Vuetify from 'vuetify';
 import { mount, createLocalVue, shallowMount } from '@vue/test-utils';
-import VueRouter from 'vue-router';
 import store from '@/store';
-import app from '@/app.vue';
 import editUserPassword from '@/components/editUserPassword.vue';
 
 const localVue = createLocalVue();
 
-//non vede le rules di validazione
 describe('editUserPassword.vue', () => {
   let vuetify;
   beforeEach(() => {
     vuetify = new Vuetify();
   });
+  const wrapper = shallowMount(editUserPassword, {
+    localVue,
+    store,
+    vuetify
+  });
   it('Check if content render', () => {
-    const wrapper = shallowMount(editUserPassword, {
-      localVue,
-      store,
-      vuetify
-    });
-    expect(wrapper.contains('nav')).toBe(true);
+    expect(wrapper.contains('v-dialog')).toBe(true);
+  });
+  it('Check if button is disabled with empty fields', ()=> {
+    const email="";
+    const oldPassword="";
+    const newPassword="";
+
+    var emailMPInput = wrapper.find('#emailMPInput');
+    emailMPInput.element.value = email;
+    var passwordOldInput = wrapper.find('#passwordOldInput');
+    passwordOldInput.element.value = oldPassword;
+    var passwordNewInput = wrapper.find('#passwordNewInput');
+    passwordNewInput.element.value = newPassword;
+
+    expect(wrapper.vm.isFormValid).toBeFalsy();
+    expect(wrapper.find('v-btn').element.hasAttribute('disabled')).not.toBe(true);
   });
 });

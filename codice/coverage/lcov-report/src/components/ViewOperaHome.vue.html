@@ -153,7 +153,45 @@
 <a name='L95'></a><a href='#L95'>95</a>
 <a name='L96'></a><a href='#L96'>96</a>
 <a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -258,7 +296,11 @@
     transition="dialog-bottom-transition"
   &gt;
     &lt;template v-slot:activator="{ on }"&gt;
-      &lt;v-btn v-on="on" color="amber accent-4" class="black--text"&gt;
+      &lt;v-btn
+        v-on="on"
+        color="amber accent-4"
+        class="black--text font-weight-bold"
+      &gt;
         Visualizza dettagli
       &lt;/v-btn&gt;
     &lt;/template&gt;
@@ -269,48 +311,63 @@
         &gt;Informazioni opera&lt;/v-card-title
       &gt;
       &lt;v-container&gt;
-&lt;v-row class="pa-4"&gt;
-        &lt;v-col cols="6"&gt;
-        &lt;v-img
-          :src="
-            'https://cloudflare-ipfs.com/ipfs/' +
-              opereId[Math.floor(Math.random() * opereId.length)]
-          "
-        /&gt;
-        &lt;!--&lt;v-img
+        &lt;v-row class="pa-4"&gt;
+          &lt;v-col cols="6"&gt;
+            &lt;v-img
+              contain
+              max-height="800"
+              max-width="800"
+              :src="
+                'https://cloudflare-ipfs.com/ipfs/' +
+                  opereId[Math.floor(Math.random() * opereId.length)]
+              "
+            /&gt;
+            &lt;!--&lt;v-img
             :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
           /&gt;--&gt;
           &lt;/v-col&gt;
-        &lt;v-col cols="6"&gt;
-          &lt;v-list-item&gt;
-        &lt;v-list-item-content&gt;
-          &lt;v-list-item-title v-text="visiblePage.title" /&gt;
-          &lt;v-list-item-subtitle
-            v-text="visiblePage.price + visiblePage.currency"
-          /&gt;
-          &lt;v-list-item-subtitle v-text="visiblePage.author" /&gt;
-          &lt;v-list-item-subtitle v-text="visiblePage.owner" /&gt;
-          &lt;v-list-item-subtitle v-text="visiblePage.description" /&gt;
-        &lt;/v-list-item-content&gt;
-        
-      &lt;/v-list-item&gt;
-      &lt;v-chip
-        v-for="category in visiblePage.categories"
-        :key="category.name"
-        item-value="name"
-        item-text="name"
-        class="ma-2"
-        color="amber accent-4"
-        label
-        text-color="black"
-      &gt;
-        &lt;v-icon small left&gt;
-          label
-        &lt;/v-icon&gt;
-        {{ category.name }}
-      &lt;/v-chip&gt;
-        &lt;/v-col&gt;
-      &lt;/v-row&gt;
+          &lt;v-col cols="6"&gt;
+            &lt;v-list-item&gt;
+              &lt;v-list-item-content&gt;
+                &lt;v-list-item-title
+                  class="amber--text font-weight-bold"
+                  v-text="visiblePage.title"
+                /&gt;
+                &lt;v-list-item-subtitle&gt;
+                  &lt;span class="font-weight-bold"&gt;Prezzo: &lt;/span&gt;
+                  {{ visiblePage.price + " " + visiblePage.currency }}
+                &lt;/v-list-item-subtitle&gt;
+                &lt;v-list-item-subtitle&gt;
+                  &lt;span class="font-weight-bold"&gt;Autore: &lt;/span&gt;
+                  {{ visiblePage.author }}
+                &lt;/v-list-item-subtitle&gt;
+                &lt;v-list-item-subtitle&gt;
+                  &lt;span class="font-weight-bold"&gt;Proprietario: &lt;/span&gt;
+                  {{ visiblePage.owner }}
+                &lt;/v-list-item-subtitle&gt;
+                &lt;v-list-item-subtitle &gt;
+                   &lt;span class="font-weight-bold"&gt;Descrizione: &lt;/span&gt;
+                  {{ visiblePage.description }}
+                &lt;/v-list-item-subtitle&gt;
+              &lt;/v-list-item-content&gt;
+            &lt;/v-list-item&gt;
+            &lt;v-chip
+              v-for="category in visiblePage.categories"
+              :key="category.name"
+              item-value="name"
+              item-text="name"
+              class="ma-2"
+              color="amber accent-4"
+              label
+              text-color="black"
+            &gt;
+              &lt;v-icon small left&gt;
+                label
+              &lt;/v-icon&gt;
+              {{ category.name }}
+            &lt;/v-chip&gt;
+          &lt;/v-col&gt;
+        &lt;/v-row&gt;
       &lt;/v-container&gt;
     &lt;/v-card&gt;
   &lt;/v-dialog&gt;
@@ -354,7 +411,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Jun 22 2021 15:54:46 GMT+0200 (Ora legale dell’Europa centrale)
+                at Wed Jun 23 2021 11:52:59 GMT+0200 (Ora legale dell’Europa centrale)
             </div>
         </div>
         <script src="..\..\prettify.js"></script>

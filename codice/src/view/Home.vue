@@ -74,18 +74,6 @@ export default {
       opereId: [
         "QmX5FkTotxKRziu5a7NXz16YeHrVgYw98RzTgNWvi8HmDC",
 
-        "QmUZr5giEkQynVP4whjkrPA5x9HjfmonCt2j5WCCJ6GJYt",
-
-        "QmdDN19DFWsGAL5hsdYDiPWLJpcNnezEqcMai8UnWayTCy",
-
-        "QmUoxQnAHehMEKH1CCbr1bu69P4r79kPXRKFqn6v3Pyret",
-
-        "QmNe7jwQqawJ9TNouzBwDLfS294SxNo7FEuuKBkkpRRFHh",
-
-        "QmRMEwa9jLv2iNxrpfZ8Z2bNMTZEFeyUVnt6fF5Xenk7Ms",
-
-        "QmbHx7zHgibMF9ktjaRm5dDT3bRAtqa7EVBPJ8jTvpLahe",
-
         "QmWjHc9zb5ojPsjA43B3SFyKRPqd9Mc57R9EnTCgduyNzv",
 
         "Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat",

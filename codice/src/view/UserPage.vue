@@ -1,10 +1,10 @@
 <template>
   <v-container fluid>
     <v-row class="pa-1 d-flex justify-center" dense>
-      <v-col cols="6"
+      <v-col cols="12"
         sm="12"
-        xs="12"
-        md="6" class="justify-center align-center">
+        md="6"
+        lg="6" class="justify-center align-center">
           <v-card class="text-center" color="grey darken-3">
             <v-list-item>
               <v-list-item-content>
@@ -50,10 +50,10 @@
             </v-card-actions>
           </v-card>
       </v-col>
-      <v-col cols="6"
+      <v-col cols="12"
         sm="12"
         md="6"
-        xs="12" class="pa-3">
+        lg="6"  class="pa-3">
         <OperasList />
       </v-col>
     </v-row>

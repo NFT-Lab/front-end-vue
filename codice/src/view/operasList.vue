@@ -11,7 +11,10 @@
     </template>
 
     <v-row class="pa-3">
-      <v-col cols="6" sm="12" md="6">
+      <v-col cols="12"
+        sm="12"
+        md="6"
+        lg="6" >
         <v-pagination
           v-model="page"
           :length="Math.ceil(this.operas.length / perPage)"
@@ -19,7 +22,10 @@
           dark
         />
       </v-col>
-      <v-col>
+      <v-col cols="12"
+        sm="12"
+        md="6"
+        lg="6" >
         <v-btn
           router
           :to="links[0].uploadOpera"

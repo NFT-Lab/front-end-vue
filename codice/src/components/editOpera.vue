@@ -1,11 +1,26 @@
 <template>
-  <v-dialog v-model="dialog" width="60%">
+  <v-dialog v-model="dialog" width="60%" dark persistent>
     <template v-slot:activator="{ on, attrs }">
       <v-icon v-bind="attrs" v-on="on" class="white--text">
         edit
       </v-icon>
     </template>
     <v-card class="pa-3">
+      <v-alert
+            v-model="alert"
+            color="red"
+            dense
+            dismissible
+            elevation="5"
+            icon="mdi-alert-circle"
+          >
+            {{ errorMessage }}
+          </v-alert>
+           <v-card-title class="text-h5 amber accent-4">
+        <v-btn icon dark @click="dialog = false">
+          <v-icon>mdi-close</v-icon> </v-btn
+        >Modifica opera</v-card-title
+      >
       <v-flex>
         <v-form v-model="isFormValid" class="pa-3">
           <v-text-field
@@ -45,7 +60,7 @@
           @click="Update"
           :disabled="!isFormValid"
         >
-          Modifica i dati
+          Conferma modifiche
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -57,6 +72,7 @@ export default {
   props: ["visiblePage"],
   data() {
     return {
+      alert: false,
       isFormValid: false,
       dialog: false,
       rules: {
@@ -68,6 +84,11 @@ export default {
     categories: {
       get() {
         return this.$store.getters["nftService/categories"];
+      }
+    },
+     errorMessage: {
+      get() {
+        return this.$store.getters["nftService/errorMessageOpera"];
       }
     }
   },
@@ -88,7 +109,11 @@ export default {
         this.visiblePage.type = "img";
       else this.visiblePage.type = "doc";
       this.$store.dispatch("nftService/updateOpera", this.visiblePage);
-      this.dialog = false;
+      if (this.$store.getters["nftService/errorMessageOpera"] !== null) {
+        this.alert = true;
+      } else {
+        this.dialog = false;
+      }
     }
   }
 };

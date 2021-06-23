@@ -21,12 +21,12 @@ const actions = {
     });
   },
   getCategories({ commit }) {
-    axios.get(urlStop + 'categories'+examples).then(response => {
+    axios.get(urlStop + 'categories' + examples).then(response => {
       commit('setCategories', response.data);
     });
   },
   getHomeOperas({ commit }) {
-    axios.get(urlStop + 'nft'+examples).then(response => {
+    axios.get(urlStop + 'nft' + examples).then(response => {
       commit('setHomeOperas', response.data);
     });
   },
@@ -61,6 +61,9 @@ const actions = {
       })
       .then(response => {
         commit('setOpera', response.data);
+      })
+      .catch(error => {
+        commit('setErrorOpera', error.response.data);
       });
   }
 };
@@ -77,8 +80,12 @@ const mutations = {
   setOpera(state, data) {
     state.opera = data;
   },
-  setErrorOpera(state) {
-    state.errorMessageOpera = 'Errore di connessione al server!';
+  setErrorOpera(state, error) {
+    if (error === 500) {
+      state.errorMessageOpera = 'Errore di connessione al server!';
+    } else if (error === 404) {
+      state.errorMessageOpera = 'Opera non trovata!';
+    }
   }
 };
 const getters = {

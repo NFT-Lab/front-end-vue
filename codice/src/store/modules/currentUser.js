@@ -66,14 +66,18 @@ const actions = {
       .then(response => {
         commit('setUser', response.data);
         localStorage.setItem('user', JSON.stringify(response.data));
-      });
+      }).catch(error =>{
+        commit('setErrorMessageMod', error.response.status);
+      })
   },
   updatePassword({}, user) {
     axios.put(urlStop + 'user/password', {
       email: user.email,
       oldPassword: user.oldPassword,
       newPassword: user.newPassword
-    });
+    }).catch(error =>{
+      commit('setErrorMessageMod', error.response.status);
+    })
   }
 };
 const mutations = {
@@ -92,6 +96,18 @@ const mutations = {
       state.errorMessageLog =
         'Dati inseriti scorrettamente, prova a reinserire i dati';
     } else if (error === 404) {
+      state.errorMessageLog =
+        'Utente non presente nel sistema, prova a reinserire i dati';
+    }
+  },
+  setErrorMessageMod(state, error) {
+    if (error === 400) {
+      state.errorMessageLog =
+        'Dati inseriti scorrettamente, prova a reinserire i dati';
+    } else if (error === 404) {
+      state.errorMessageLog =
+        'Utente non presente nel sistema, prova a reinserire i dati';
+    } else if (error === 417) {
       state.errorMessageLog =
         'Utente non presente nel sistema, prova a reinserire i dati';
     }

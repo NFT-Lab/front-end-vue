@@ -3,7 +3,12 @@
     <Particle />
     <v-layout fill-height>
       <v-row id="login-container" class="pa-1" dense>
-        <v-btn class="my-2 black--text font-weight-bold" router :to="links[0].home" color="amber accent-4">
+        <v-btn
+          class="my-2 black--text font-weight-bold"
+          router
+          :to="links[0].home"
+          color="amber accent-4"
+        >
           Home
         </v-btn>
         <v-col
@@ -24,6 +29,7 @@
               <v-flex>
                 <v-form ref="form" v-model="isFormValid">
                   <v-text-field
+                    id="nameInupt"
                     v-model="user.name"
                     label="Nome"
                     :rules="[rules.required]"
@@ -31,6 +37,7 @@
                     color="amber accent-4"
                   />
                   <v-text-field
+                    id="surnnameInupt"
                     v-model="user.surname"
                     label="Cognome"
                     :rules="[rules.required]"
@@ -38,6 +45,7 @@
                     color="amber accent-4"
                   />
                   <v-text-field
+                    id="emailSInput"
                     v-model="user.email"
                     label="Email"
                     :rules="[rules.required, rules.email]"
@@ -54,6 +62,7 @@
                   >
                     <template v-slot:activator="{ on, attrs }">
                       <v-text-field
+
                         v-model="user.dob"
                         label="Anno di nascita"
                         prepend-icon="mdi-calendar-range"
@@ -64,6 +73,7 @@
                       />
                     </template>
                     <v-date-picker
+                    id="dobInupt"
                       v-model="user.dob"
                       :active-picker.sync="activePicker"
                       color="amber accent-4"
@@ -72,6 +82,7 @@
                     />
                   </v-menu>
                   <v-text-field
+                    id="walletInupt"
                     v-model="user.wallet"
                     label="Wallet Address"
                     :rules="[rules.required, rules.wallet]"
@@ -79,6 +90,7 @@
                     color="amber accent-4"
                   />
                   <v-text-field
+                    id="passwordSInupt"
                     v-model="user.password"
                     label="Password"
                     :rules="[rules.required, rules.length]"
@@ -89,6 +101,7 @@
                     color="amber accent-4"
                   />
                   <v-text-field
+                    id="confPasswordInupt"
                     v-model="confPassword"
                     label="Conferma Password"
                     :rules="[rules.required, rules.equals]"
@@ -103,7 +116,13 @@
             </v-card-actions>
 
             <v-card-actions>
-              <v-btn block @click="sendDataSignUp" color="amber accent-4" class="black--text" :disabled="!isFormValid">
+              <v-btn
+                block
+                @click="sendDataSignUp"
+                color="amber accent-4"
+                class="black--text"
+                :disabled="!isFormValid"
+              >
                 Sign up
               </v-btn>
             </v-card-actions>

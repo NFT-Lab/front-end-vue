@@ -4,7 +4,7 @@
     <v-layout fill-height>
       <v-row class="pa-1" dense>
         <v-btn
-          class="my-2 black--text"
+          class="my-2 black--text font-weight-bold"
           router
           :to="links[0].paginaPersonale"
           color="amber accent-4"
@@ -29,6 +29,7 @@
               <v-flex>
                 <v-form ref="form" v-model="isFormValid">
                   <v-text-field
+                    id="titleInput"
                     v-model="opera.title"
                     label="Titolo"
                     :rules="[rules.required]"
@@ -36,6 +37,7 @@
                     color="amber accent-4"
                   />
                   <v-text-field
+                    id="descriptionInput"
                     v-model="opera.description"
                     label="Descrizione"
                     :rules="[rules.required]"
@@ -45,6 +47,7 @@
                   <v-row>
                     <v-col>
                       <v-file-input
+                        id="fileInput"
                         v-model="file"
                         label="File"
                         type="file"
@@ -56,14 +59,8 @@
                       />
                     </v-col>
                     <v-col>
-                        <v-img
-                          v-if="typeNumber == 0"
-                          src="@/assets/upload.png"
-                          max-height="100"
-                          max-width="100px"
-                        />
                       <v-img
-                        v-else-if="typeNumber == 1"
+                        v-if="typeNumber == 1"
                         :src="url"
                         max-height="200px"
                         max-width="200px"
@@ -90,6 +87,7 @@
                   </v-row>
 
                   <v-text-field
+                    id="typeInput"
                     v-model="opera.type"
                     label="Tipo"
                     readonly
@@ -98,6 +96,7 @@
                     color="amber accent-4"
                   />
                   <v-combobox
+                    id="categoriesInput"
                     v-model="opera.categories"
                     :items="categories"
                     item-value="name"
@@ -113,6 +112,7 @@
                     item-color="amber accent-4"
                   />
                   <v-text-field
+                    id="priceInput"
                     v-model="opera.price"
                     label="Prezzo"
                     :rules="[rules.required]"
@@ -213,7 +213,8 @@ export default {
     previewImage() {
       console.log(this.file.type);
       if (this.file === null) {
-        this.url = "";
+        this.typeNumber = 0;
+        this.opera.type = "";
       } else {
         if (this.file.type.includes("image")) {
           this.typeNumber = 1;

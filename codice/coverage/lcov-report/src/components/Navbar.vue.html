@@ -156,7 +156,11 @@
 <a name='L98'></a><a href='#L98'>98</a>
 <a name='L99'></a><a href='#L99'>99</a>
 <a name='L100'></a><a href='#L100'>100</a>
-<a name='L101'></a><a href='#L101'>101</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -215,18 +219,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -240,6 +232,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -265,59 +273,63 @@
         &lt;/router-link&gt;
       &lt;/v-toolbar-title&gt;
       &lt;v-spacer /&gt;
-          &lt;div v-if="isLogged"&gt;
-            &lt;v-row&gt;
-              &lt;v-col&gt;
-                &lt;v-btn
-                  router
-                  :to="links[0].userPage"
-                  class="mx-2 black--text"
-                  color="amber accent-4"
-                &gt;
-                  {{userData.name}}
-                &lt;/v-btn&gt;
-              &lt;/v-col&gt;
-              &lt;v-col&gt;
-                &lt;v-btn @click="logOut" color="amber accent-4" class="black--text"&gt;
-                  &lt;span&gt;Log out&lt;/span&gt;
-                  &lt;v-icon right&gt;
-                    logout
-                  &lt;/v-icon&gt;
-                &lt;/v-btn&gt;
-              &lt;/v-col&gt;
-            &lt;/v-row&gt;
-          &lt;/div&gt;
-          &lt;div v-else&gt;
-            &lt;v-row&gt;
-              &lt;v-col cols="6"&gt;
-                &lt;v-btn
-                  router
-                  :to="links[0].login"
-                  class="mx-2"
-                  color="amber accent-4"
-                  black--text
-                &gt;
-                  &lt;span&gt;Log in&lt;/span&gt;
-                  &lt;v-icon right&gt;
-                    login
-                  &lt;/v-icon&gt;
-                &lt;/v-btn&gt;
-              &lt;/v-col&gt;
-              &lt;v-col cols="6"&gt;
-                &lt;v-btn
-                  router
-                  :to="links[0].signup"
-                  color="amber accent-4"
-                  class="black--text"
-                &gt;
-                  &lt;span&gt;Sign up&lt;/span&gt;
-                  &lt;v-icon right&gt;
-                    login
-                  &lt;/v-icon&gt;
-                &lt;/v-btn&gt;
-              &lt;/v-col&gt;
-            &lt;/v-row&gt;
-          &lt;/div&gt;
+      &lt;div id="userLogged" v-if="isLogged"&gt;
+        &lt;v-row&gt;
+          &lt;v-col&gt;
+            &lt;v-btn
+            id="buttonNameUser"
+              router
+              :to="links[0].userPage"
+              color="amber accent-4"
+              class="mx-1 black--text font-weight-bold"
+            &gt;
+              {{ userData.name }}
+            &lt;/v-btn&gt;
+          &lt;/v-col&gt;
+          &lt;v-col&gt;
+            &lt;v-btn
+              @click="logOut"
+              color="amber accent-4"
+              class="mx-1 black--text font-weight-bold"
+            &gt;
+              &lt;span&gt;Log out&lt;/span&gt;
+              &lt;v-icon right&gt;
+                logout
+              &lt;/v-icon&gt;
+            &lt;/v-btn&gt;
+          &lt;/v-col&gt;
+        &lt;/v-row&gt;
+      &lt;/div&gt;
+      &lt;div id="userNotLogged" v-else&gt;
+        &lt;v-row&gt;
+          &lt;v-col cols="6"&gt;
+            &lt;v-btn
+              router
+              :to="links[0].login"
+              class="mx-1 black--text font-weight-bold"
+              color="amber accent-4"
+            &gt;
+              &lt;span&gt;Log in&lt;/span&gt;
+              &lt;v-icon right&gt;
+                login
+              &lt;/v-icon&gt;
+            &lt;/v-btn&gt;
+          &lt;/v-col&gt;
+          &lt;v-col cols="6"&gt;
+            &lt;v-btn
+              router
+              :to="links[0].signup"
+              color="amber accent-4"
+              class="mx-1 black--text font-weight-bold"
+            &gt;
+              &lt;span&gt;Sign up&lt;/span&gt;
+              &lt;v-icon right&gt;
+                login
+              &lt;/v-icon&gt;
+            &lt;/v-btn&gt;
+          &lt;/v-col&gt;
+        &lt;/v-row&gt;
+      &lt;/div&gt;
     &lt;/v-app-bar&gt;
   &lt;/nav&gt;
 &lt;/template&gt;
@@ -363,7 +375,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Jun 22 2021 15:54:46 GMT+0200 (Ora legale dell’Europa centrale)
+                at Wed Jun 23 2021 11:52:59 GMT+0200 (Ora legale dell’Europa centrale)
             </div>
         </div>
         <script src="..\..\prettify.js"></script>

@@ -7,7 +7,6 @@
     |   |-- .prettierc.json
     |   |-- .prettierignore
     |   |-- babel.config.js
-    |   |-- directoryList.md
     |   |-- jest.config.js
     |   |-- jsconfig.json
     |   |-- package-lock.json
@@ -34,3 +33,4 @@
     |       |-- unit
     |-- docs
     |-- documento tecnico
+    |-- directoryList.md

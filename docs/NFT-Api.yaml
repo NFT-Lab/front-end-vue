@@ -74,64 +74,94 @@ paths:
                 test1:
                   value:
                     - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
-                      title: Filippo Baggione
-                      description: ciccione pasticcio
+                      title: Contemporaneità
+                      description: Opera interessante e contemporanea di grande spessore
                       authorId: 18
                       price: 52
                       currency: ETH
                       status: false
                       path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
                       type: video
-                      owner: Frank Sinatra
+                      owner: Filippo Baggio
                       author: Frank Sinatra
                       categories:
                         - id: 3
                           name: food
+                        - id: 2
+                          name: sport
                     - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
-                      title: Filippone Baggio
-                      description: ciccio pasticcio
-                      authorId: 18
+                      title: Opera di mio figlio
+                      description: Interessante opera creata da mio figlio
+                      authorId: 15
                       price: 52
                       currency: ETH
                       status: false
                       path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
                       type: img
-                      owner: Frank Sinatra
-                      author: Frank Sinatra
+                      owner: Andrea Rossi
+                      author: Andrea Rossi
                       categories:
                         - id: 2
                           name: sport
                     - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
-                      title: Fili Baggio
-                      description: ciccio pasticcio
+                      title: L'unico anello
+                      description: Questo è l'unico anello
                       authorId: 18
                       price: 52
                       currency: ETH
                       status: false
                       path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
                       type: img
-                      owner: Frank Sinatra
-                      author: Frank Sinatra
+                      owner: Frodo Baggins
+                      author: Celebrimbor
                       categories:
                         - id: 3
                           name: food
                     - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
-                      title: Filippo Baggi
-                      description: ciccio pasticcio
+                      title: Interessante
+                      description: 'Opera molto interessante, a mio parere vale molto'
                       authorId: 18
                       price: 52
                       currency: ETH
                       status: false
                       path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
                       type: img
-                      owner: Frank Sinatra
-                      author: Frank Sinatra
+                      owner: Andrea Rossi
+                      author: Frank Moses
                       categories:
                         - id: 3
                           name: food
                     - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
-                      title: Pippo Baggio
-                      description: ciccio pasticcio
+                      title: Cantando sotto la pioggia
+                      description: Opera omaggio al celebre musical Cantanto sotto la pioggia
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Moses
+                      author: Frank Moses
+                      categories:
+                        - id: 2
+                          name: sport
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Ricordi di un'estate
+                      description: Opera creata durante le mie ultime vacanze estive
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Moses
+                      author: Andrea Rossi
+                      categories:
+                        - id: 2
+                          name: sport
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Inverno
+                      description: Che bello il rumore del caminetto acceso con fuori una bella nevicata prima di Natale
                       authorId: 18
                       price: 52
                       currency: ETH
@@ -139,48 +169,62 @@ paths:
                       path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
                       type: img
                       owner: Frank Sinatra
+                      author: Andrea Rossi
+                      categories:
+                        - id: 2
+                          name: sport
+                    - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
+                      title: Primavera
+                      description: 'Un fiore, del vento fresco, un''ape svolazzante e un palloncino che vola nel cielo'
+                      authorId: 18
+                      price: 52
+                      currency: ETH
+                      status: false
+                      path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
+                      type: img
+                      owner: Frank Moses
                       author: Frank Sinatra
                       categories:
                         - id: 2
                           name: sport
                     - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
-                      title: Pippo Minnie
-                      description: ciccio pasticcio
+                      title: Fiori blu
+                      description: Un dipinto di bellissimi fiori blu
                       authorId: 18
                       price: 52
                       currency: ETH
                       status: false
                       path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
                       type: img
-                      owner: Frank Sinatra
+                      owner: Frank Moses
                       author: Frank Sinatra
                       categories:
                         - id: 2
                           name: sport
                     - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
-                      title: Pippo Paperino
-                      description: ciccio pasticcio
+                      title: Realtà alternativa
+                      description: Una dimensione parallela o universo parallelo è un ipotetico universo separato e distinto dal nostro ma coesistente con esso
                       authorId: 18
                       price: 52
                       currency: ETH
                       status: false
                       path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
                       type: img
-                      owner: Frank Sinatra
+                      owner: Frank Moses
                       author: Frank Sinatra
                       categories:
                         - id: 2
                           name: sport
                     - id: Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat
-                      title: Pippo Pluto
-                      description: ciccio pasticcio
+                      title: Primavera
+                      description: 'Un fiore, del vento fresco, un''ape svolazzante e un palloncino che vola nel cielao'
                       authorId: 18
                       price: 52
                       currency: ETH
                       status: false
                       path: gallery/imgQmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat.jpg
                       type: img
-                      owner: Frank Sinatra
+                      owner: Frank Moses
                       author: Frank Sinatra
                       categories:
                         - id: 2

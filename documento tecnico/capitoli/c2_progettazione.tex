@@ -30,8 +30,14 @@ Un pregio di questo framework è che adotta un approccio al mobile, questo signi
 	\end{center}
 \end{figure}
 \subsection{Vuex}
-Vuex è uno state management pattern per applicazioni sviluppate in Vue.js e serve come store centralizzato per tutti i componenti dell'applicazione. Esso contiene stati e regole che assicurano che lo stato può essere modificato solo in modo prevedibile.
-
+Vuex è una libreria  per applicazioni sviluppate in Vue.js e serve come store centralizzato per tutti i componenti dell'applicazione. Esso contiene stati e regole che assicurano che lo stato può essere modificato solo in modo prevedibile.\\
+Inoltre Vuex è uno state management pattern che aiuta a salvare i dati in maniera persistente per poterli utilizzare all'interno dell'applicazione da diversi componenti in maniera efficiente.
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.7\columnwidth]{immagini/vuex.png}
+		\caption{Pattern di Vuex}
+	\end{center}
+\end{figure}
 \section{Organizzazione dei file}
 Quando si crea un progetto per la prima volta tramite il framework Vue.js vengono create di default delle cartelle e dei file per facilitare la progettazione del software. La suddivisione delle cartelle è rappresentata qui di seguito.
 
@@ -110,7 +116,7 @@ Entrambi i file hanno la struttura uguale e quello che cambia è il contenuto, i
 \end{itemize}
 
 Gli state del file \textbf{\textit{CurrentUser.js}} li ho resi persistenti, in questo modo potranno essere utilizzati all'interno della web application, per esempio dopo che l'utente ha eseguito l'autenticazione utilizzo i suoi dati per visualizzare il suo nome nel bottone che lo porta alla pagina personale. Queste informazioni possono essere utilizzate per fare dei controlli che decidono se reindirizzare o meno certe parti della web application.\\
-Essendo legati a servizi diversi i metodi e le chiamate al back end dei due file sono molto diversi. infatti ad esempio nel file \textbf{\textit{CurrentUser.js}} ho implementato il metodo \textit{loginUser} che effettua una POST per autenticare l'utente nel sito salvando le sue informazioni per poterle utilizzare dove necessario, mentre nel file \textbf{\textit{NftService.js}} ho implementato il metodo \textit{uploadOpera} che effettua una POST per salvare una nuova opera nel database.
+Essendo legati a servizi diversi i metodi e le chiamate al back end dei due file sono molto diversi e nelle sezioni successive verranno spiegate nel dettaglio.
 
 \subsection{CurrentUser.js}
 
@@ -120,7 +126,7 @@ In questo file ho implementato diversi servizi legati all'utente. I servizi in q
 	\begin{lstlisting}
 		loginUser({ commit }, user) {
 			axios
-			.post(urlStop + 'login', {
+			.post(urlBackEnd + 'login', {
 				email: user.email,
 				password: user.password
 			})
@@ -135,12 +141,12 @@ In questo file ho implementato diversi servizi legati all'utente. I servizi in q
 			});
 		}
 	\end{lstlisting}
-	Come si può vedere dall'immagine soprastante viene eseguita una chiamata POST al database specificando i dati dell'utente che verranno inviati. Se la chiamata va a buon fine i dati dell'utente autenticato verranno salvati sia nello stato persistente che nel localStorage del web e si verrà reindirizzati alla homepage. Se invece la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna il back end;
+	Come si può vedere dall'immagine soprastante viene eseguita una chiamata POST al database specificando i dati dell'utente che verranno inviati. Se la chiamata va a buon fine i dati dell'utente autenticato verranno salvati sia nello stato persistente che nel localStorage del web e si verrà reindirizzati alla homepage. Se invece la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna il back end.
 	\item \textbf{registrazione}
 	\begin{lstlisting}
 		  signUp({ commit }, user) {
 			axios
-			.post(urlStop + 'signup', {
+			.post(urlBackEnd + 'signup', {
 				email: user.email,
 				password: user.password,
 				name: user.name,
@@ -159,7 +165,7 @@ In questo file ho implementato diversi servizi legati all'utente. I servizi in q
 			});
 		}
 	\end{lstlisting}
-	Come si può vedere dall'immagine soprastante viene eseguita anche per la registrazione una chiamata POST al database specificando i dati dell'utente che verranno inviati, di numero maggiore rispetto ai dati per l'autenticazione. Se la chiamata va a buon fine i dati dell'utente autenticato verranno salvati sia nello stato persistente che nel localStorage del web e si verrà reindirizzati alla homepage. Se invece la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna il back end;
+	Come si può vedere dall'immagine soprastante viene eseguita anche per la registrazione una chiamata POST al database specificando i dati dell'utente che verranno inviati, di numero maggiore rispetto ai dati per l'autenticazione. Se la chiamata va a buon fine i dati dell'utente autenticato verranno salvati sia nello stato persistente che nel localStorage del web e si verrà reindirizzati alla homepage. Se invece la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna il back end.
 	\item \textbf{logout}
 	\begin{lstlisting}
 		  logOut({ commit }) {
@@ -167,78 +173,134 @@ In questo file ho implementato diversi servizi legati all'utente. I servizi in q
 			localStorage.clear('user');
 		}
 	\end{lstlisting}
-	Questo è l'unico metodo che non possiede chiamate effettive al back end, infatti quando l'utente vuole effettuare il log out verrà semplicemente chiamato un metodo che fa ritornare l'utente alla homepage e cancella i dati dell'utente nello stato persistente. Infine viene svuotato il localStorage dai dati dell'utente;
-	\item \textbf{modifca dati personali}
+	Come si può vedere dall'immagine soprastante questo è l'unico metodo che non possiede chiamate effettive al back end, infatti quando l'utente vuole effettuare il log out verrà semplicemente chiamato un metodo che fa ritornare l'utente alla homepage e cancella i dati dell'utente nello stato persistente. Infine viene svuotato il localStorage dai dati dell'utente.
+	\item \textbf{modifica dei dati personali}
 	\begin{lstlisting}
-		  updateUser({ commit }, user) {
-			var url = urlStop + `user/${JSON.parse(localStorage.getItem('user')).id}`;
-			console.log(user);
-			axios
-			.put(url, {
-				password: user.password,
-				name: user.name,
-				surname: user.surname,
-				email: user.email,
-				dob: user.dob,
-				wallet: user.wallet
-			})
-			.then(response => {
-				commit('setUser', response.data);
-				localStorage.setItem('user', JSON.stringify(response.data));
-			});
-		}
+		 updateUser({ commit }, user) {
+		 	var url = urlStop + `user/${JSON.parse(localStorage.getItem('user')).id}`;
+		 	console.log(user);
+		 	axios
+		 	.put(url, {
+		 		password: user.password,
+		 		name: user.name,
+		 		surname: user.surname,
+		 		email: user.email,
+		 		dob: user.dob,
+		 		wallet: user.wallet
+		 	})
+		 	.then(response => {
+		 		commit('setUser', response.data);
+		 		localStorage.setItem('user', JSON.stringify(response.data));
+		 	}).catch(error =>{
+		 		commit('setErrorMessageMod', error.response.status);
+		 	})
+		 }
 	\end{lstlisting}
-	\item \textbf{modifica password}
+	Come si può vedere dall'immagine soprastante viene eseguita la modifica dei dati personali tramite una chiamata PUT al database specificando i dati dell'utente che verranno inviati e inviando come parametro l'id identificativo dell'utente. Se la chiamata va a buon fine i dati aggiornati verranno salvati sia nello stato persistente che nel localStorage del web. Se invece  la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna dal back end.
+	\item \textbf{modifica della password}
 	\begin{lstlisting}
 		  updatePassword({}, user) {
-			axios.put(urlStop + 'user/password', {
-				email: user.email,
-				oldPassword: user.oldPassword,
-				newPassword: user.newPassword
-			});
-		}
-	}
+		  	axios.put(urlStop + 'user/password', {
+		  		email: user.email,
+		  		oldPassword: user.oldPassword,
+		  		newPassword: user.newPassword
+		  	}).catch(error =>{
+		  		commit('setErrorMessageMod', error.response.status);
+		  	})
+		  }
 	\end{lstlisting}
+	Come si può vedere dall'immagine soprastante viene eseguita la modifica della password tramite una chiamata PUT al database. Essendo un dato che non deve essere utilizzato all'interno del sito per questioni di sicurezza, il database non ritorna alcuna risposta. Se invece  la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna dal back end.
 \end{itemize}
 
 \subsection{NftService.js}
 In questo file ho implementato diversi servizi legati agli NFT. I servizi in questione sono:
 \begin{itemize}
-	\item \textbf{opere utente}
+	\item \textbf{opere dell'utente utente}
 	\begin{lstlisting}
 		userOperas({ commit }) {
 			var url =
-			urlStop + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
+			urlBackEnd + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
 			axios.get(url).then(response => {
 				commit('setOperas', response.data);
 			});
 		}
 	\end{lstlisting}
-	\item \textbf{categorie}
+	Come si può vedere dall'immagine soprastante questo metodo serve per ritornare le opere dell'utente. Questo avviene tramite una chiamata GET al database fornendo come parametro l'id identificativo dell'utente.
+	\item \textbf{categorie disponibili}
 	\begin{lstlisting}
-		contenuto...
+	getCategories({ commit }) {
+		axios.get(urlBackEnd + 'categories'+examples).then(response => {
+			commit('setCategories', response.data);
+		});
+	}
 	\end{lstlisting}
-	\item \textbf{upload}
+	Come si può vedere dall'immagine soprastante questo metodo serve per ritornare le categorie disponibili nel database tramite una chiamata GET al database. Questo metodo viene invocato ogni qual volta serve sapere le categorie presenti, quindi ad esempio per caricare una nuova opera, per modificarne una o per la creazione del filtro presente nella homepage.
+	\item \textbf{caricamento di una nuova opera}
 	\begin{lstlisting}
-		contenuto...
+	uploadOpera({ commit }, opera) {
+		var url =
+		urlBackEnd + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
+		axios
+		.post(url, opera)
+		.then(response => {
+			commit('setOpera', response.data);
+			router.push('/');
+		})
+		.catch(error => {
+			commit('setErrorOpera', error.response.data);
+		});
+	}
 	\end{lstlisting}
-		\item \textbf{modifica}
+	Come si può vedere dall'immagine soprastante questo metodo serve per caricare una nuova opera nel database. Questo avviene tramite una chiamata POST al database fornendo come dati le informazioni della nuova opera e come parametro l'id identificativo dell'utente. Se invece  la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna dal back end.
+	\item \textbf{modifica di un'opera esistente}
 	\begin{lstlisting}
-		contenuto...
+		updateOpera({ commit }, opera) {
+			var url =
+			urlStop + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
+			axios
+			.put(url, {
+				id: opera.id,
+				description: opera.description,
+				title: opera.title,
+				price: Number(opera.price),
+				currency: 'ETH',
+				type: opera.type,
+				author: opera.author,
+				owner: opera.owner,
+				categories: opera.categories,
+				path: opera.path
+			})
+			.then(response => {
+				commit('setOpera', response.data);
+			})
+			.catch(error => {
+				commit('setErrorOpera', error.response.data);
+			});
+		}
 	\end{lstlisting}
+	Come si può vedere dall'immagine soprastante questo metodo serve per modificare un'opera già presente nel database. Questo avviene tramite una chiamata PUT al database fornendo come dati le nuove informazioni dell'opera e come parametro l'id identificativo dell'utente. Se invece  la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna dal back end.
 		\item \textbf{home}
 	\begin{lstlisting}
-		contenuto...
+	getHomeOperas({ commit }) {
+		axios.get(urlBackEnd + 'nft'+examples).then(response => {
+			commit('setHomeOperas', response.data);
+		});
+	}
 	\end{lstlisting}
+	Come si può vedere dall'immagine soprastante questo metodo serve per ottenere tutte le opere presenti nel database per mostrarle nella homepage. Questo avviene tramite una chiamata GET al database.
 \end{itemize}
 
 \section{Maschere implementate}
 
-Per comprendere meglio il funzionamento delle maschere queste verranno spiegate suddivise in base alla cartella di appartenenza, ovvero la cartella \textbf{\textit{View}} e la cartella \textbf{\textit{Components}} (NON mi piace)
+Per comprendere meglio il funzionamento delle maschere queste verranno spiegate nelle sezioni sottostanti nel dettaglio.
 
-\subsection{View}
-\subsubsection{Home}
-Pagina principale del sito tramite la quale l'utente può visualizzare tutte le opere presenti in esso e, selezionata una di queste, potrà visualizzare nel dettaglio tutte le sue informazioni. Una parte importante è la presenza di una barra di navigazione che aiuta l'utente a navigare all'interno del sito.
+\subsection{Barra di navigazione}
+Questa componente è presente in quasi tutto il sito ad eccezione delle pagine di Login, di Registrazione e di Upload dell'opera. Per poter implementare questo dettaglio il componente che ha il compito di reindirizzarla, ovvero il file \textbf{\textit{App.vue}}, possiede una condizione dove viene fatto il controllo se la pagina in cui si sta navigando sia una di quelle dove deve essere presente o meno e di conseguenza verrà reindirizzata o meno. Se il controllo va a buon fine la Navbar verrà reindirizzata, altrimenti non verrà mostrata all'utente.\\
+Un'altra particolarità di questo componente è la presenza di due bottoni che variano in funzione se l'utente è autenticato o meno nel sito. Infatti se l'utente non si autentica si vedranno due bottoni per effettuare il login o la registrazione, mentre se esso è autenticato si bottoni serviranno per visualizzare la pagina personale oppure effettuare il logout. Per gestire questa particolarità è stato implementato un controllo condizionale dove controlla appunto lo stato dell'utente tramite una variabile chiamata \textit{isLogged}, che assume il valore a vero se autenticato.
+\subsection{Home}
+Questa è la pagina iniziale tramite la quale l'utente può visualizzare tutte le opere presenti nel database con integrata la paginazione, inoltre è presente una combobox che da la possibilità di filtrare le opere per categoria. Infine è presente un bottone "Viasualizza dettagli" che ha una funzionalità che verrà spiegata in seguito.
+\subsection{Visualizza dettagli}
+Questa funzionalità fa apparire una finestra di dialogo a schermo interno che mostra tutte le informazioni dettagliate dell'opera selezionata. Nella parte sinistra l'utente potrà vedere una preview dell'opera, mentre nella parte sinistra l'utente potrà vedere: titolo, prezzo con valuta, descrizione, autore, proprietario e categorie di appartenenza.
 \subsection{Login}
 In questa pagina l'utente può effettuare l'autenticazione nel sito tramite email e password. In questi due campi sono state inserite delle regole che, se non rispettate, generano un errore visualizzabile tramite una scritta sotto il campo che si sta modificando. Le regole in questione sono:
 \begin{itemize}
@@ -247,6 +309,13 @@ In questa pagina l'utente può effettuare l'autenticazione nel sito tramite emai
 	\textit{esempio di email valida: nome@email.it};
 	\item la password deve avere una lunghezza di minimo otto caratteri di cui almeno una lettera maiuscola, una minuscola, un numero e una carattere speciale.
 \end{itemize}
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.9\columnwidth]{immagini/login.png}
+		\caption{Pagina di login}
+	\end{center}
+\end{figure}
+In alto a sinistra è presente un bottone per tornare alla home. Inoltre il bottone per validare l'autenticazione è disabilitato fino a quando l'utente non compila entrambi i campi per evitare chiamate al back end con dati mancanti.
 \subsection{Registrazione}
 In questa pagine l'utente può effettuare la registrazione nel sito inserendo: nome, cognome, email, data di nascita, wallet address, password e conferma password. Similmente alla pagina di login sono state inserite delle regole che, se non rispettate, generano un errore visualizzabile tramite una scritta sotto il campo che si sta modificando. Le regole in questione sono:
 \begin{itemize}
@@ -259,20 +328,41 @@ In questa pagine l'utente può effettuare la registrazione nel sito inserendo: n
 	\item la password deve avere una lunghezza di minimo otto caratteri di cui almeno una lettera maiuscola, una minuscola, un numero e una carattere speciale;
 	\item la conferma della password deve essere identica alla password appena inserita.
 \end{itemize}
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.9\columnwidth]{immagini/registrazione.png}
+		\caption{Pagina di registrazione}
+	\end{center}
+\end{figure}
+Come per la pagina di autenticazione, in alto a sinistra è presente un bottone per tornare alla home. Inoltre il bottone per validare l'autenticazione è disabilitato fino a quando l'utente non compila entrambi i campi per evitare chiamate al back end con dati mancanti.
 \subsection{Pagina dell'utente}
 In questa pagina l'utente può visualizzare le sue informazioni personali e le opere che possiede. Nel momento che verranno modificate le informazioni tramite le funzioni apposite da parte dell'utente, queste verranno modificate a schermo automaticamente.
-\subsubsection{Upload opera}
+\subsection{Upload opera}
 In questa pagina è possibile per l'utente aggiungere una nuova opera. I campi da compilare sono: titolo, descrizione, file, prezzo. Quando l'utente carica un file verranno generati automaticamente una preview del file specifica in base al tipo del file inserito e un campo non modificabile che indica il tipo del file inserito. Similmente alla pagina di registrazione sono state inserite delle regole che, se non rispettate, generano un errore visualizzabile tramite una scritta sotto il campo che si sta modificando. Le regole in questione sono:
 \begin{itemize}
 	\item tutti i campi sono obbligatori, quindi devono essere tutti compilati.
 \end{itemize}
-\subsection{Components}
-\subsubsection{Barra di navigazione}
-Questa componente è presente in quasi tutto il sito ad eccezione delle pagine di Login e di Registrazione. Per poter implementare questo dettaglio il componente che ha il compito di reindirizzarla, ovvero il file \textbf{\textit{App.vue}}, possiede una condizione dove viene fatto il controllo se la pagina in cui si sta navigando sia una di quelle dove deve essere presente o meno la Navbar. Se il controllo va a buon fine la Navbar verrà reindirizzata, altrimenti non verrà mostrata all'utente.\\
-Un'altra particolarità di questo componente è la presenza di due bottoni che variano in funzione se l'utente è autenticato o meno nel sito. Infatti se l'utente non si autentica si vedranno due bottoni per effettuare il login o la registrazione, mentre se esso è autenticato si bottoni serviranno per visualizzare la pagina personale oppure effettuare il logout. Per gestire questa particolarità è stato implementato un if else (HA UN NOME QUESTA COSA) dove controlla appunto lo stato dell'utente tramite una variabile chiamata \textit{isLogged}, vera se autenticato.
-\subsubsection{Gestione opere}
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.9\columnwidth]{immagini/uploadOpera.png}
+		\caption{Pagina di upload dell'opera}
+	\end{center}
+\end{figure}
+\subsection{Gestione opere}
 L'utente può unicamente modificare una sua opera ma non può cancellarla. Questo è dovuto al fatto che al momento dell'upload l'opera verrà caricata sulla blockchain rendendola un elemento unico ed irripetibile quindi non può cancellarla. Per motivi analoghi l'utente ha delle restrizioni anche nella modifica dell'opera; infatti di essa può modificare solo: titolo, descrizione, prezzo e categorie di appartenenza. Un altro campo non modificabile è il tipo del file caricato.
-\subsubsection{Modifica dati personali}
+\subsection{Modifica dati personali}
 L'utente, dopo aver premuto un bottone con la dicitura "Modifica dati personali", vedrà apparire una finestra di avviso dove può modificare i propri dati. Per motivi di univocità l'utente non potrà modificare l'email con cui ha fatto l'accesso, infatti potrà modificare solamente il nome ed il cognome. Inoltre per motivi di sicurezza il bottone per confermare la modifica è disabilitato di default e viene data la possibilità di confermare la modifica solo dopo aver inserito la password corrente.
-\subsubsection{Modifica password}
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.8\columnwidth]{immagini/modificaDati.png}
+		\caption{Finestra di dialogo per la modifica dei dati}
+	\end{center}
+\end{figure}
+\subsection{Modifica password}
 L'utente dopo aver premuto un bottone con la dicitura "Modifica password", vedrà apparire una finestra di avviso dove può modificare la password. Per poterlo fare, per motivi di sicurezza, l'utente dovrà inserire la sua email, la password corrente e la nuova password. Similmente alla modifica dei dati personali, il bottone per confermare la modifica rimarrà disattivato fino a quando l'utente non avrà completato tutti i campi.
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.8\columnwidth]{immagini/modificaPassword.png}
+		\caption{Finestra di dialogo per la modifica della password}
+	\end{center}
+\end{figure}
