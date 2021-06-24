@@ -1,6 +1,6 @@
 import Vuex from 'vuex';
 import Vuetify from 'vuetify';
-import { mount, createLocalVue, shallowMount } from '@vue/test-utils';
+import { mount, createLocalVue } from '@vue/test-utils';
 import VueRouter from 'vue-router';
 import store from '@/store';
 import home from '@/view/Home.vue';
@@ -13,7 +13,7 @@ describe('home.vue', () => {
     vuetify = new Vuetify();
   });
   it('Check if content render', () => {
-    const wrapper = shallowMount(home, {
+    const wrapper = mount(home, {
       localVue,
       store,
       vuetify

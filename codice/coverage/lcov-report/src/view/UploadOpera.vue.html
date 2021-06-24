@@ -22,9 +22,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.13% </span>
+                <span class="strong">17.24% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/31</span>
+                <span class='fraction'>5/29</span>
             </div>
         
             
@@ -43,9 +43,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.13% </span>
+                <span class="strong">17.24% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/31</span>
+                <span class='fraction'>5/29</span>
             </div>
         
             
@@ -293,21 +293,7 @@
 <a name='L235'></a><a href='#L235'>235</a>
 <a name='L236'></a><a href='#L236'>236</a>
 <a name='L237'></a><a href='#L237'>237</a>
-<a name='L238'></a><a href='#L238'>238</a>
-<a name='L239'></a><a href='#L239'>239</a>
-<a name='L240'></a><a href='#L240'>240</a>
-<a name='L241'></a><a href='#L241'>241</a>
-<a name='L242'></a><a href='#L242'>242</a>
-<a name='L243'></a><a href='#L243'>243</a>
-<a name='L244'></a><a href='#L244'>244</a>
-<a name='L245'></a><a href='#L245'>245</a>
-<a name='L246'></a><a href='#L246'>246</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L238'></a><a href='#L238'>238</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -523,21 +509,19 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -552,7 +536,7 @@
     &lt;v-layout fill-height&gt;
       &lt;v-row class="pa-1" dense&gt;
         &lt;v-btn
-          class="my-2 black--text"
+          class="my-2 black--text font-weight-bold"
           router
           :to="links[0].paginaPersonale"
           color="amber accent-4"
@@ -608,26 +592,20 @@
                     &lt;/v-col&gt;
                     &lt;v-col&gt;
                       &lt;v-img
-                        v-if="typeNumber == 0"
-                        src="@/assets/upload.png"
-                        max-height="100"
-                        max-width="100px"
-                      /&gt;
-                      &lt;v-img
-                        v-else-if="typeNumber == 1"
+                        v-if="typeNumber == 1"
                         :src="url"
                         max-height="200px"
                         max-width="200px"
                       /&gt;
                       &lt;v-img
                         v-else-if="typeNumber == 2"
-                        src="@/assets/video.jpg"
+                        src="@/assets/video.png"
                         max-height="200px"
                         max-width="200px"
                       /&gt;
                       &lt;v-img
                         v-else-if="typeNumber == 3"
-                        src="@/assets/audio.jpg"
+                        src="@/assets/audio.png"
                         max-height="200px"
                         max-width="200px"
                       /&gt;
@@ -726,7 +704,7 @@ export default {
       file: "",
       url: "",
       rules: {
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >        required: val =&gt; !!val || "Questo è un campo obbligatorio"</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >        required: val =&gt; !!val || "Questo è un campo obbligatorio",</span></span>
       },
       urlPreview: {
         doc: "require('@src/assets/doc.png)",
@@ -761,13 +739,14 @@ export default {
 <span class="cstat-no" title="statement not covered" >      formatData.append("opera", JSON.stringify(this.opera));</span>
 <span class="cstat-no" title="statement not covered" >      this.opera = formatData;</span>
 <span class="cstat-no" title="statement not covered" >      this.$store.dispatch("nftService/uploadOpera", formatData);</span>
-<span class="cstat-no" title="statement not covered" >      if (this.$store.getters["nftService/errorMessageOpera"] !== null)</span>
+<span class="cstat-no" title="statement not covered" >      if (this.$store.getters["nftService/errorMessageOpera"] !== '')</span>
         this.alert = true;
     },
 <span class="fstat-no" title="function not covered" >    previewImage() {</span>
 <span class="cstat-no" title="statement not covered" >      console.log(this.file.type);</span>
 <span class="cstat-no" title="statement not covered" >      if (this.file === null) {</span>
-<span class="cstat-no" title="statement not covered" >        this.url = "";</span>
+<span class="cstat-no" title="statement not covered" >        this.typeNumber = 0;</span>
+<span class="cstat-no" title="statement not covered" >        this.opera.type = "";</span>
       } else {
 <span class="cstat-no" title="statement not covered" >        if (this.file.type.includes("image")) {</span>
 <span class="cstat-no" title="statement not covered" >          this.typeNumber = 1;</span>
@@ -775,15 +754,12 @@ export default {
 <span class="cstat-no" title="statement not covered" >          this.opera.type = "Immagine";</span>
 <span class="cstat-no" title="statement not covered" >        } else if (this.file.type.includes("video")) {</span>
 <span class="cstat-no" title="statement not covered" >          this.typeNumber = 2;</span>
-<span class="cstat-no" title="statement not covered" >          this.url = "@src/assets/video.jpg";</span>
 <span class="cstat-no" title="statement not covered" >          this.opera.type = "Video";</span>
 <span class="cstat-no" title="statement not covered" >        } else if (this.file.type.includes("audio")) {</span>
 <span class="cstat-no" title="statement not covered" >          this.typeNumber = 3;</span>
-<span class="cstat-no" title="statement not covered" >          this.url = this.urlPreview.audio;</span>
 <span class="cstat-no" title="statement not covered" >          this.opera.type = "Audio";</span>
         } else {
 <span class="cstat-no" title="statement not covered" >          this.typeNumber = 4;</span>
-<span class="cstat-no" title="statement not covered" >          this.url = this.urlPreview.doc;</span>
 <span class="cstat-no" title="statement not covered" >          this.opera.type = "Documento";</span>
         }
       }
@@ -798,7 +774,7 @@ export default {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Jun 23 2021 11:52:59 GMT+0200 (Ora legale dell’Europa centrale)
+                at Thu Jun 24 2021 19:34:05 GMT+0200 (Ora legale dell’Europa centrale)
             </div>
         </div>
         <script src="..\..\prettify.js"></script>

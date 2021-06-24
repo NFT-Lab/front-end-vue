@@ -200,7 +200,7 @@ export default {
   methods: {
     sendDataSignUp() {
       this.$store.dispatch("CurrentUser/signUp", this.user);
-      if (this.$store.getters["CurrentUser/errorMessageSig"] !== null)
+      if (this.$store.getters["CurrentUser/errorMessageSig"] !== '')
         this.alert = true;
     },
     save(date) {

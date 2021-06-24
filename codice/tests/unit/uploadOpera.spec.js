@@ -1,7 +1,5 @@
-import Vuex from 'vuex';
 import Vuetify from 'vuetify';
-import { mount, createLocalVue, shallowMount } from '@vue/test-utils';
-import VueRouter from 'vue-router';
+import { mount, createLocalVue } from '@vue/test-utils';
 import store from '@/store';
 import uploadOpera from '@/view/UploadOpera.vue';
 
@@ -12,7 +10,7 @@ describe('uploadOpera.vue', () => {
   beforeEach(() => {
     vuetify = new Vuetify();
   });
-  const wrapper = shallowMount(uploadOpera, {
+  const wrapper = mount(uploadOpera, {
     localVue,
     store,
     vuetify

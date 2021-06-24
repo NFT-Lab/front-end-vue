@@ -1,5 +1,5 @@
 import Vuetify from 'vuetify';
-import { mount, createLocalVue, shallowMount } from '@vue/test-utils';
+import { mount, createLocalVue } from '@vue/test-utils';
 import store from '@/store';
 import particle from '@/view/Particle.vue';
 
@@ -11,7 +11,7 @@ describe('particle.vue', () => {
     vuetify = new Vuetify();
   });
   it('Check if content render', () => {
-    const wrapper = shallowMount(particle, {
+    const wrapper = mount(particle, {
       localVue,
       store,
       vuetify

@@ -24,14 +24,27 @@
         <v-row class="pa-4">
           <v-col cols="6">
             <v-img
-              contain
+             contain
               max-height="800"
               max-width="800"
-              :src="
-                'https://cloudflare-ipfs.com/ipfs/' +
-                  opereId[Math.floor(Math.random() * opereId.length)]
-              "
-            />
+                  v-if="typeNumber(visiblePage) == 1"
+                  :src="
+                    'https://cloudflare-ipfs.com/ipfs/' +
+                      opereId[Math.floor(Math.random() * opereId.length)]
+                  "
+                />
+                <v-img
+                  v-else-if="typeNumber(visiblePage) == 2"
+                  src="@/assets/video.png"
+                />
+                <v-img
+                  v-else-if="typeNumber(visiblePage) == 3"
+                  src="@/assets/audio.png"
+                />
+                <v-img
+                  v-else-if="typeNumber(visiblePage) == 4"
+                  src="@/assets/doc.png"
+                />
             <!--<v-img
             :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
           />-->
@@ -92,25 +105,26 @@ export default {
       opereId: [
         "QmX5FkTotxKRziu5a7NXz16YeHrVgYw98RzTgNWvi8HmDC",
 
-        "QmUZr5giEkQynVP4whjkrPA5x9HjfmonCt2j5WCCJ6GJYt",
-
-        "QmdDN19DFWsGAL5hsdYDiPWLJpcNnezEqcMai8UnWayTCy",
-
-        "QmUoxQnAHehMEKH1CCbr1bu69P4r79kPXRKFqn6v3Pyret",
-
-        "QmNe7jwQqawJ9TNouzBwDLfS294SxNo7FEuuKBkkpRRFHh",
-
-        "QmRMEwa9jLv2iNxrpfZ8Z2bNMTZEFeyUVnt6fF5Xenk7Ms",
-
-        "QmbHx7zHgibMF9ktjaRm5dDT3bRAtqa7EVBPJ8jTvpLahe",
-
         "QmWjHc9zb5ojPsjA43B3SFyKRPqd9Mc57R9EnTCgduyNzv",
 
         "Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat",
 
         "QmUZKcyxFm82CpsuRxkentY3zw8dRxGxHni8ggDuxQQYDP"
-      ]
+      ],
     };
+  },
+  methods: {
+        typeNumber(visiblePage) {
+      if ((visiblePage.type === "img")) {
+        return 1;
+      } else if ((visiblePage.type === "video")) {
+        return 2;
+      } else if ((visiblePage.type === "audio")) {
+        return 3;
+      } else {
+        return 4;
+      }
+    }
   }
 };
 </script>

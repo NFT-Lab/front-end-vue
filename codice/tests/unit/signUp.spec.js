@@ -1,6 +1,6 @@
 import Vuex from 'vuex';
 import Vuetify from 'vuetify';
-import { mount, createLocalVue, shallowMount } from '@vue/test-utils';
+import { mount, createLocalVue } from '@vue/test-utils';
 import VueRouter from 'vue-router';
 import store from '@/store';
 import signUp from '@/view/SignUp.vue';
@@ -12,7 +12,7 @@ describe('signUp.vue', () => {
   beforeEach(() => {
     vuetify = new Vuetify();
   });
-  const wrapper = shallowMount(signUp, {
+  const wrapper = mount(signUp, {
     localVue,
     store,
     vuetify

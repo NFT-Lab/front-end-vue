@@ -14,11 +14,11 @@
 \contentsline {section}{\numberline {2.4}Maschere implementate}{11}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}Barra di navigazione}{11}{subsection.2.4.1}%
 \contentsline {subsection}{\numberline {2.4.2}Home}{11}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}Visualizza dettagli}{11}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.3}Visualizza dettagli}{12}{subsection.2.4.3}%
 \contentsline {subsection}{\numberline {2.4.4}Login}{12}{subsection.2.4.4}%
-\contentsline {subsection}{\numberline {2.4.5}Registrazione}{12}{subsection.2.4.5}%
-\contentsline {subsection}{\numberline {2.4.6}Pagina dell'utente}{13}{subsection.2.4.6}%
-\contentsline {subsection}{\numberline {2.4.7}Upload opera}{13}{subsection.2.4.7}%
-\contentsline {subsection}{\numberline {2.4.8}Gestione opere}{14}{subsection.2.4.8}%
-\contentsline {subsection}{\numberline {2.4.9}Modifica dati personali}{14}{subsection.2.4.9}%
-\contentsline {subsection}{\numberline {2.4.10}Modifica password}{15}{subsection.2.4.10}%
+\contentsline {subsection}{\numberline {2.4.5}Registrazione}{13}{subsection.2.4.5}%
+\contentsline {subsection}{\numberline {2.4.6}Pagina dell'utente}{14}{subsection.2.4.6}%
+\contentsline {subsection}{\numberline {2.4.7}Upload opera}{14}{subsection.2.4.7}%
+\contentsline {subsection}{\numberline {2.4.8}Gestione opere}{15}{subsection.2.4.8}%
+\contentsline {subsection}{\numberline {2.4.9}Modifica dati personali}{16}{subsection.2.4.9}%
+\contentsline {subsection}{\numberline {2.4.10}Modifica password}{16}{subsection.2.4.10}%

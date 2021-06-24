@@ -1,5 +1,5 @@
 import Vuetify from 'vuetify';
-import { mount, createLocalVue, shallowMount } from '@vue/test-utils';
+import {createLocalVue, shallowMount } from '@vue/test-utils';
 import store from '@/store';
 import editUserPassword from '@/components/editUserPassword.vue';
 
@@ -33,4 +33,22 @@ describe('editUserPassword.vue', () => {
     expect(wrapper.vm.isFormValid).toBeFalsy();
     expect(wrapper.find('v-btn').element.hasAttribute('disabled')).not.toBe(true);
   });
+  it('Check if email is changed', () =>{
+    var emailInput = wrapper.find('#emailMPInput');
+    wrapper.find('#emailMPInput').trigger('click');
+    wrapper.find('#emailMPInput').trigger('input');
+    expect(emailInput.value).not.toBe('');
+  });
+  it('Check if old password is changed', () =>{
+    var passwordInput = wrapper.find('#passwordOldInput');
+    wrapper.find('#passwordOldInput').trigger('click');
+    wrapper.find('#passwordOldInput').trigger('input');
+    expect(passwordInput.value).not.toBe('');
+  });
+  it('Check if new password is changed', () =>{
+    var passwordNewInput = wrapper.find('#passwordNewInput');
+    wrapper.find('#passwordNewInput').trigger('click');
+    wrapper.find('#passwordNewInput').trigger('input');
+    expect(passwordNewInput.value).not.toBe('');
+  })
 });

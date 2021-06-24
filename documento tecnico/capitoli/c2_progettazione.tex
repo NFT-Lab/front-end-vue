@@ -299,8 +299,21 @@ Questa componente è presente in quasi tutto il sito ad eccezione delle pagine d
 Un'altra particolarità di questo componente è la presenza di due bottoni che variano in funzione se l'utente è autenticato o meno nel sito. Infatti se l'utente non si autentica si vedranno due bottoni per effettuare il login o la registrazione, mentre se esso è autenticato si bottoni serviranno per visualizzare la pagina personale oppure effettuare il logout. Per gestire questa particolarità è stato implementato un controllo condizionale dove controlla appunto lo stato dell'utente tramite una variabile chiamata \textit{isLogged}, che assume il valore a vero se autenticato.
 \subsection{Home}
 Questa è la pagina iniziale tramite la quale l'utente può visualizzare tutte le opere presenti nel database con integrata la paginazione, inoltre è presente una combobox che da la possibilità di filtrare le opere per categoria. Infine è presente un bottone "Viasualizza dettagli" che ha una funzionalità che verrà spiegata in seguito.
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.7\columnwidth]{immagini/home.png}
+		\caption{Home Page}
+	\end{center}
+\end{figure}
 \subsection{Visualizza dettagli}
 Questa funzionalità fa apparire una finestra di dialogo a schermo interno che mostra tutte le informazioni dettagliate dell'opera selezionata. Nella parte sinistra l'utente potrà vedere una preview dell'opera, mentre nella parte sinistra l'utente potrà vedere: titolo, prezzo con valuta, descrizione, autore, proprietario e categorie di appartenenza.
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.7\columnwidth]{immagini/dettagliHome.png}
+		\caption{Finestra di dialogo delle informazioni dell'opera}
+	\end{center}
+	Questa finestra di dialogo è stata progettata a schermo intero in modo tale da poter aggiungere ulteriori informazioni o funzionalità senza dover modificare la struttura della finestra di dialogo.
+\end{figure}
 \subsection{Login}
 In questa pagina l'utente può effettuare l'autenticazione nel sito tramite email e password. In questi due campi sono state inserite delle regole che, se non rispettate, generano un errore visualizzabile tramite una scritta sotto il campo che si sta modificando. Le regole in questione sono:
 \begin{itemize}
@@ -311,7 +324,7 @@ In questa pagina l'utente può effettuare l'autenticazione nel sito tramite emai
 \end{itemize}
 \begin{figure}[H]
 	\begin{center}
-		\includegraphics[width=0.9\columnwidth]{immagini/login.png}
+		\includegraphics[width=0.7\columnwidth]{immagini/login.png}
 		\caption{Pagina di login}
 	\end{center}
 \end{figure}
@@ -330,13 +343,19 @@ In questa pagine l'utente può effettuare la registrazione nel sito inserendo: n
 \end{itemize}
 \begin{figure}[H]
 	\begin{center}
-		\includegraphics[width=0.9\columnwidth]{immagini/registrazione.png}
+		\includegraphics[width=0.7\columnwidth]{immagini/registrazione.png}
 		\caption{Pagina di registrazione}
 	\end{center}
 \end{figure}
 Come per la pagina di autenticazione, in alto a sinistra è presente un bottone per tornare alla home. Inoltre il bottone per validare l'autenticazione è disabilitato fino a quando l'utente non compila entrambi i campi per evitare chiamate al back end con dati mancanti.
 \subsection{Pagina dell'utente}
-In questa pagina l'utente può visualizzare le sue informazioni personali e le opere che possiede. Nel momento che verranno modificate le informazioni tramite le funzioni apposite da parte dell'utente, queste verranno modificate a schermo automaticamente.
+In questa pagina l'utente può visualizzare le sue informazioni personali e le opere che possiede. Nel momento che verranno modificate le informazioni da parte dell'utente, queste verranno modificate a schermo automaticamente.
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.7\columnwidth]{immagini/userPage.png}
+		\caption{Pagina personale dell'utente}
+	\end{center}
+\end{figure}
 \subsection{Upload opera}
 In questa pagina è possibile per l'utente aggiungere una nuova opera. I campi da compilare sono: titolo, descrizione, file, prezzo. Quando l'utente carica un file verranno generati automaticamente una preview del file specifica in base al tipo del file inserito e un campo non modificabile che indica il tipo del file inserito. Similmente alla pagina di registrazione sono state inserite delle regole che, se non rispettate, generano un errore visualizzabile tramite una scritta sotto il campo che si sta modificando. Le regole in questione sono:
 \begin{itemize}
@@ -344,17 +363,24 @@ In questa pagina è possibile per l'utente aggiungere una nuova opera. I campi d
 \end{itemize}
 \begin{figure}[H]
 	\begin{center}
-		\includegraphics[width=0.9\columnwidth]{immagini/uploadOpera.png}
+		\includegraphics[width=0.7\columnwidth]{immagini/uploadOpera.png}
 		\caption{Pagina di upload dell'opera}
 	\end{center}
 \end{figure}
+Nel momento in cui l'utente carica il file verrà generata un'immagine in base al tipo di file: se viene caricata un'immagine si potrà visualizzare una \textit{preview} di essa invece se viene caricata un'altra tipologia di file verrà generata un'immagine che indica la tipologia.
 \subsection{Gestione opere}
 L'utente può unicamente modificare una sua opera ma non può cancellarla. Questo è dovuto al fatto che al momento dell'upload l'opera verrà caricata sulla blockchain rendendola un elemento unico ed irripetibile quindi non può cancellarla. Per motivi analoghi l'utente ha delle restrizioni anche nella modifica dell'opera; infatti di essa può modificare solo: titolo, descrizione, prezzo e categorie di appartenenza. Un altro campo non modificabile è il tipo del file caricato.
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.7\columnwidth]{immagini/modificaOpera.png}
+		\caption{Finestra di dialogo per la modifica dell'opera}
+	\end{center}
+\end{figure}
 \subsection{Modifica dati personali}
 L'utente, dopo aver premuto un bottone con la dicitura "Modifica dati personali", vedrà apparire una finestra di avviso dove può modificare i propri dati. Per motivi di univocità l'utente non potrà modificare l'email con cui ha fatto l'accesso, infatti potrà modificare solamente il nome ed il cognome. Inoltre per motivi di sicurezza il bottone per confermare la modifica è disabilitato di default e viene data la possibilità di confermare la modifica solo dopo aver inserito la password corrente.
 \begin{figure}[H]
 	\begin{center}
-		\includegraphics[width=0.8\columnwidth]{immagini/modificaDati.png}
+		\includegraphics[width=0.6\columnwidth]{immagini/modificaDati.png}
 		\caption{Finestra di dialogo per la modifica dei dati}
 	\end{center}
 \end{figure}
@@ -362,7 +388,7 @@ L'utente, dopo aver premuto un bottone con la dicitura "Modifica dati personali"
 L'utente dopo aver premuto un bottone con la dicitura "Modifica password", vedrà apparire una finestra di avviso dove può modificare la password. Per poterlo fare, per motivi di sicurezza, l'utente dovrà inserire la sua email, la password corrente e la nuova password. Similmente alla modifica dei dati personali, il bottone per confermare la modifica rimarrà disattivato fino a quando l'utente non avrà completato tutti i campi.
 \begin{figure}[H]
 	\begin{center}
-		\includegraphics[width=0.8\columnwidth]{immagini/modificaPassword.png}
+		\includegraphics[width=0.6\columnwidth]{immagini/modificaPassword.png}
 		\caption{Finestra di dialogo per la modifica della password}
 	\end{center}
 \end{figure}

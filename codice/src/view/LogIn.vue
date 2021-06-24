@@ -126,7 +126,7 @@ export default {
   methods: {
     sendDataLogin() {
       this.$store.dispatch("CurrentUser/loginUser", this.user);
-      if (this.$store.getters["CurrentUser/errorMessageLog"] !== null)
+      if (this.$store.getters["CurrentUser/errorMessageLog"] !== '')
         this.alert = true;
     }
   }

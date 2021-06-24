@@ -16,7 +16,7 @@ const actions = {
   userOperas({ commit }) {
     var url =
       urlStop + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
-    axios.get(url).then(response => {
+    axios.get(url+ examples).then(response => {
       commit('setOperas', response.data);
     });
   },

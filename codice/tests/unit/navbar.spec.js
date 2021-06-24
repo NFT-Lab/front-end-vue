@@ -1,5 +1,5 @@
 import Vuetify from 'vuetify';
-import { mount, createLocalVue, shallowMount } from '@vue/test-utils';
+import { shallowMount, createLocalVue} from '@vue/test-utils';
 import store from '@/store';
 import navBar from '@/components/Navbar.vue';
 

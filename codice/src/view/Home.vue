@@ -26,21 +26,46 @@
         lg="3"
       >
         <v-card class="text-center" color="grey darken-3">
-          <v-list-item >
+          <v-list-item>
             <v-list-item-content>
               <v-list-item-avatar tile size="100">
                 <img
+                  v-if="typeNumber(visiblePage) == 1"
                   :src="
                     'https://cloudflare-ipfs.com/ipfs/' +
                       opereId[Math.floor(Math.random() * opereId.length)]
                   "
                 />
+                <v-img
+                  v-else-if="typeNumber(visiblePage) == 2"
+                  src="@/assets/video.png"
+                  max-height="200px"
+                  max-width="200px"
+                />
+                <v-img
+                  v-else-if="typeNumber(visiblePage) == 3"
+                  src="@/assets/audio.png"
+                  max-height="200px"
+                  max-width="200px"
+                />
+                <v-img
+                  v-else-if="typeNumber(visiblePage) == 4"
+                  src="@/assets/doc.png"
+                  max-height="200px"
+                  max-width="200px"
+                />
                 <!--<v-img
             :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
           />-->
               </v-list-item-avatar>
-              <v-list-item-title class="amber--text font-weight-bold" v-text="visiblePage.title" />
-              <v-list-item-subtitle class="white--text" v-text="visiblePage.description" />
+              <v-list-item-title
+                class="amber--text font-weight-bold"
+                v-text="visiblePage.title"
+              />
+              <v-list-item-subtitle
+                class="white--text"
+                v-text="visiblePage.description"
+              />
               <v-list-item-subtitle class="white--text">
                 {{ visiblePage.price + " " + visiblePage.currency }}
               </v-list-item-subtitle>
@@ -122,6 +147,19 @@ export default {
         var end = this.page * this.perPage;
         operaToSee = operaToFilter.slice(init, end);
         return operaToSee;
+      }
+    }
+  },
+  methods: {
+    typeNumber(visiblePage) {
+      if ((visiblePage.type === "img")) {
+        return 1;
+      } else if ((visiblePage.type === "video")) {
+        return 2;
+      } else if ((visiblePage.type === "audio")) {
+        return 3;
+      } else {
+        return 4;
       }
     }
   },

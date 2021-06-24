@@ -1,6 +1,6 @@
 import Vuetify from 'vuetify';
-import { mount, createLocalVue, shallowMount } from '@vue/test-utils';
-import VueRouter from 'vue-router';
+import { mount, createLocalVue } from '@vue/test-utils';
+import router from '@/router/router';
 import store from '@/store';
 import app from '@/app.vue';
 
@@ -12,13 +12,20 @@ describe('app.vue', () => {
   beforeEach(() => {
     vuetify = new Vuetify();
   });
+  const wrapper = mount(app, {
+    localVue,
+    router,
+    store,
+    vuetify,
+    mocks: {
+      $route: {
+        name: {
+          id: 'id'
+        }
+      }
+    }
+  });
   it('Check if content render', () => {
-    const wrapper = mount(app, {
-      localVue,
-      VueRouter,
-      store,
-      vuetify,
-    });
     expect(wrapper.contains('v-app')).toBe(true);
   });
 });

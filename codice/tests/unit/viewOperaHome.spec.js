@@ -1,6 +1,6 @@
 import Vuex from 'vuex';
 import Vuetify from 'vuetify';
-import { mount, createLocalVue, shallowMount } from '@vue/test-utils';
+import { mount, createLocalVue } from '@vue/test-utils';
 import VueRouter from 'vue-router';
 import store from '@/store';
 import viewOperaHome from '@/components/ViewOperaHome.vue';
@@ -13,7 +13,7 @@ describe('viewOperaHome.vue', () => {
     vuetify = new Vuetify();
   });
   it('Check if content render', () => {
-    const wrapper = shallowMount(viewOperaHome, {
+    const wrapper = mount(viewOperaHome, {
       localVue,
       store,
       vuetify,

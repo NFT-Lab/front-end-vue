@@ -1,5 +1,3 @@
-@media screen and (max-width: 600px) {
-    #userName {
-        display: none !important;
-    }
+html {
+  overflow:auto
 }

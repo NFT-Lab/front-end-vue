@@ -1,7 +1,5 @@
-import Vuex from 'vuex';
 import Vuetify from 'vuetify';
-import { mount, createLocalVue, shallowMount } from '@vue/test-utils';
-import VueRouter from 'vue-router';
+import { shallowMount, createLocalVue } from '@vue/test-utils';
 import store from '@/store';
 import userPage from '@/view/UserPage.vue';
 

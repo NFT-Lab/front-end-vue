@@ -24,17 +24,20 @@
       <v-flex>
         <v-form v-model="isFormValid" class="pa-3">
           <v-text-field
+          id="titleInput"
             v-model="visiblePage.title"
             label="Titolo"
             :rules="[rules.required]"
           />
           <v-text-field
+          id="descriptionInput"
             v-model="visiblePage.description"
             label="Descrizione"
             :rules="[rules.required]"
           />
           <v-text-field v-model="visiblePage.type" readonly label="Tipo" />
           <v-combobox
+          id="categoryInput"
             v-model="visiblePage.categories"
             :items="categories"
             item-value="name"
@@ -49,7 +52,7 @@
             color="amber accent-4"
             :rules="[rules.required]"
           />
-          <v-text-field v-model="visiblePage.price" label="Prezzo" />
+          <v-text-field id="priceInput" v-model="visiblePage.price" label="Prezzo" />
         </v-form>
       </v-flex>
       <v-card-actions>
@@ -69,7 +72,11 @@
 
 <script>
 export default {
-  props: ["visiblePage"],
+  props: {
+    visiblePage: {
+      type: Object
+    }
+  },
   data() {
     return {
       alert: false,
@@ -109,7 +116,7 @@ export default {
         this.visiblePage.type = "img";
       else this.visiblePage.type = "doc";
       this.$store.dispatch("nftService/updateOpera", this.visiblePage);
-      if (this.$store.getters["nftService/errorMessageOpera"] !== null) {
+      if (this.$store.getters["nftService/errorMessageOpera"] !== '') {
         this.alert = true;
       } else {
         this.dialog = false;

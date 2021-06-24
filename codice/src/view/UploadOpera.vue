@@ -67,13 +67,13 @@
                       />
                       <v-img
                         v-else-if="typeNumber == 2"
-                        src="@/assets/video.jpg"
+                        src="@/assets/video.png"
                         max-height="200px"
                         max-width="200px"
                       />
                       <v-img
                         v-else-if="typeNumber == 3"
-                        src="@/assets/audio.jpg"
+                        src="@/assets/audio.png"
                         max-height="200px"
                         max-width="200px"
                       />
@@ -172,7 +172,7 @@ export default {
       file: "",
       url: "",
       rules: {
-        required: val => !!val || "Questo è un campo obbligatorio"
+        required: val => !!val || "Questo è un campo obbligatorio",
       },
       urlPreview: {
         doc: "require('@src/assets/doc.png)",
@@ -207,7 +207,7 @@ export default {
       formatData.append("opera", JSON.stringify(this.opera));
       this.opera = formatData;
       this.$store.dispatch("nftService/uploadOpera", formatData);
-      if (this.$store.getters["nftService/errorMessageOpera"] !== null)
+      if (this.$store.getters["nftService/errorMessageOpera"] !== '')
         this.alert = true;
     },
     previewImage() {
@@ -222,15 +222,12 @@ export default {
           this.opera.type = "Immagine";
         } else if (this.file.type.includes("video")) {
           this.typeNumber = 2;
-          this.url = "@src/assets/video.jpg";
           this.opera.type = "Video";
         } else if (this.file.type.includes("audio")) {
           this.typeNumber = 3;
-          this.url = this.urlPreview.audio;
           this.opera.type = "Audio";
         } else {
           this.typeNumber = 4;
-          this.url = this.urlPreview.doc;
           this.opera.type = "Documento";
         }
       }

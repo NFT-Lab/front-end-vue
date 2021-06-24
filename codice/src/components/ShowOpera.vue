@@ -6,31 +6,44 @@
     transition="dialog-bottom-transition"
   >
     <template v-slot:activator="{ on, attrs }">
-        <v-list-item-avatar size="80" v-bind="attrs" v-on="on">
-          <img
-            :src="
-              'https://cloudflare-ipfs.com/ipfs/' +
-                opereId[Math.floor(Math.random() * opereId.length)]
-            "
-          />
-          <!--<v-img
+      <v-list-item-avatar size="80" v-bind="attrs" v-on="on">
+        <v-img
+          v-if="typeNumber(visiblePage) == 1"
+          :src="
+            'https://cloudflare-ipfs.com/ipfs/' +
+              opereId[Math.floor(Math.random() * opereId.length)]
+          "
+        />
+        <v-img
+          v-else-if="typeNumber(visiblePage) == 2"
+          src="@/assets/video.png"
+        />
+        <v-img
+          v-else-if="typeNumber(visiblePage) == 3"
+          src="@/assets/audio.png"
+        />
+        <v-img
+          v-else-if="typeNumber(visiblePage) == 4"
+          src="@/assets/doc.png"
+        />
+        <!--<v-img
             :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
           />-->
-        </v-list-item-avatar>
-        <v-list-item-content>
-          <v-list-item-title
-            v-text="visiblePage.title"
-            v-bind="attrs"
-            v-on="on"
-            class="white--text"
-          />
-          <v-list-item-subtitle
-            v-text="visiblePage.description"
-            v-bind="attrs"
-            v-on="on"
-            class="white--text"
-          />
-        </v-list-item-content>
+      </v-list-item-avatar>
+      <v-list-item-content>
+        <v-list-item-title
+          v-text="visiblePage.title"
+          v-bind="attrs"
+          v-on="on"
+          class="white--text"
+        />
+        <v-list-item-subtitle
+          v-text="visiblePage.description"
+          v-bind="attrs"
+          v-on="on"
+          class="white--text"
+        />
+      </v-list-item-content>
     </template>
     <v-card>
       <v-card-title class="text-h5" color="amber accent-4">
@@ -42,10 +55,26 @@
         <v-row class="pa-1 d-flex justify-center" dense>
           <v-col cols="6" md="4" class="pa-5 justify-center align-center">
             <v-img
+              contain
+              max-height="800"
+              max-width="800"
+              v-if="typeNumber(visiblePage) == 1"
               :src="
                 'https://cloudflare-ipfs.com/ipfs/' +
                   opereId[Math.floor(Math.random() * opereId.length)]
               "
+            />
+            <v-img
+              v-else-if="typeNumber(visiblePage) == 2"
+              src="@/assets/video.png"
+            />
+            <v-img
+              v-else-if="typeNumber(visiblePage) == 3"
+              src="@/assets/audio.png"
+            />
+            <v-img
+              v-else-if="typeNumber(visiblePage) == 4"
+              src="@/assets/doc.png"
             />
             <!--<v-img
             :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
@@ -107,18 +136,6 @@ export default {
       opereId: [
         "QmX5FkTotxKRziu5a7NXz16YeHrVgYw98RzTgNWvi8HmDC",
 
-        "QmUZr5giEkQynVP4whjkrPA5x9HjfmonCt2j5WCCJ6GJYt",
-
-        "QmdDN19DFWsGAL5hsdYDiPWLJpcNnezEqcMai8UnWayTCy",
-
-        "QmUoxQnAHehMEKH1CCbr1bu69P4r79kPXRKFqn6v3Pyret",
-
-        "QmNe7jwQqawJ9TNouzBwDLfS294SxNo7FEuuKBkkpRRFHh",
-
-        "QmRMEwa9jLv2iNxrpfZ8Z2bNMTZEFeyUVnt6fF5Xenk7Ms",
-
-        "QmbHx7zHgibMF9ktjaRm5dDT3bRAtqa7EVBPJ8jTvpLahe",
-
         "QmWjHc9zb5ojPsjA43B3SFyKRPqd9Mc57R9EnTCgduyNzv",
 
         "Qmb13ALEkqXtVXGxCSXJvAQNVwytCFcr5DT6jcrXuUGjat",
@@ -126,6 +143,19 @@ export default {
         "QmUZKcyxFm82CpsuRxkentY3zw8dRxGxHni8ggDuxQQYDP"
       ]
     };
+  },
+  methods: {
+    typeNumber(visiblePage) {
+      if (visiblePage.type === "img") {
+        return 1;
+      } else if (visiblePage.type === "video") {
+        return 2;
+      } else if (visiblePage.type === "audio") {
+        return 3;
+      } else {
+        return 4;
+      }
+    }
   }
 };
 </script>

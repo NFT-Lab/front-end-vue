@@ -124,6 +124,9 @@ const mutations = {
   }
 };
 const getters = {
+  myGetRootState: (state, getters, rootState) => {
+    return rootState
+  },
   isAuthenticated: state => {
     return state.loggedIn;
   },
