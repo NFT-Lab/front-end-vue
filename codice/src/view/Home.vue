@@ -31,10 +31,7 @@
               <v-list-item-avatar tile size="100">
                 <img
                   v-if="typeNumber(visiblePage) == 1"
-                  :src="
-                    'https://cloudflare-ipfs.com/ipfs/' +
-                      opereId[Math.floor(Math.random() * opereId.length)]
-                  "
+                  :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
                 />
                 <v-img
                   v-else-if="typeNumber(visiblePage) == 2"
@@ -55,6 +52,10 @@
                   max-width="200px"
                 />
                 <!--<v-img
+                  :src="
+                    'https://cloudflare-ipfs.com/ipfs/' +
+                      opereId[Math.floor(Math.random() * opereId.length)]
+                  "
             :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
           />-->
               </v-list-item-avatar>

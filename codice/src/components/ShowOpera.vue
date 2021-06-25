@@ -9,10 +9,7 @@
       <v-list-item-avatar size="80" v-bind="attrs" v-on="on">
         <v-img
           v-if="typeNumber(visiblePage) == 1"
-          :src="
-            'https://cloudflare-ipfs.com/ipfs/' +
-              opereId[Math.floor(Math.random() * opereId.length)]
-          "
+           :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
         />
         <v-img
           v-else-if="typeNumber(visiblePage) == 2"
@@ -27,6 +24,10 @@
           src="@/assets/doc.png"
         />
         <!--<v-img
+                  :src="
+            'https://cloudflare-ipfs.com/ipfs/' +
+              opereId[Math.floor(Math.random() * opereId.length)]
+          "
             :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
           />-->
       </v-list-item-avatar>
@@ -59,10 +60,7 @@
               max-height="800"
               max-width="800"
               v-if="typeNumber(visiblePage) == 1"
-              :src="
-                'https://cloudflare-ipfs.com/ipfs/' +
-                  opereId[Math.floor(Math.random() * opereId.length)]
-              "
+               :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
             />
             <v-img
               v-else-if="typeNumber(visiblePage) == 2"
@@ -77,6 +75,10 @@
               src="@/assets/doc.png"
             />
             <!--<v-img
+              :src="
+                'https://cloudflare-ipfs.com/ipfs/' +
+                  opereId[Math.floor(Math.random() * opereId.length)]
+              "
             :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
           />-->
           </v-col>

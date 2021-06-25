@@ -13,7 +13,7 @@ const state = {
 const actions = {
   loginUser({ commit }, user) {
     axios
-      .post(urlStop + 'login', {
+      .post(urlBackEnd + 'login', {
         email: user.email,
         password: user.password
       })
@@ -33,7 +33,7 @@ const actions = {
   },
   signUp({ commit }, user) {
     axios
-      .post(urlStop + 'signup', {
+      .post(urlBackEnd + 'signup', {
         email: user.email,
         password: user.password,
         name: user.name,
@@ -52,7 +52,7 @@ const actions = {
       });
   },
   updateUser({ commit }, user) {
-    var url = urlStop + `user/${JSON.parse(localStorage.getItem('user')).id}`;
+    var url = urlBackEnd + `user/${JSON.parse(localStorage.getItem('user')).id}`;
     console.log(user);
     axios
       .put(url, {
@@ -71,7 +71,7 @@ const actions = {
       })
   },
   updatePassword({}, user) {
-    axios.put(urlStop + 'user/password', {
+    axios.put(urlBackEnd + 'user/password', {
       email: user.email,
       oldPassword: user.oldPassword,
       newPassword: user.newPassword

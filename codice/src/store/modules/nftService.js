@@ -15,24 +15,24 @@ const state = {
 const actions = {
   userOperas({ commit }) {
     var url =
-      urlStop + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
-    axios.get(url+ examples).then(response => {
+    urlBackEnd + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
+    axios.get(url).then(response => {
       commit('setOperas', response.data);
     });
   },
   getCategories({ commit }) {
-    axios.get(urlStop + 'categories' + examples).then(response => {
+    axios.get(urlBackEnd + 'categories').then(response => {
       commit('setCategories', response.data);
     });
   },
   getHomeOperas({ commit }) {
-    axios.get(urlStop + 'nft' + examples).then(response => {
+    axios.get(urlBackEnd + 'nft').then(response => {
       commit('setHomeOperas', response.data);
     });
   },
   uploadOpera({ commit }, opera) {
     var url =
-      urlStop + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
+    urlBackEnd + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
     axios
       .post(url, opera)
       .then(response => {
@@ -45,7 +45,7 @@ const actions = {
   },
   updateOpera({ commit }, opera) {
     var url =
-      urlStop + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
+    urlBackEnd + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
     axios
       .put(url, {
         id: opera.id,
