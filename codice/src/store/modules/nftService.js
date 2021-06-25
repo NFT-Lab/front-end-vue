@@ -1,8 +1,8 @@
 import axios from 'axios';
 import router from '@/router/router.js';
 
-var urlBackEnd = 'http://localhost:8765/NFTService/';
-var urlStop = 'http://localhost:3100/';
+var urlBackEnd = 'http://localhost:3100/';
+var urlStop = 'http://localhost:8765/NFTService/';
 var examples = '?__example=test1';
 
 const state = {
@@ -15,24 +15,24 @@ const state = {
 const actions = {
   userOperas({ commit }) {
     var url =
-    urlBackEnd + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
-    axios.get(url).then(response => {
+      urlStop + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
+    axios.get(url+ examples).then(response => {
       commit('setOperas', response.data);
     });
   },
   getCategories({ commit }) {
-    axios.get(urlBackEnd + 'categories').then(response => {
+    axios.get(urlStop + 'categories').then(response => {
       commit('setCategories', response.data);
     });
   },
   getHomeOperas({ commit }) {
-    axios.get(urlBackEnd + 'nft').then(response => {
+    axios.get(urlStop + 'nft').then(response => {
       commit('setHomeOperas', response.data);
     });
   },
   uploadOpera({ commit }, opera) {
     var url =
-    urlBackEnd + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
+      urlStop + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
     axios
       .post(url, opera)
       .then(response => {
@@ -45,7 +45,7 @@ const actions = {
   },
   updateOpera({ commit }, opera) {
     var url =
-    urlBackEnd + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
+      urlStop + `nft/user/${JSON.parse(localStorage.getItem('user')).id}`;
     axios
       .put(url, {
         id: opera.id,
@@ -81,6 +81,7 @@ const mutations = {
     state.opera = data;
   },
   setErrorOpera(state, error) {
+    state.errorMessageOpera="";
     if (error === 500) {
       state.errorMessageOpera = 'Errore di connessione al server!';
     } else if (error === 404) {

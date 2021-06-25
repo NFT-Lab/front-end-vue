@@ -9,7 +9,7 @@
       multiple
       chips
       clearable
-      filled
+
       solo
       label="Filtro per categoria"
       prepend-inner-icon="category"
@@ -29,23 +29,27 @@
           <v-list-item>
             <v-list-item-content>
               <v-list-item-avatar tile size="100">
-                <img
+                <v-img
+                contain
                   v-if="typeNumber(visiblePage) == 1"
-                  :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
+                     :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
                 />
                 <v-img
+                contain
                   v-else-if="typeNumber(visiblePage) == 2"
                   src="@/assets/video.png"
                   max-height="200px"
                   max-width="200px"
                 />
                 <v-img
+                contain
                   v-else-if="typeNumber(visiblePage) == 3"
                   src="@/assets/audio.png"
                   max-height="200px"
                   max-width="200px"
                 />
                 <v-img
+                contain
                   v-else-if="typeNumber(visiblePage) == 4"
                   src="@/assets/doc.png"
                   max-height="200px"
@@ -56,7 +60,7 @@
                     'https://cloudflare-ipfs.com/ipfs/' +
                       opereId[Math.floor(Math.random() * opereId.length)]
                   "
-            :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
+
           />-->
               </v-list-item-avatar>
               <v-list-item-title
@@ -153,11 +157,11 @@ export default {
   },
   methods: {
     typeNumber(visiblePage) {
-      if ((visiblePage.type === "img")) {
+      if ((visiblePage.type === "img" || visiblePage.type === "Immagine")) {
         return 1;
-      } else if ((visiblePage.type === "video")) {
+      } else if ((visiblePage.type === "video" || visiblePage.type === "Video")) {
         return 2;
-      } else if ((visiblePage.type === "audio")) {
+      } else if ((visiblePage.type === "audio" || visiblePage.type === "Audio")) {
         return 3;
       } else {
         return 4;

@@ -31,19 +31,22 @@
                    :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
                 />
                 <v-img
+                contain
                   v-else-if="typeNumber(visiblePage) == 2"
                   src="@/assets/video.png"
                 />
                 <v-img
+                contain
                   v-else-if="typeNumber(visiblePage) == 3"
                   src="@/assets/audio.png"
                 />
                 <v-img
+                contain
                   v-else-if="typeNumber(visiblePage) == 4"
                   src="@/assets/doc.png"
                 />
             <!--<v-img
-             :src="
+            :src="
                     'https://cloudflare-ipfs.com/ipfs/' +
                       opereId[Math.floor(Math.random() * opereId.length)]
                   "
@@ -115,12 +118,12 @@ export default {
     };
   },
   methods: {
-        typeNumber(visiblePage) {
-      if ((visiblePage.type === "img")) {
+ typeNumber(visiblePage) {
+      if ((visiblePage.type === "img" || visiblePage.type === "Immagine")) {
         return 1;
-      } else if ((visiblePage.type === "video")) {
+      } else if ((visiblePage.type === "video" || visiblePage.type === "Video")) {
         return 2;
-      } else if ((visiblePage.type === "audio")) {
+      } else if ((visiblePage.type === "audio" || visiblePage.type === "Audio")) {
         return 3;
       } else {
         return 4;

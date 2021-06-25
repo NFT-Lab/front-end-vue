@@ -11,16 +11,16 @@
       </v-btn>
     </template>
     <v-card class="pa-3">
-       <v-alert
-            v-model="alert"
-            color="red"
-            dense
-            dismissible
-            elevation="5"
-            icon="mdi-alert-circle"
-          >
-            {{ errorMessage }}
-          </v-alert>
+      <v-alert
+        v-model="alert"
+        color="red"
+        dense
+        dismissible
+        elevation="5"
+        icon="mdi-alert-circle"
+      >
+        {{ errorMessage }}
+      </v-alert>
       <v-card-title class="text-h5 amber accent-4">
         <v-btn icon dark @click="dialog = false">
           <v-icon>mdi-close</v-icon> </v-btn
@@ -83,6 +83,10 @@
           label="Inserisci la password per confermare la modifica"
           :rules="[rules.required, rules.length]"
           color="amber accent-4"
+          :type="show ? 'text' : 'password'"
+          :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+          prepend-icon="lock"
+          @click:append="show = !show"
         />
       </v-form>
       <v-card-actions>
@@ -107,10 +111,9 @@ export default {
       alert: false,
       dialog: false,
       menu: false,
+      show: false,
       activePicker: null,
       isFormValid: false,
-      show: false,
-      show1: false,
       UserData: this.$store.getters["CurrentUser/user"],
       user: {
         name: this.$store.getters["CurrentUser/user"].name,
@@ -143,7 +146,7 @@ export default {
   methods: {
     updateUser() {
       this.$store.dispatch("CurrentUser/updateUser", this.user);
-      if (this.$store.getters["CurrentUser/errorMessageLog"] !== null) {
+      if (this.$store.getters["CurrentUser/errorMessageLog"] !== "") {
         this.alert = true;
       } else {
         this.dialog = false;

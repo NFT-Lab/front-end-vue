@@ -1,8 +1,8 @@
 import axios from 'axios';
 import router from '@/router/router.js';
 
-var urlBackEnd = 'http://localhost:8765/UserService/';
-var urlStop = 'http://localhost:3100/';
+var urlBackEnd = 'http://localhost:3100/';
+var urlStop = 'http://localhost:8765/UserService/';
 
 const state = {
   user: {},
@@ -13,7 +13,7 @@ const state = {
 const actions = {
   loginUser({ commit }, user) {
     axios
-      .post(urlBackEnd + 'login', {
+      .post(urlStop + 'login', {
         email: user.email,
         password: user.password
       })
@@ -33,7 +33,7 @@ const actions = {
   },
   signUp({ commit }, user) {
     axios
-      .post(urlBackEnd + 'signup', {
+      .post(urlStop + 'signup', {
         email: user.email,
         password: user.password,
         name: user.name,
@@ -52,7 +52,7 @@ const actions = {
       });
   },
   updateUser({ commit }, user) {
-    var url = urlBackEnd + `user/${JSON.parse(localStorage.getItem('user')).id}`;
+    var url = urlStop + `user/${JSON.parse(localStorage.getItem('user')).id}`;
     console.log(user);
     axios
       .put(url, {
@@ -71,7 +71,7 @@ const actions = {
       })
   },
   updatePassword({}, user) {
-    axios.put(urlBackEnd + 'user/password', {
+    axios.put(urlStop + 'user/password', {
       email: user.email,
       oldPassword: user.oldPassword,
       newPassword: user.newPassword
@@ -82,6 +82,7 @@ const actions = {
 };
 const mutations = {
   setMessageErrorSig(state, error) {
+    state.errorMessageSig="";
     if (error === 400) {
       state.errorMessageSig =
         'Dati inseriti scorrettamente, prova a reinserire i dati';
@@ -92,6 +93,7 @@ const mutations = {
     }
   },
   setErrorMessageLog(state, error) {
+    state.errorMessageLog="";
     if (error === 400) {
       state.errorMessageLog =
         'Dati inseriti scorrettamente, prova a reinserire i dati';
@@ -101,6 +103,7 @@ const mutations = {
     }
   },
   setErrorMessageMod(state, error) {
+    state.errorMessageLog="";
     if (error === 400) {
       state.errorMessageLog =
         'Dati inseriti scorrettamente, prova a reinserire i dati';

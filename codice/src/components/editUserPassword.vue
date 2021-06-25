@@ -40,6 +40,10 @@
           label="Vecchia password"
           :rules="[rules.required, rules.length]"
           color="amber accent-4"
+           :type="show ? 'text' : 'password'"
+          :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+          prepend-icon="lock"
+          @click:append="show = !show"
         />
         <v-text-field
           id="passwordNewInput"
@@ -47,6 +51,10 @@
           label="Nuova password"
           :rules="[rules.required, rules.length]"
           color="amber accent-4"
+           :type="show1 ? 'text' : 'password'"
+          :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+          prepend-icon="lock"
+          @click:append="show1 = !show1"
         />
       </v-form>
       <v-card-actions>
