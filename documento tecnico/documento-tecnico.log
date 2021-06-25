@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.6.18)  24 JUN 2021 12:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.6.18)  25 JUN 2021 16:15
 entering extended mode
 **./documento-tecnico.tex
 (documento-tecnico.tex
@@ -920,7 +920,7 @@ Package: ltcaption 2020/05/30 v1.4b longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count329
-<immagini/logo.png, id=94, 993.7125pt x 614.8425pt>
+<immagini/logo.png, id=98, 993.7125pt x 614.8425pt>
 File: immagini/logo.png Graphic file (type png)
 <use immagini/logo.png>
 Package pdftex.def Info: immagini/logo.png  used on input line 16.
@@ -988,7 +988,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
  (capitoli/c2_progettazione.tex
 Capitolo 2.
-<immagini/vue.png, id=139, 1219.55624pt x 511.9125pt>
+<immagini/vue.png, id=144, 1219.55624pt x 511.9125pt>
 File: immagini/vue.png Graphic file (type png)
 <use immagini/vue.png>
 Package pdftex.def Info: immagini/vue.png  used on input line 8.
@@ -1011,12 +1011,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 
  <./immagini/vue.png>]
-<immagini/vuetify.png, id=148, 660.96938pt x 379.4175pt>
+<immagini/vuetify.png, id=153, 660.96938pt x 379.4175pt>
 File: immagini/vuetify.png Graphic file (type png)
 <use immagini/vuetify.png>
 Package pdftex.def Info: immagini/vuetify.png  used on input line 28.
 (pdftex.def)             Requested size: 483.69687pt x 277.66719pt.
-<immagini/vuex.png, id=149, 470.50781pt x 367.3725pt>
+<immagini/vuex.png, id=154, 470.50781pt x 367.3725pt>
 File: immagini/vuex.png Graphic file (type png)
 <use immagini/vuex.png>
 Package pdftex.def Info: immagini/vuex.png  used on input line 37.
@@ -1126,7 +1126,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-35.60973pt}.
 
 [10]
-<immagini/home.png, id=358, 1445.4pt x 715.92468pt>
+<immagini/home.png, id=363, 1445.4pt x 715.92468pt>
 File: immagini/home.png Graphic file (type png)
 <use immagini/home.png>
 Package pdftex.def Info: immagini/home.png  used on input line 304.
@@ -1145,7 +1145,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-35.60973pt}.
 
 [11]
-<immagini/dettagliHome.png, id=370, 1445.4pt x 709.90219pt>
+<immagini/dettagliHome.png, id=375, 1445.4pt x 709.90219pt>
 File: immagini/dettagliHome.png Graphic file (type png)
 <use immagini/dettagliHome.png>
 Package pdftex.def Info: immagini/dettagliHome.png  used on input line 312.
@@ -1164,12 +1164,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-35.60973pt}.
 
 [12 <./immagini/home.png> <./immagini/dettagliHome.png>]
-<immagini/login.png, id=381, 1445.4pt x 706.89093pt>
+<immagini/login.png, id=386, 1445.4pt x 706.89093pt>
 File: immagini/login.png Graphic file (type png)
 <use immagini/login.png>
 Package pdftex.def Info: immagini/login.png  used on input line 327.
 (pdftex.def)             Requested size: 338.58632pt x 165.59087pt.
-<immagini/registrazione.png, id=382, 1445.4pt x 711.4078pt>
+<immagini/registrazione.png, id=387, 1445.4pt x 711.4078pt>
 File: immagini/registrazione.png Graphic file (type png)
 <use immagini/registrazione.png>
 Package pdftex.def Info: immagini/registrazione.png  used on input line 346.
@@ -1188,7 +1188,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-35.60973pt}.
 
 [13 <./immagini/login.png>]
-<immagini/userPage.png, id=390, 1445.4pt x 712.16063pt>
+<immagini/userPage.png, id=395, 1445.4pt x 712.16063pt>
 File: immagini/userPage.png Graphic file (type png)
 <use immagini/userPage.png>
 Package pdftex.def Info: immagini/userPage.png  used on input line 355.
@@ -1207,17 +1207,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-35.60973pt}.
 
 [14 <./immagini/registrazione.png> <./immagini/userPage.png>]
-<immagini/uploadOpera.png, id=400, 1444.64719pt x 709.90219pt>
+<immagini/uploadOpera.png, id=405, 1444.64719pt x 709.90219pt>
 File: immagini/uploadOpera.png Graphic file (type png)
 <use immagini/uploadOpera.png>
 Package pdftex.def Info: immagini/uploadOpera.png  used on input line 366.
 (pdftex.def)             Requested size: 338.58632pt x 166.3829pt.
-<immagini/modificaOpera.png, id=401, 864.98157pt x 391.4625pt>
+<immagini/modificaOpera.png, id=406, 864.98157pt x 391.4625pt>
 File: immagini/modificaOpera.png Graphic file (type png)
 <use immagini/modificaOpera.png>
 Package pdftex.def Info: immagini/modificaOpera.png  used on input line 375.
 (pdftex.def)             Requested size: 338.58632pt x 153.23123pt.
-<immagini/modificaDati.png, id=402, 861.9703pt x 366.61969pt>
+<immagini/modificaDati.png, id=407, 861.9703pt x 366.61969pt>
 File: immagini/modificaDati.png Graphic file (type png)
 <use immagini/modificaDati.png>
 Package pdftex.def Info: immagini/modificaDati.png  used on input line 383.
@@ -1236,7 +1236,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-35.60973pt}.
 
 [15 <./immagini/uploadOpera.png> <./immagini/modificaOpera.png>]
-<immagini/modificaPassword.png, id=412, 864.98157pt x 254.45062pt>
+<immagini/modificaPassword.png, id=417, 864.98157pt x 254.45062pt>
 File: immagini/modificaPassword.png Graphic file (type png)
 <use immagini/modificaPassword.png>
 Package pdftex.def Info: immagini/modificaPassword.png  used on input line 391.
@@ -1266,13 +1266,13 @@ See the caption package documentation for explanation.
 (documento-tecnico.aux (capitoli/c1_introduzione.aux)
 (capitoli/c2_progettazione.aux))
 Package rerunfilecheck Info: File `documento-tecnico.out' has not changed.
-(rerunfilecheck)             Checksum: 830B46FCCB1181391349DB3304B11B2E;2932.
+(rerunfilecheck)             Checksum: D8B3BE339DC8846E484DA8A46F5FD4AC;3118.
  ) 
 Here is how much of TeX's memory you used:
- 24797 strings out of 478840
- 445581 string characters out of 2848060
+ 24799 strings out of 478840
+ 445605 string characters out of 2848060
  1183427 words of memory out of 3000000
- 42058 multiletter control sequences out of 15000+600000
+ 42059 multiletter control sequences out of 15000+600000
  407964 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,16n,86p,987b,1992s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1290,9 +1290,9 @@ rs/margh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb
 font/lcircle1.pfb><C:/Users/margh/AppData/Local/Programs/MiKTeX/fonts/type1/pub
 lic/cm-super/sfrm1000.pfb><C:/Users/margh/AppData/Local/Programs/MiKTeX/fonts/t
 ype1/public/cm-super/sftt0800.pfb>
-Output written on documento-tecnico.pdf (17 pages, 2601565 bytes).
+Output written on documento-tecnico.pdf (17 pages, 2604125 bytes).
 PDF statistics:
- 517 PDF objects out of 1000 (max. 8388607)
- 220 named destinations out of 1000 (max. 500000)
- 254 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 522 PDF objects out of 1000 (max. 8388607)
+ 221 named destinations out of 1000 (max. 500000)
+ 262 words of extra memory for PDF output out of 10000 (max. 10000000)
 

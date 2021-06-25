@@ -22,3 +22,4 @@
 \contentsline {subsection}{\numberline {2.4.8}Gestione opere}{15}{subsection.2.4.8}%
 \contentsline {subsection}{\numberline {2.4.9}Modifica dati personali}{16}{subsection.2.4.9}%
 \contentsline {subsection}{\numberline {2.4.10}Modifica password}{16}{subsection.2.4.10}%
+\contentsline {section}{\numberline {2.5}Generazione della preview}{16}{section.2.5}%

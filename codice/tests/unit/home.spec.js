@@ -1,7 +1,5 @@
-import Vuex from 'vuex';
 import Vuetify from 'vuetify';
 import { mount, createLocalVue } from '@vue/test-utils';
-import VueRouter from 'vue-router';
 import store from '@/store';
 import home from '@/view/Home.vue';
 

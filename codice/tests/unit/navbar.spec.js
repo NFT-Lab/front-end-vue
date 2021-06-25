@@ -10,12 +10,28 @@ describe('navBar.vue', () => {
   beforeEach(() => {
     vuetify = new Vuetify();
   });
-  const wrapper = shallowMount(navBar, {
-    localVue,
-    store,
-    vuetify
-  });
+  const factory = (values = {}) => {
+    return shallowMount(navBar, {
+      data() {
+        return {
+          isLogged: false,
+        }
+      },
+      localVue,
+      store,
+      vuetify,
+    });
+  }
+  const wrapper = factory()
   it('Check if content render', () => {
     expect(wrapper.contains('nav')).toBe(true);
+  });
+  it('Check if divNotLogged is rendered', () => {
+    const wrapper = factory({ isLogged: true  })
+    expect(wrapper.find('#userLogged').exists()).toBeTruthy();
+  });
+    it('Check if divNotLogged is not rendered', () => {
+    const wrapper = factory({ isLogged: false  })
+    expect(wrapper.find('#userLogged').exists()).toBeFalsy();
   });
 });

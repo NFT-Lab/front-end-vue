@@ -86,15 +86,15 @@ La cartella principale si chiama \textbf{\textit{front-end-vue}} ed essa contien
 	\item \textbf{\textit{docs}}, contenente file YAML utilizzato per la configurazione di Stoplight;
 	\item \textbf{\textit{documento tecnico}}, contente i file latex utilizzati per la stesura di questo documento.
 \end{itemize} 
-Per quanto riguarda la cartella legata al codice, essendo la più importante, necessita di una spiegazione degli elementi che la contengono. I file e le sottocartelle create automaticamente alla creazione del progetto però non verranno spiegate, mentre i restanti elementi sono i seguenti:
+Per quanto riguarda la cartella legata al codice, essendo la più importante, necessita di una spiegazione degli elementi che la contengono. I file e le sottocartelle creati automaticamente alla creazione del progetto però non verranno spiegate, mentre i restanti elementi sono i seguenti:
 \begin{itemize}
 	\item \textbf{\textit{coverage}}: cartella che contiene i file e le cartelle create automaticamente quando vengono fatti partire i test di unità;
-	\item \textbf{\textit{src}}: cartella in cui sono presenti file e cartelle necessari per il funzionamento del progetto e sono:
+	\item \textbf{\textit{src}}: cartella in cui sono presenti i file e le cartelle necessari per il funzionamento del progetto e sono:
 	\begin{itemize}
 		\item il file \textbf{\textit{App.vue}} è la radice dell'applicazione definita nel formato Vue Component e di solito serve a definire il modello della pagina;
-		\item il file \textbf{\textit{Main.js}} di tipo javascript che inizializza il file \textit{App.vue} ed è responsabile dell'impostazione dei plugin e dei componenti di terze parti da utilizzare per lo sviluppo dell'applicazione;
+		\item il file \textbf{\textit{Main.js}} di tipo javascript che inizializza il file \textit{App.vue} è responsabile dell'impostazione dei plugin e dei componenti di terze parti da utilizzare per lo sviluppo dell'applicazione;
 		\item la cartella \textbf{\textit{assets}} contenente le immagini utilizzate all'interno del sito, come quella del logo;
-		\item la cartella \textbf{\textit{components}} contenente la barra di navigazione (navbar) e le varie finestre d'avviso;
+		\item la cartella \textbf{\textit{components}} contenente la barra di navigazione e le varie finestre d'avviso;
 		\item la cartella \textbf{\textit{plugins}} contenente i file javascript dei plugin utilizzati per lo sviluppo, in questo caso di Vuetify;
 		\item la cartella \textbf{\textit{router}} contenente un omonimo file javascript dove vengono definite le route ovvero le varie pagine in cui può navigare l'utente;
 		\item la cartella \textbf{\textit{store}} contenente i file per la configurazione delle chiamate al database e lo state management;
@@ -122,7 +122,7 @@ Essendo legati a servizi diversi i metodi e le chiamate al back end dei due file
 
 In questo file ho implementato diversi servizi legati all'utente. I servizi in questione sono:
 \begin{itemize}
-	\item \textbf{autenticazione}: l'utente prova ad effettuare il login e nella componente legata all'autenticazione avviene una chiamata al metodo \textbf{\textit{LoginUser}} passando come parametro l'utente.
+	\item \textbf{Autenticazione}:
 	\begin{lstlisting}
 		loginUser({ commit }, user) {
 			axios
@@ -141,8 +141,8 @@ In questo file ho implementato diversi servizi legati all'utente. I servizi in q
 			});
 		}
 	\end{lstlisting}
-	Come si può vedere dall'immagine soprastante viene eseguita una chiamata POST al database specificando i dati dell'utente che verranno inviati. Se la chiamata va a buon fine i dati dell'utente autenticato verranno salvati sia nello stato persistente che nel localStorage del web e si verrà reindirizzati alla homepage. Se invece la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna il back end.
-	\item \textbf{registrazione}
+	Come si può vedere dallo snippet di codice soprastante viene eseguita una chiamata POST al database specificando i dati dell'utente che verranno inviati. Se la chiamata va a buon fine i dati dell'utente autenticato verranno salvati sia nello stato persistente che nel localStorage del web e si verrà reindirizzati alla homepage. Se invece la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna il back end.
+	\item \textbf{Registrazione}:
 	\begin{lstlisting}
 		  signUp({ commit }, user) {
 			axios
@@ -165,16 +165,16 @@ In questo file ho implementato diversi servizi legati all'utente. I servizi in q
 			});
 		}
 	\end{lstlisting}
-	Come si può vedere dall'immagine soprastante viene eseguita anche per la registrazione una chiamata POST al database specificando i dati dell'utente che verranno inviati, di numero maggiore rispetto ai dati per l'autenticazione. Se la chiamata va a buon fine i dati dell'utente autenticato verranno salvati sia nello stato persistente che nel localStorage del web e si verrà reindirizzati alla homepage. Se invece la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna il back end.
-	\item \textbf{logout}
+	Come si può vedere dallo snippet di codice soprastante viene eseguita anche per la registrazione una chiamata POST al database specificando i dati dell'utente che verranno inviati, di numero maggiore rispetto ai dati per l'autenticazione. Se la chiamata va a buon fine i dati dell'utente autenticato verranno salvati sia nello stato persistente che nel localStorage del web e si verrà reindirizzati alla homepage. Se invece la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna il back end.
+	\item \textbf{Logout}:
 	\begin{lstlisting}
 		  logOut({ commit }) {
 			commit('setLoggedOut');
 			localStorage.clear('user');
 		}
 	\end{lstlisting}
-	Come si può vedere dall'immagine soprastante questo è l'unico metodo che non possiede chiamate effettive al back end, infatti quando l'utente vuole effettuare il log out verrà semplicemente chiamato un metodo che fa ritornare l'utente alla homepage e cancella i dati dell'utente nello stato persistente. Infine viene svuotato il localStorage dai dati dell'utente.
-	\item \textbf{modifica dei dati personali}
+	Come si può vedere dallo snippet di codice soprastante questo è l'unico metodo che non possiede chiamate effettive al back end, infatti quando l'utente vuole effettuare il log out verrà semplicemente chiamato un metodo che fa ritornare l'utente alla homepage e cancella i dati dell'utente nello stato persistente. Infine viene svuotato il localStorage dai dati dell'utente.
+	\item \textbf{Modifica dei dati personali}:
 	\begin{lstlisting}
 		 updateUser({ commit }, user) {
 		 	var url = urlStop + `user/${JSON.parse(localStorage.getItem('user')).id}`;
@@ -196,8 +196,8 @@ In questo file ho implementato diversi servizi legati all'utente. I servizi in q
 		 	})
 		 }
 	\end{lstlisting}
-	Come si può vedere dall'immagine soprastante viene eseguita la modifica dei dati personali tramite una chiamata PUT al database specificando i dati dell'utente che verranno inviati e inviando come parametro l'id identificativo dell'utente. Se la chiamata va a buon fine i dati aggiornati verranno salvati sia nello stato persistente che nel localStorage del web. Se invece  la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna dal back end.
-	\item \textbf{modifica della password}
+	Come si può vedere dallo snippet di codice soprastante viene eseguita la modifica dei dati personali tramite una chiamata PUT al database specificando i dati dell'utente che verranno inviati e inviando come parametro l'id identificativo dell'utente. Se la chiamata va a buon fine i dati aggiornati verranno salvati sia nello stato persistente che nel localStorage del web. Se invece  la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna dal back end.
+	\item \textbf{Modifica della password}
 	\begin{lstlisting}
 		  updatePassword({}, user) {
 		  	axios.put(urlStop + 'user/password', {
@@ -209,13 +209,13 @@ In questo file ho implementato diversi servizi legati all'utente. I servizi in q
 		  	})
 		  }
 	\end{lstlisting}
-	Come si può vedere dall'immagine soprastante viene eseguita la modifica della password tramite una chiamata PUT al database. Essendo un dato che non deve essere utilizzato all'interno del sito per questioni di sicurezza, il database non ritorna alcuna risposta. Se invece  la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna dal back end.
+	Come si può vedere dallo snippet di codice soprastante viene eseguita la modifica della password tramite una chiamata PUT al database. Essendo un dato che non deve essere utilizzato all'interno del sito per questioni di sicurezza, il database non ritorna alcuna risposta. Se invece  la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna dal back end.
 \end{itemize}
 
 \subsection{NftService.js}
 In questo file ho implementato diversi servizi legati agli NFT. I servizi in questione sono:
 \begin{itemize}
-	\item \textbf{opere dell'utente utente}
+	\item \textbf{Opere dell'utente utente}:
 	\begin{lstlisting}
 		userOperas({ commit }) {
 			var url =
@@ -225,8 +225,8 @@ In questo file ho implementato diversi servizi legati agli NFT. I servizi in que
 			});
 		}
 	\end{lstlisting}
-	Come si può vedere dall'immagine soprastante questo metodo serve per ritornare le opere dell'utente. Questo avviene tramite una chiamata GET al database fornendo come parametro l'id identificativo dell'utente.
-	\item \textbf{categorie disponibili}
+	Come si può vedere dallo snippet di codice soprastante questo metodo serve per ritornare le opere dell'utente. Questo avviene tramite una chiamata GET al database fornendo come parametro l'id identificativo dell'utente.
+	\item \textbf{Categorie disponibili}:
 	\begin{lstlisting}
 	getCategories({ commit }) {
 		axios.get(urlBackEnd + 'categories'+examples).then(response => {
@@ -234,8 +234,8 @@ In questo file ho implementato diversi servizi legati agli NFT. I servizi in que
 		});
 	}
 	\end{lstlisting}
-	Come si può vedere dall'immagine soprastante questo metodo serve per ritornare le categorie disponibili nel database tramite una chiamata GET al database. Questo metodo viene invocato ogni qual volta serve sapere le categorie presenti, quindi ad esempio per caricare una nuova opera, per modificarne una o per la creazione del filtro presente nella homepage.
-	\item \textbf{caricamento di una nuova opera}
+	Come si può vedere dallo snippet di codice soprastante questo metodo serve per ritornare le categorie disponibili nel database tramite una chiamata GET al database. Questo metodo viene invocato ogni qual volta serve sapere le categorie presenti, quindi ad esempio per caricare una nuova opera, per modificarne una o per la creazione del filtro presente nella homepage.
+	\item \textbf{Caricamento di una nuova opera}:
 	\begin{lstlisting}
 	uploadOpera({ commit }, opera) {
 		var url =
@@ -251,8 +251,8 @@ In questo file ho implementato diversi servizi legati agli NFT. I servizi in que
 		});
 	}
 	\end{lstlisting}
-	Come si può vedere dall'immagine soprastante questo metodo serve per caricare una nuova opera nel database. Questo avviene tramite una chiamata POST al database fornendo come dati le informazioni della nuova opera e come parametro l'id identificativo dell'utente. Se invece  la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna dal back end.
-	\item \textbf{modifica di un'opera esistente}
+	Come si può vedere dallo snippet di codice soprastante questo metodo serve per caricare una nuova opera nel database. Questo avviene tramite una chiamata POST al database fornendo come dati le informazioni della nuova opera e come parametro l'id identificativo dell'utente. Se invece  la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna dal back end.
+	\item \textbf{Modifica di un'opera esistente}:
 	\begin{lstlisting}
 		updateOpera({ commit }, opera) {
 			var url =
@@ -278,8 +278,8 @@ In questo file ho implementato diversi servizi legati agli NFT. I servizi in que
 			});
 		}
 	\end{lstlisting}
-	Come si può vedere dall'immagine soprastante questo metodo serve per modificare un'opera già presente nel database. Questo avviene tramite una chiamata PUT al database fornendo come dati le nuove informazioni dell'opera e come parametro l'id identificativo dell'utente. Se invece  la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna dal back end.
-		\item \textbf{home}
+	Come si può vedere dallo snippet di codice soprastante questo metodo serve per modificare un'opera già presente nel database. Questo avviene tramite una chiamata PUT al database fornendo come dati le nuove informazioni dell'opera e come parametro l'id identificativo dell'utente. Se invece  la chiamata non va a buon fine viene effettuato il catch dell'errore e viene settato un messaggio di errore che può variare in base all'errore che ritorna dal back end.
+		\item \textbf{Visualizzazione delle opere nella home}:
 	\begin{lstlisting}
 	getHomeOperas({ commit }) {
 		axios.get(urlBackEnd + 'nft'+examples).then(response => {
@@ -287,7 +287,7 @@ In questo file ho implementato diversi servizi legati agli NFT. I servizi in que
 		});
 	}
 	\end{lstlisting}
-	Come si può vedere dall'immagine soprastante questo metodo serve per ottenere tutte le opere presenti nel database per mostrarle nella homepage. Questo avviene tramite una chiamata GET al database.
+	Come si può vedere dallo snippet di codice soprastante questo metodo serve per ottenere tutte le opere presenti nel database per mostrarle nella homepage. Questo avviene tramite una chiamata GET al database.
 \end{itemize}
 
 \section{Maschere implementate}
@@ -367,9 +367,9 @@ In questa pagina è possibile per l'utente aggiungere una nuova opera. I campi d
 		\caption{Pagina di upload dell'opera}
 	\end{center}
 \end{figure}
-Nel momento in cui l'utente carica il file verrà generata un'immagine in base al tipo di file: se viene caricata un'immagine si potrà visualizzare una \textit{preview} di essa invece se viene caricata un'altra tipologia di file verrà generata un'immagine che indica la tipologia.
+Nel momento in cui l'utente carica il file verrà aggiornato automaticamente il campo legato alla tipologia di file. Questo campo non è modificabile da parte dell'utente.
 \subsection{Gestione opere}
-L'utente può unicamente modificare una sua opera ma non può cancellarla. Questo è dovuto al fatto che al momento dell'upload l'opera verrà caricata sulla blockchain rendendola un elemento unico ed irripetibile quindi non può cancellarla. Per motivi analoghi l'utente ha delle restrizioni anche nella modifica dell'opera; infatti di essa può modificare solo: titolo, descrizione, prezzo e categorie di appartenenza. Un altro campo non modificabile è il tipo del file caricato.
+L'utente può unicamente modificare una sua opera ma non può cancellarla. Questo è dovuto al fatto che al momento dell'upload l'opera verrà caricata sulla blockchain rendendola un elemento unico ed irripetibile quindi non può cancellarla. Per motivi analoghi l'utente ha delle restrizioni anche nella modifica dell'opera; infatti di essa può modificare solo: titolo, descrizione, prezzo e categorie di appartenenza. Come per l'upload dell'opera il tipo del file caricato non può essere modificato dall'utente.
 \begin{figure}[H]
 	\begin{center}
 		\includegraphics[width=0.7\columnwidth]{immagini/modificaOpera.png}
@@ -392,3 +392,8 @@ L'utente dopo aver premuto un bottone con la dicitura "Modifica password", vedr�
 		\caption{Finestra di dialogo per la modifica della password}
 	\end{center}
 \end{figure}
+
+\section{Generazione della preview}
+
+Per quanto riguarda le immagini presenti nella home page, nella pagina dell'utente e nelle finestre di dialogo che mostrano i dettagli dell'opera, viene generata una preview in base alla tipologia del file. Infatti se il tipo del file è un immagine si potrà visualizzare una preview effettiva di essa, altrimenti se il tipo del file è audio, video o documento verranno visualizzate delle immagini preimpostate che fanno intuire la tipologia del file.\\
+Questo ragionamento viene applicato anche quando l'utente carica una nuova opera. Infatti nel momento in cui l'utente seleziona un file verrà mostrata una preview generata utilizzando il ragionamento appena descritto.

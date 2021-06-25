@@ -50,6 +50,15 @@ describe('editUserData.vue', () => {
     expect(wrapper.vm.isFormValid).toBeFalsy();
     expect(wrapper.find('v-btn').element.hasAttribute('disabled')).not.toBe(true);
   });
+  it('Check if button is disabled with empty fields', ()=> {
+    const password="Prova123@";
+
+    var passwordMInput = wrapper.find('#passwordMInput');
+    passwordMInput.element.value = password;
+
+    expect(wrapper.vm.isFormValid).toBeTruthy();
+    expect(wrapper.find('v-btn').element.hasAttribute('disabled')).toBe(true);
+  });
   it('Check if name is changed after user interaction', ()=>{
     const nameMInput = wrapper.find('#nameMInput');
     wrapper.find('#nameMInput').trigger('click');

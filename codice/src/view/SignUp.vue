@@ -29,7 +29,7 @@
               <v-flex>
                 <v-form ref="form" v-model="isFormValid">
                   <v-text-field
-                    id="nameInupt"
+                    id="nameInput"
                     v-model="user.name"
                     label="Nome"
                     :rules="[rules.required]"
@@ -37,7 +37,7 @@
                     color="amber accent-4"
                   />
                   <v-text-field
-                    id="surnnameInupt"
+                    id="surnameInupt"
                     v-model="user.surname"
                     label="Cognome"
                     :rules="[rules.required]"
