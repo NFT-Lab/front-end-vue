@@ -109,7 +109,7 @@ export default {
   methods: {
     updateUser() {
       this.$store.dispatch("CurrentUser/updatePassword", this.user);
-      if (this.$store.getters["CurrentUser/errorMessageLog"] !== null) {
+      if (this.$store.getters["CurrentUser/errorMessageLog"] !== "") {
         this.alert = true;
       } else {
         this.dialog = false;

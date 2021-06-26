@@ -9,7 +9,7 @@
       <v-list-item-avatar size="80" v-bind="attrs" v-on="on">
         <v-img
           v-if="typeNumber(visiblePage) == 1"
-           :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
+            :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
         />
         <v-img
           v-else-if="typeNumber(visiblePage) == 2"
@@ -60,7 +60,7 @@
               max-height="800"
               max-width="800"
               v-if="typeNumber(visiblePage) == 1"
-             :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
+            :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
             />
             <v-img
             contain
@@ -82,7 +82,7 @@
                 'https://cloudflare-ipfs.com/ipfs/' +
                   opereId[Math.floor(Math.random() * opereId.length)]
               "
-
+             :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
           />-->
           </v-col>
           <v-col cols="12" sm="6" md="8" class="pa-3">

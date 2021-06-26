@@ -281,10 +281,9 @@ paths:
       responses:
         '200':
           description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
+        '417':
+          description: Expectation Failed
+          headers: {}
       description: Modificare dati dell'utente
       tags:
         - User
@@ -294,6 +293,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/User'
+        description: ''
     parameters:
       - schema:
           type: string

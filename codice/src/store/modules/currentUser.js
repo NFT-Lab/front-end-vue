@@ -8,7 +8,7 @@ const state = {
   user: {},
   loggedIn: false,
   errorMessageLog: '',
-  errorMessageSig: ''
+  errorMessageSig: '',
 };
 const actions = {
   loginUser({ commit }, user) {
@@ -53,7 +53,6 @@ const actions = {
   },
   updateUser({ commit }, user) {
     var url = urlStop + `user/${JSON.parse(localStorage.getItem('user')).id}`;
-    console.log(user);
     axios
       .put(url, {
         password: user.password,
@@ -127,9 +126,6 @@ const mutations = {
   }
 };
 const getters = {
-  myGetRootState: (state, getters, rootState) => {
-    return rootState
-  },
   isAuthenticated: state => {
     return state.loggedIn;
   },

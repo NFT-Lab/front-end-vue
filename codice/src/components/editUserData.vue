@@ -132,6 +132,15 @@ export default {
             patternPwd.test(val) ||
             "La password deve essere lunga minimo otto caratteri con una lettera maiuscola, una minuscola, un numero ed un carattere speciale"
           );
+        },
+        wallet: val => {
+          const patternWallet = /^0x[a-fA-F0-9]/;
+          return patternWallet.test(val) || "ID Wallet non valido";
+        },
+        age: val => {
+          var year = new Date(val).getFullYear();
+          var minus = new Date().getFullYear() - year;
+          return minus >= 18 || "Per iscriverti devi essere maggiorenne";
         }
       }
     };

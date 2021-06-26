@@ -28,7 +28,7 @@
               max-height="800"
               max-width="800"
                   v-if="typeNumber(visiblePage) == 1"
-                   :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
+                  :src="'https://cloudflare-ipfs.com/ipfs/'+visiblePage.id"
                 />
                 <v-img
                 contain
